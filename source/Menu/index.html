@@ -1,67 +1,8 @@
 <template>
-    <style type="text/less">
-        @import (less, reference) 'node_modules/material-design-lite/dist/material.css';
-        @import (less, reference) 'node_modules/material-design-icons/iconfont/material-icons.css';
-
-        :host(:focus) {
-            outline:  0;
-        }
-        :host(.right) {
-            --menu-left:              auto;
-            --menu-right:             0;
-            --menu-transform-origin:  100% 0;
-        }
-        main {
-            position:  relative;
-        }
-
-        main > button:extend(.mdl-button--icon, .mdl-button) { }
-
-        main > button:hover:extend(.mdl-button:hover) { }
-
-        main > button:active:extend(.mdl-button:active) { }
-
-        main > button:focus:not(:active):extend(
-            .mdl-button:focus:not(:active)
-        ) { }
-
-        main > button > i:extend(
-            .mdl-button .material-icons,
-            .mdl-button--icon .material-icons,
-            .material-icons
-        ) { }
-
-        main > div:extend(.mdl-menu__container) { }
-
-        :host(:focus) main > div:extend(.mdl-menu__container.is-visible) { }
-
-        main > div > div:extend(.mdl-menu__outline) {
-    -webkit-transform-origin:  var(--menu-transform-origin,  0 0);
-            transform-origin:  var(--menu-transform-origin,  0 0);
-        }
-
-        :host(:focus) main > div > div:extend(
-            .mdl-menu__container.is-visible .mdl-menu__outline
-        ) { }
-
-        main > div > ul:extend(.mdl-menu) {
-            left:   var(--menu-left, 0);
-            right:  var(--menu-right, auto);
-        }
-        :host(:focus) main > div > ul:extend(
-            .mdl-menu__container.is-visible .mdl-menu
-        ) { }
-
-        main > div > ul > li:extend(.mdl-menu__item) { }
-
-        :host(:focus) main > div > ul > li:extend(
-           .mdl-menu__container.is-visible .mdl-menu__item
-        ) { }
-
-        ::slotted(*) {  display: none;  }
-    </style>
     <main>
-        <button><i>more_vert</i></button>
+        <button>
+            <cell-icon name="${view.icon || 'more_vert'}"></cell-icon>
+        </button>
         <div>
             <div></div>
             <ul></ul>

@@ -37,7 +37,8 @@ body {
     z-index: -1;
 }
 .demo-drawer .demo-navigation {
-    z-index: -2;
+    z-index:  -2;
+    color:    rgba(255, 255, 255, 0.56);
 }
 /* END iOS Safari specific workaround */
 .demo-drawer .mdl-menu .mdl-menu__item {
@@ -173,7 +174,7 @@ cell-card [slot="action"] a {
 .demo-options li {
     margin: 4px 0;
 }
-.demo-options .material-icons {
+.demo-options cell-icon {
     color: rgba(255, 255, 255, 0.89);
 }
 .demo-options [slot="action"] {

@@ -68,6 +68,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _module_ = {
+    './index.less': {
+        base: '.',
+        dependency: [],
+        factory: function factory(require, exports, module) {
+            Object.defineProperty(exports, "__esModule", {
+                value: true
+            });
+            exports.default = ":host,\nmain {\n  display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-flex-wrap: nowrap;-ms-flex-wrap: nowrap;flex-wrap: nowrap;box-sizing: border-box;\n}\nmain > a {\n  color: #424242;text-decoration: none;margin: 0;font-size: 14px;font-weight: 400;line-height: 24px;letter-spacing: 0;opacity: 0.87;\n}\nmain > a > cell-icon {\n  vertical-align: middle;\n}\n:host,\nmain {\n  -webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;-webkit-align-items: stretch;-ms-flex-align: stretch;align-items: stretch;padding-top: 16px;\n}\nmain > a {\n  display: block;-webkit-flex-shrink: 0;-ms-flex-negative: 0;flex-shrink: 0;padding: 16px 40px;margin: 0;color: #757575;\n}\n@media screen and (max-width: 1024px) {\n  main > a {\n    padding: 16px 16px;\n  }\n}\nmain > a:hover {\n  background-color: #e0e0e0;\n}\n:host,\nmain {\n  outline: none;\n  -webkit-flex-grow: 1;\n  -ms-flex-positive: 1;\n  flex-grow: 1;\n}\nmain > a {\n  display: -webkit-flex !important;\n  display: -ms-flexbox !important;\n  display: flex    !important;\n  -webkit-flex-direction: row;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  align-items: center;\n  color: currentColor;\n  font-weight: 500;\n  cursor: pointer;\n  user-select: none;\n}\nmain > a:hover {\n  background-color: #00bcd4;\n  color: #37474f;\n}\nmain > a > cell-icon {\n  font-size: 24px;\n  margin-right: 32px;\n}\n";
+        }
+    },
     './index.html': {
         base: '.',
         dependency: [],
@@ -75,7 +85,7 @@ var _module_ = {
             Object.defineProperty(exports, "__esModule", {
                 value: true
             });
-            exports.default = "<template>\n    <style>main > a > i {\n  font-family: 'Material Icons';font-weight: normal;font-style: normal;font-size: 24px;line-height: 1;letter-spacing: normal;text-transform: none;display: inline-block;word-wrap: normal;-moz-font-feature-settings: 'liga';font-feature-settings: 'liga';-webkit-font-feature-settings: 'liga';-webkit-font-smoothing: antialiased;\n}\nmain > a > i {\n  color: #78909c !important;\n}\n:host,\nmain {\n  display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-flex-wrap: nowrap;-ms-flex-wrap: nowrap;flex-wrap: nowrap;box-sizing: border-box;\n}\nmain > a {\n  color: #424242;text-decoration: none;margin: 0;font-size: 14px;font-weight: 400;line-height: 24px;letter-spacing: 0;opacity: 0.87;\n}\nmain > a > i {\n  vertical-align: middle;\n}\n:host,\nmain {\n  -webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;-webkit-align-items: stretch;-ms-flex-align: stretch;align-items: stretch;padding-top: 16px;\n}\nmain > a {\n  display: block;-webkit-flex-shrink: 0;-ms-flex-negative: 0;flex-shrink: 0;padding: 16px 40px;margin: 0;color: #757575;\n}\n@media screen and (max-width: 1024px) {\n  main > a {\n    padding: 16px 16px;\n  }\n}\nmain > a:hover {\n  background-color: #e0e0e0;\n}\nmain > a > i {\n  font-family: 'Material Icons';font-weight: normal;font-style: normal;font-size: 24px;/* Preferred icon size */display: inline-block;line-height: 1;text-transform: none;letter-spacing: normal;word-wrap: normal;white-space: nowrap;direction: ltr;/* Support for all WebKit browsers. */-webkit-font-smoothing: antialiased;/* Support for Safari and Chrome. */text-rendering: optimizeLegibility;/* Support for Firefox. */-moz-osx-font-smoothing: grayscale;/* Support for IE. */font-feature-settings: 'liga';\n}\n:host,\nmain {\n  -webkit-flex-grow: 1;\n  -ms-flex-positive: 1;\n  flex-grow: 1;\n}\nmain > a {\n  display: -webkit-flex !important;\n  display: -ms-flexbox !important;\n  display: flex    !important;\n  -webkit-flex-direction: row;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  align-items: center;\n  color: rgba(255, 255, 255, 0.56);\n  font-weight: 500;\n  cursor: pointer;\n  user-select: none;\n}\nmain > a:hover {\n  background-color: #00bcd4;\n  color: #37474f;\n}\nmain > a > i {\n  font-size: 24px;\n  color: rgba(255, 255, 255, 0.56);\n  margin-right: 32px;\n}\n</style>\n    <main data-array=\"menu\">\n        <a href=\"${view.URL}\">\n            <i role=\"presentation\">${view.icon}</i>${view.title}\n        </a>\n    </main>\n</template>\n";
+            exports.default = "<template>\n    <main data-array=\"menu\">\n        <a href=\"${view.URL}\">\n            <cell-icon name=\"${view.icon}\"></cell-icon>\n            ${view.title}\n        </a>\n    </main>\n</template>\n";
         }
     },
     './index': {
@@ -92,6 +102,10 @@ var _module_ = {
 
             var _index2 = _interopRequireDefault(_index);
 
+            var _index3 = require('./index.less');
+
+            var _index4 = _interopRequireDefault(_index3);
+
             function _interopRequireDefault(obj) {
                 return obj && obj.__esModule ? obj : { default: obj };
             }
@@ -104,7 +118,7 @@ var _module_ = {
 
                     _classCallCheck(this, CellNavigation);
 
-                    (_this = _possibleConstructorReturn(this, (CellNavigation.__proto__ || Object.getPrototypeOf(CellNavigation)).call(this)), _this).buildDOM(_index2.default);
+                    (_this = _possibleConstructorReturn(this, (CellNavigation.__proto__ || Object.getPrototypeOf(CellNavigation)).call(this)), _this).buildDOM(_index2.default, _index4.default);
                     return _this;
                 }
 
@@ -118,18 +132,14 @@ var _module_ = {
                                         case 0:
                                             _context.t0 = this.view.menu.clear();
                                             _context.next = 3;
-                                            return fetch(this.src);
+                                            return (0, _webCell.request)(this.src);
 
                                         case 3:
-                                            _context.next = 5;
-                                            return _context.sent.json();
-
-                                        case 5:
                                             _context.t1 = _context.sent;
 
                                             _context.t0.render.call(_context.t0, _context.t1);
 
-                                        case 7:
+                                        case 5:
                                         case 'end':
                                             return _context.stop();
                                     }
@@ -146,7 +156,10 @@ var _module_ = {
                 }, {
                     key: 'src',
                     get: function get() {
-                        return this.getAttribute("src");
+                        return this.getAttribute('src');
+                    },
+                    set: function set(value) {
+                        this.setAttribute('src', value);
                     }
                 }]);
 

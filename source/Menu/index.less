@@ -1,0 +1,64 @@
+@import (less, reference) 'node_modules/material-design-lite/dist/material.css';
+
+:host(:focus) {  outline:  none;  }
+
+:host(.right) {
+    --menu-left:              auto;
+    --menu-right:             0;
+    --menu-transform-origin:  100% 0;
+}
+main {  position:  relative;  }
+
+main > button:extend(.mdl-button, .mdl-button--icon) { }
+
+main > button:hover:extend(.mdl-button:hover) { }
+
+main > button:active:extend(.mdl-button:active) { }
+
+main > button:focus:not(:active):extend(
+    .mdl-button:focus:not(:active)
+) { }
+
+main > button > cell-icon:extend(
+    .mdl-button .material-icons,
+    .mdl-button--icon .material-icons
+) { }
+
+main > div:extend(.mdl-menu__container) {
+    right:  0;
+}
+
+:host(:focus) main > div:extend(.mdl-menu__container.is-visible) { }
+
+main > div > div:extend(.mdl-menu__outline) {
+-webkit-transform-origin:  var(--menu-transform-origin,  0 0);
+        transform-origin:  var(--menu-transform-origin,  0 0);
+}
+
+:host(:focus) main > div > div:extend(
+    .mdl-menu__container.is-visible .mdl-menu__outline
+) { }
+
+main > div > ul:extend(.mdl-menu) {
+    left:   var(--menu-left, 0);
+    right:  var(--menu-right, auto);
+}
+:host(:focus) main > div > ul:extend(
+    .mdl-menu__container.is-visible .mdl-menu
+) { }
+
+main > div > ul > li:extend(.mdl-menu__item) {
+    transition-delay:  0.1s;
+}
+
+main > div > ul > li:hover:extend(.mdl-menu__item:hover) { }
+
+main > div > ul > li:focus:extend(.mdl-menu__item:focus) { }
+
+main > div > ul > li:active:extend(.mdl-menu__item:active) { }
+
+:host(:focus) main > div > ul > li:extend(
+    .mdl-menu__container.is-visible .mdl-menu__item
+) { }
+
+::slotted(*) {  display: none;  }

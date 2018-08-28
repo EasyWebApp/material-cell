@@ -1,19 +1,22 @@
-import { component } from "web-cell";
+import { component, request } from 'web-cell';
 
-import template from "./index.html";
+import template from './index.html';
 
-export default class CellNavigation extends HTMLElement {
-    constructor() {
-        super().buildDOM(template);
-    }
+import style from './index.less';
 
-    get src() {
-        return this.getAttribute("src");
-    }
+
+export default  class CellNavigation extends HTMLElement {
+
+    constructor() {  super().buildDOM(template, style);  }
+
+    get src() {  return this.getAttribute('src');  }
+
+    set src(value) {  this.setAttribute('src', value);  }
 
     async connectedCallback() {
-        this.view.menu.clear().render(await (await fetch(this.src)).json());
+
+        this.view.menu.clear().render(await request( this.src ));
     }
 }
 
-component(CellNavigation);
+component( CellNavigation );

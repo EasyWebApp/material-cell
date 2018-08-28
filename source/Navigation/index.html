@@ -1,54 +1,8 @@
 <template>
-    <style type="text/less">
-        @import (less, reference) 'node_modules/material-design-lite/dist/material.css';
-        @import (less, reference) 'node_modules/material-design-icons/iconfont/material-icons.css';
-
-        :host:extend(.mdl-layout__drawer .mdl-navigation,  .mdl-navigation),
-        main:extend(.mdl-layout__drawer .mdl-navigation,  .mdl-navigation) {
-    -webkit-flex-grow:      1;
-        -ms-flex-positive:  1;
-            flex-grow:      1;
-        }
-
-        main > a:extend(
-            .mdl-layout__drawer .mdl-navigation .mdl-navigation__link,
-            .mdl-navigation__link
-        ) {
-            display: -webkit-flex    !important;
-            display:     -ms-flexbox !important;
-            display:         flex    !important;
-    -webkit-flex-direction:  row;
-        -ms-flex-direction:  row;
-            flex-direction:  row;
-    -webkit-align-items:     center;
-        -ms-flex-align:      center;
-            align-items:     center;
-            color:           rgba(255, 255, 255, 0.56);
-            font-weight:     500;
-            cursor:          pointer;
-            user-select:     none;
-        }
-
-        main > a:hover:extend(
-            .mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover
-        ) {
-            background-color:  #00bcd4;
-            color:             #37474f;
-        }
-
-        main > a > i:extend(
-            .mdl-navigation__link .material-icons,
-            .material-icons,
-            .mdl-color-text--blue-grey-400
-        ) {
-            font-size:     24px;
-            color:         rgba(255, 255, 255, 0.56);
-            margin-right:  32px;
-        }
-    </style>
     <main data-array="menu">
         <a href="${view.URL}">
-            <i role="presentation">${view.icon}</i>${view.title}
+            <cell-icon name="${view.icon}"></cell-icon>
+            ${view.title}
         </a>
     </main>
 </template>

@@ -43,7 +43,9 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
     <script src="../node_modules/web-cell/dist/web-cell.js"></script>
+    <script src="../dist/Icon.js"></script>
     <script src="../dist/Card.js"></script>
+    <script src="../dist/Search.js"></script>
     <script src="../dist/Menu.js"></script>
     <script src="../dist/Navigation.js"></script>
 
@@ -54,15 +56,7 @@
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title">Home</span>
                 <div class="mdl-layout-spacer"></div>
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                    <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-                        <i class="material-icons">search</i>
-                    </label>
-                    <div class="mdl-textfield__expandable-holder">
-                        <input class="mdl-textfield__input" type="text" id="search">
-                        <label class="mdl-textfield__label" for="search">Enter your query...</label>
-                    </div>
-                </div>
+                <cell-search></cell-search>
                 <cell-menu class="right">
                     <li>About</li>
                     <li>Contact</li>
@@ -76,16 +70,14 @@
                 <div class="demo-avatar-dropdown">
                     <span>hello@example.com</span>
                     <div class="mdl-layout-spacer"></div>
-                    <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                        <i class="material-icons" role="presentation">arrow_drop_down</i>
-                        <span class="visuallyhidden">Accounts</span>
-                    </button>
-                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-                        <li class="mdl-menu__item">hello@example.com</li>
-                        <li class="mdl-menu__item">info@example.com</li>
-                        <li class="mdl-menu__item">
-                            <i class="material-icons">add</i>Add another account...</li>
-                    </ul>
+                    <cell-menu class="right" icon="arrow_drop_down">
+                        <li>hello@example.com</li>
+                        <li>info@example.com</li>
+                        <li>
+                            <cell-icon name="add"></cell-icon>
+                            Add another account...
+                        </li>
+                    </cell-menu>
                 </div>
             </header>
             <cell-navigation class="demo-navigation mdl-color--blue-grey-800"
@@ -157,7 +149,7 @@
                         <div slot="action">
                             <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-50">Change location</a>
                             <div class="mdl-layout-spacer"></div>
-                            <i class="material-icons">location_on</i>
+                            <cell-icon name="location_on"></cell-icon>
                         </div>
                     </cell-card>
                 </div>

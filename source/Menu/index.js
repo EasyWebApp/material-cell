@@ -1,6 +1,8 @@
-import { component } from "web-cell";
+import { component } from 'web-cell';
 
-import template from "./index.html";
+import template from './index.html';
+
+import style from './index.less';
 
 const menu_body = new WeakMap();
 
@@ -9,12 +11,18 @@ export default  class CellMenu extends HTMLElement {
 
     constructor() {
 
-        super().buildDOM( template );
+        super().buildDOM(template, style);
 
         menu_body.set(this,  this.$('main > div > ul')[0]);
     }
 
+    get icon() {  return this.getAttribute('icon');  }
+
+    set icon(value) {  this.setAttribute('icon', value);  }
+
     connectedCallback() {
+
+        this.view.icon = this.icon;
 
         this.update();
 
@@ -45,17 +53,15 @@ export default  class CellMenu extends HTMLElement {
     resize() {
 
         const rect = this.open( false ),
-            button_rect = this.$('main > button')[0].getBoundingClientRect();
+            button = this.$('main > button')[0];
 
-        var container = this.$('main > div')[0];
+        var container = button.nextElementSibling;
 
         const outline = container.firstElementChild.style;
 
         container = container.style;
 
-        container.right = window.innerWidth - button_rect.right + 'px',
-        container.top = button_rect.bottom + 'px';
-
+        container.top = button.offsetHeight + 'px',
         container.width = outline.width = rect.width + 'px',
         container.height = outline.height = rect.height + 'px';
     }

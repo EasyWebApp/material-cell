@@ -4,8 +4,10 @@
             <cell-icon name="search"></cell-icon>
         </label>
         <div>
-            <input type="search" id="search" placeholder="Enter your query...">
-            <label for="search">Enter your query...</label>
+            <input type="search" id="search" value="${view.value}"
+                readonly="${view.readOnly}" disabled="${view.disabled}"
+                placeholder="${view.placeholder}">
+            <label for="search">${view.placeholder}</label>
         </div>
     </main>
 </template>

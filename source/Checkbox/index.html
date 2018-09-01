@@ -1,0 +1,49 @@
+<template>
+    <style type="text/less">
+        @import (less, reference) 'node_modules/material-design-lite/dist/material.css';
+
+        :host(:focus) {  outline: none;  }
+
+        label:extend(.mdl-checkbox, .mdl-checkbox.is-upgraded) { }
+
+        label > input:extend(
+            .mdl-checkbox__input,
+            .mdl-checkbox.is-upgraded .mdl-checkbox__input
+        ) { }
+
+        span.label:extend(.mdl-checkbox__label) {
+            cursor:  var(--input-cursor);
+        }
+
+        span.focus:extend(.mdl-checkbox__focus-helper) { }
+
+        span.outline:extend(.mdl-checkbox__box-outline) {
+            border-color:  currentColor;
+            cursor:        var(--input-cursor);
+        }
+        input:checked ~ span.outline:extend(
+            .mdl-checkbox.is-checked .mdl-checkbox__box-outline
+        ) {
+            border-color:  currentColor;
+        }
+
+        span.outline::after:extend(.mdl-checkbox__tick-outline) {
+            content:  "";
+        }
+        input:checked ~ span.outline::after:extend(
+            .mdl-checkbox.is-checked .mdl-checkbox__tick-outline
+        ) {
+            background-color:  currentColor;
+        }
+    </style>
+
+    <label>
+        <input type="checkbox" value="${view.value}" checked="${view.checked}"
+            readonly="${view.readOnly}" disabled="${view.disabled}">
+        <span class="label">
+            <slot></slot>
+        </span>
+        <span class="focus"></span>
+        <span class="outline"></span>
+    </label>
+</template>

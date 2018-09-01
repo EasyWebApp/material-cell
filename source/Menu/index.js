@@ -30,6 +30,10 @@ export default  class CellMenu extends HTMLElement {
             'slotchange',  this.update.bind( this )
         );
 
+        (new ResizeObserver( this.resize.bind( this ) )).observe(
+            menu_body.get( this )
+        );
+
         window.addEventListener('resize',  this.resize.bind( this ));
 
         this.on('focus',  this.open.bind( this ));
@@ -52,7 +56,7 @@ export default  class CellMenu extends HTMLElement {
 
     resize() {
 
-        const rect = this.open( false ),
+        const size = this.open( false ),
             button = this.$('main > button')[0];
 
         var container = button.nextElementSibling;
@@ -62,21 +66,24 @@ export default  class CellMenu extends HTMLElement {
         container = container.style;
 
         container.top = button.offsetHeight + 'px',
-        container.width = outline.width = rect.width + 'px',
-        container.height = outline.height = rect.height + 'px';
+        container.width = outline.width = size.width + 'px',
+        container.height = outline.height = size.height + 'px';
     }
 
     open(state = true) {
 
         const menu = menu_body.get( this );
 
-        const rect = menu.getBoundingClientRect();
+        const size = {
+            width:   menu.offsetWidth,
+            height:  menu.offsetHeight
+        };
 
         menu.style.clip = state ?
-            `rect(0, ${rect.width}px, ${rect.height}px, 0)`  :
-            `rect(0, ${rect.width}px, 0, ${rect.height}px)`;
+            `rect(0, ${size.width}px, ${size.height}px, 0)`  :
+            `rect(0, ${size.width}px, 0, ${size.height}px)`;
 
-        return rect;
+        return size;
     }
 }
 

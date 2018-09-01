@@ -12,9 +12,10 @@
 
  1. [Icon](http://google.github.io/material-design-icons/)
  2. [Card](https://getmdl.io/components/#cards-section)
- 3. [Search](https://getmdl.io/components/#textfields-section)
- 4. [Menu](https://getmdl.io/components/#menus-section)
- 5. Navigation
+ 3. [Checkbox](https://getmdl.io/components/#toggles-section/checkbox)
+ 4. [Search](https://getmdl.io/components/#textfields-section)
+ 5. [Menu](https://getmdl.io/components/#menus-section)
+ 6. Navigation
 
 
 

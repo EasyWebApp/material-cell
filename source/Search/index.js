@@ -1,13 +1,13 @@
-import { component } from 'web-cell';
+import { component, InputComponent } from 'web-cell';
 
 import template from './index.html';
 
 import style from './index.less';
 
 
-export default  class CellSearch extends HTMLElement {
+export default  class CellSearch extends InputComponent {
 
-    constructor() {  super().buildDOM(template, style);  }
+    constructor() {  super(template, style);  }
 }
 
 

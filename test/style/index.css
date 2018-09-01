@@ -164,9 +164,6 @@ cell-card [slot="action"] a {
 .demo-options h3 {
     margin: 0;
 }
-.demo-options .mdl-checkbox__box-outline {
-    border-color: rgba(255, 255, 255, 0.89);
-}
 .demo-options ul {
     margin: 0;
     list-style-type: none;

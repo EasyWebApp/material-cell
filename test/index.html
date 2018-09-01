@@ -42,21 +42,25 @@
     <script src="../node_modules/babel-polyfill/dist/polyfill.min.js"></script>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+    <script src="../node_modules/resize-observer-polyfill/dist/ResizeObserver.global.js"></script>
+    <script src="../node_modules/whatwg-fetch/fetch.js"></script>
+
     <script src="../node_modules/web-cell/dist/web-cell.js"></script>
     <script src="../dist/Icon.js"></script>
     <script src="../dist/Card.js"></script>
     <script src="../dist/Search.js"></script>
+    <script src="../dist/Checkbox.js"></script>
     <script src="../dist/Menu.js"></script>
     <script src="../dist/Navigation.js"></script>
 
-    <script src="index.js"></script>
+    <script src="index.js" async></script>
 </head><body>
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
         <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title">Home</span>
                 <div class="mdl-layout-spacer"></div>
-                <cell-search></cell-search>
+                <cell-search placeholder="Enter your query..."></cell-search>
                 <cell-menu class="right">
                     <li>About</li>
                     <li>Contact</li>
@@ -121,28 +125,24 @@
                             <h3>View options</h3>
                             <ul>
                                 <li>
-                                    <label for="chkbox1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input type="checkbox" id="chkbox1" class="mdl-checkbox__input">
-                                        <span class="mdl-checkbox__label">Click per object</span>
-                                    </label>
+                                    <cell-checkbox>
+                                        Click per object
+                                    </cell-checkbox>
                                 </li>
                                 <li>
-                                    <label for="chkbox2" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input type="checkbox" id="chkbox2" class="mdl-checkbox__input">
-                                        <span class="mdl-checkbox__label">Views per object</span>
-                                    </label>
+                                    <cell-checkbox>
+                                        Views per object
+                                    </cell-checkbox>
                                 </li>
                                 <li>
-                                    <label for="chkbox3" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input type="checkbox" id="chkbox3" class="mdl-checkbox__input">
-                                        <span class="mdl-checkbox__label">Objects selected</span>
-                                    </label>
+                                    <cell-checkbox>
+                                        Objects selected
+                                    </cell-checkbox>
                                 </li>
                                 <li>
-                                    <label for="chkbox4" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                                        <input type="checkbox" id="chkbox4" class="mdl-checkbox__input">
-                                        <span class="mdl-checkbox__label">Objects viewed</span>
-                                    </label>
+                                    <cell-checkbox>
+                                        Objects viewed
+                                    </cell-checkbox>
                                 </li>
                             </ul>
                         </div>

@@ -9,7 +9,9 @@ main > label:extend(
     .mdl-button--icon,
     .mdl-textfield .mdl-button,
     .mdl-textfield--expandable .mdl-button--icon
-) { }
+) {
+    cursor:  var(--input-cursor);
+}
 
 main > label:hover:extend(.mdl-button:hover) { }
 
@@ -30,7 +32,9 @@ main > div:extend(.mdl-textfield__expandable-holder) { }
     .mdl-textfield.is-focused .mdl-textfield__expandable-holder
 ) { }
 
-main > div > input:extend(.mdl-textfield__input) { }
+main > div > input:extend(.mdl-textfield__input) {
+    cursor:  var(--input-cursor);
+}
 
 :host(:focus) main > div > input:extend(
     .mdl-textfield.is-focused .mdl-textfield__input

@@ -4,11 +4,11 @@
 (function (factory) {
 
     if ((typeof define === 'function')  &&  define.amd)
-        define('Icon', ["web-cell"], factory);
+        define('Drawer', ["web-cell"], factory);
     else if (typeof module === 'object')
         return  module.exports = factory(require('web-cell'));
     else
-        return  this['Icon'] = factory(this['web-cell']);
+        return  this['Drawer'] = factory(this['web-cell']);
 
 })(function (web_cell) {
 
@@ -73,7 +73,7 @@ var _module_ = {
             Object.defineProperty(exports, "__esModule", {
                 value: true
             });
-            exports.default = "<template>\n    <style>i {\n  font-family: 'Material Icons';font-weight: normal;font-style: normal;font-size: 24px;/* Preferred icon size */display: inline-block;line-height: 1;text-transform: none;letter-spacing: normal;word-wrap: normal;white-space: nowrap;direction: ltr;/* Support for all WebKit browsers. */-webkit-font-smoothing: antialiased;/* Support for Safari and Chrome. */text-rendering: optimizeLegibility;/* Support for Firefox. */-moz-osx-font-smoothing: grayscale;/* Support for IE. */font-feature-settings: 'liga';\n}\n:host(:focus) {\n  outline: none;\n}\n</style>\n\n    <i>${view.name}</i>\n</template>\n";
+            exports.default = "<template>\n    <style>main {\n  display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;-webkit-flex-wrap: nowrap;-ms-flex-wrap: nowrap;flex-wrap: nowrap;width: 240px;height: 100%;max-height: 100%;position: absolute;top: 0;left: 0;box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);box-sizing: border-box;border-right: 1px solid #e0e0e0;background: #fafafa;-webkit-transform: translateX(-250px);transform: translateX(-250px);-webkit-transform-style: preserve-3d;transform-style: preserve-3d;will-change: transform;transition-duration: 0.2s;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);transition-property: -webkit-transform;transition-property: transform;transition-property: transform, -webkit-transform;color: #424242;overflow: visible;overflow-y: auto;z-index: 5;\n}\nmain.focus {\n  -webkit-transform: translateX(0);transform: translateX(0);\n}\ndiv {\n  background-color: transparent;position: absolute;top: 0;left: 0;height: 100%;width: 100%;z-index: 4;visibility: hidden;transition-property: background-color;transition-duration: 0.2s;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n}\nmain.focus + div {\n  background-color: rgba(0, 0, 0, 0.5);visibility: visible;\n}\n@supports (pointer-events: auto) {\n  div {\n    background-color: rgba(0, 0, 0, 0.5);opacity: 0;transition-property: opacity;visibility: visible;pointer-events: none;\n  }\n  main.focus + div {\n    pointer-events: auto;opacity: 1;\n  }\n}\n:host(:focus) {\n  outline: none;\n}\n</style>\n\n    <main><slot></slot></main>\n    <div></div>\n</template>\n";
         }
     },
     './index': {
@@ -94,38 +94,41 @@ var _module_ = {
                 return obj && obj.__esModule ? obj : { default: obj };
             }
 
-            var CellIcon = function (_HTMLElement) {
-                _inherits(CellIcon, _HTMLElement);
+            var drawerMap = new WeakMap();
 
-                function CellIcon() {
+            var CellDrawer = function (_HTMLElement) {
+                _inherits(CellDrawer, _HTMLElement);
+
+                function CellDrawer() {
                     var _this;
 
-                    _classCallCheck(this, CellIcon);
+                    _classCallCheck(this, CellDrawer);
 
-                    (_this = _possibleConstructorReturn(this, (CellIcon.__proto__ || Object.getPrototypeOf(CellIcon)).call(this)), _this).buildDOM(_index2.default);
+                    drawerMap.set((_this = _possibleConstructorReturn(this, (CellDrawer.__proto__ || Object.getPrototypeOf(CellDrawer)).call(this)), _this).buildDOM(_index2.default), _this.$('main')[0]);
+
+                    _this.$('main + div')[0].onclick = _this.close.bind(_this);
+
+                    _this.on('click', 'a[href]', _this.close.bind(_this));
                     return _this;
                 }
 
-                _createClass(CellIcon, [{
-                    key: 'connectedCallback',
-                    value: function connectedCallback() {
-                        this.view.name = this.name;
+                _createClass(CellDrawer, [{
+                    key: 'open',
+                    value: function open() {
+                        drawerMap.get(this).classList.add('focus');
                     }
                 }, {
-                    key: 'name',
-                    get: function get() {
-                        return this.getAttribute('name');
-                    },
-                    set: function set(value) {
-                        this.setAttribute('name', value);
+                    key: 'close',
+                    value: function close() {
+                        drawerMap.get(this).classList.remove('focus');
                     }
                 }]);
 
-                return CellIcon;
+                return CellDrawer;
             }(HTMLElement);
 
-            exports.default = CellIcon;
-            (0, _webCell.component)(CellIcon);
+            exports.default = CellDrawer;
+            (0, _webCell.component)(CellDrawer);
         }
     },
     'web-cell': { exports: web_cell }

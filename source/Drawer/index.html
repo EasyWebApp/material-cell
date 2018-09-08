@@ -1,0 +1,18 @@
+<template>
+    <style type="text/less">
+        @import (less, reference) 'node_modules/material-design-lite/dist/material.css';
+
+        :host(:focus) {  outline: none;  }
+
+        main:extend(.mdl-layout__drawer) {  }
+
+        main.focus:extend(.mdl-layout__drawer.is-visible) { }
+
+        div:extend(.mdl-layout__obfuscator) { }
+
+        main.focus + div:extend(.mdl-layout__obfuscator.is-visible) { }
+    </style>
+
+    <main><slot></slot></main>
+    <div></div>
+</template>

@@ -15,7 +15,8 @@
  3. [Checkbox](https://getmdl.io/components/#toggles-section/checkbox)
  4. [Search](https://getmdl.io/components/#textfields-section)
  5. [Menu](https://getmdl.io/components/#menus-section)
- 6. Navigation
+ 6. [Drawer](https://getmdl.io/components/#layout-section)
+ 7. Navigation
 
 
 
@@ -24,5 +25,6 @@
 Install [WebCell](https://web-cell.tk/#installation) first, and then
 
 ```Shell
-npm install material-cell material-design-lite material-design-icons
+npm install material-cell material-design-lite material-design-icons \
+    resize-observer-polyfill
 ```

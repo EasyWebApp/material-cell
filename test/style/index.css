@@ -26,7 +26,7 @@ body {
 .demo-layout .mdl-layout__header .mdl-layout__drawer-button {
     color: rgba(0, 0, 0, 0.54);
 }
-.mdl-layout__drawer .avatar {
+cell-drawer .avatar {
     margin-bottom: 16px;
 }
 .demo-drawer {

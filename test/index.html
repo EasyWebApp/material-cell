@@ -51,16 +51,16 @@
     <script src="../dist/Search.js"></script>
     <script src="../dist/Checkbox.js"></script>
     <script src="../dist/Menu.js"></script>
+    <script src="../dist/Header.js"></script>
     <script src="../dist/Drawer.js"></script>
     <script src="../dist/Navigation.js"></script>
 
     <script src="index.js" async></script>
 </head><body>
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-        <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
-            <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">Home</span>
-                <div class="mdl-layout-spacer"></div>
+        <cell-header class="demo-header mdl-color--grey-100 mdl-color-text--grey-600">
+            Home
+            <div slot="right">
                 <cell-search placeholder="Enter your query..."></cell-search>
                 <cell-menu class="right">
                     <li>About</li>
@@ -68,7 +68,7 @@
                     <li>Legal information</li>
                 </cell-menu>
             </div>
-        </header>
+        </cell-header>
         <cell-drawer class="demo-drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
             <header class="demo-drawer-header">
                 <img src="image/user.jpg" class="demo-avatar">

@@ -1,10 +1,11 @@
 <template>
+    <slot></slot>
     <main>
         <label for="search">
             <cell-icon name="search"></cell-icon>
         </label>
         <div>
-            <input type="search" id="search" value="${view.value}"
+            <input type="${view.type}" id="search" value="${view.value}"
                 readonly="${view.readOnly}" disabled="${view.disabled}"
                 placeholder="${view.placeholder}">
             <label for="search">${view.placeholder}</label>

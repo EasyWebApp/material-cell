@@ -1,9 +1,15 @@
-const ArrayView = self['web-cell'].ArrayView;
+const { $, ArrayView } = self['web-cell'];
 
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const pie = new ArrayView( document.querySelector('#PieChart') );
+    const drawer = $('cell-drawer')[0];
+
+    $('.mdl-layout__drawer-button')[0].addEventListener(
+        'click',  drawer.open.bind( drawer )
+    );
+
+    const pie = new ArrayView( $('#PieChart')[0] );
 
     pie.render(
         Array(4)

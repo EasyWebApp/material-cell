@@ -13,16 +13,13 @@
 })(function (web_cell) {
 
 function merge(base, path) {
-
-    return (base + '/' + path).replace(/\/\//g, '/').replace(/[^/.]+\/\.\.\//g, '').replace(/\.\//g, function (match, index, input) {
-
-        return input[index - 1] === '.' ? match : '';
-    });
+  return (base + '/' + path).replace(/\/\//g, '/').replace(/[^/.]+\/\.\.\//g, '').replace(/\.\//g, function (match, index, input) {
+    return input[index - 1] === '.' ? match : '';
+  });
 }
 
 function outPackage(name) {
-    return (/^[^./]/.test(name)
-    );
+  return /^[^./]/.test(name);
 }
 
     var require = _require_.bind(null, './');
@@ -57,120 +54,148 @@ function outPackage(name) {
         return module.exports;
     }
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 var _module_ = {
-    './index.less': {
-        base: '.',
-        dependency: [],
-        factory: function factory(require, exports, module) {
-            Object.defineProperty(exports, "__esModule", {
-                value: true
-            });
-            exports.default = ":host,\nmain {\n  display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-flex-wrap: nowrap;-ms-flex-wrap: nowrap;flex-wrap: nowrap;box-sizing: border-box;\n}\nmain > a {\n  color: #424242;text-decoration: none;margin: 0;font-size: 14px;font-weight: 400;line-height: 24px;letter-spacing: 0;opacity: 0.87;\n}\nmain > a > cell-icon {\n  vertical-align: middle;\n}\n:host,\nmain {\n  -webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;-webkit-align-items: stretch;-ms-flex-align: stretch;align-items: stretch;padding-top: 16px;\n}\nmain > a {\n  display: block;-webkit-flex-shrink: 0;-ms-flex-negative: 0;flex-shrink: 0;padding: 16px 40px;margin: 0;color: #757575;\n}\n@media screen and (max-width: 1024px) {\n  main > a {\n    padding: 16px 16px;\n  }\n}\nmain > a:hover {\n  background-color: #e0e0e0;\n}\n:host,\nmain {\n  outline: none;\n  -webkit-flex-grow: 1;\n  -ms-flex-positive: 1;\n  flex-grow: 1;\n}\nmain > a {\n  display: -webkit-flex !important;\n  display: -ms-flexbox !important;\n  display: flex    !important;\n  -webkit-flex-direction: row;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  align-items: center;\n  color: currentColor;\n  font-weight: 500;\n  cursor: pointer;\n  user-select: none;\n}\nmain > a:hover {\n  background-color: #00bcd4;\n  color: #37474f;\n}\nmain > a > cell-icon {\n  font-size: 24px;\n  margin-right: 32px;\n}\n";
+  './index.less': {
+    base: '.',
+    dependency: [],
+    factory: function factory(require, exports, module) {
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _default = ":host,\nmain {\n  display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-flex-wrap: nowrap;-ms-flex-wrap: nowrap;flex-wrap: nowrap;box-sizing: border-box;\n}\nmain > a {\n  color: #424242;text-decoration: none;margin: 0;font-size: 14px;font-weight: 400;line-height: 24px;letter-spacing: 0;opacity: 0.87;\n}\nmain > a > cell-icon {\n  vertical-align: middle;\n}\n:host,\nmain {\n  -webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;-webkit-align-items: stretch;-ms-flex-align: stretch;align-items: stretch;padding-top: 16px;\n}\nmain > a {\n  display: block;-webkit-flex-shrink: 0;-ms-flex-negative: 0;flex-shrink: 0;padding: 16px 40px;margin: 0;color: #757575;\n}\n@media screen and (max-width: 1024px) {\n  main > a {\n    padding: 16px 16px;\n  }\n}\nmain > a:hover {\n  background-color: #e0e0e0;\n}\n:host,\nmain {\n  outline: none;\n  -webkit-flex-grow: 1;\n  -ms-flex-positive: 1;\n  flex-grow: 1;\n}\nmain > a {\n  display: -webkit-flex !important;\n  display: -ms-flexbox !important;\n  display: flex    !important;\n  -webkit-flex-direction: row;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  align-items: center;\n  color: currentColor;\n  font-weight: 500;\n  cursor: pointer;\n  user-select: none;\n}\nmain > a:hover {\n  background-color: #00bcd4;\n  color: #37474f;\n}\nmain > a > cell-icon {\n  font-size: 24px;\n  margin-right: 32px;\n}\n";
+      exports.default = _default;
+    }
+  },
+  './index.html': {
+    base: '.',
+    dependency: [],
+    factory: function factory(require, exports, module) {
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _default = "<template>\n    <main data-array=\"menu\">\n        <a href=\"${view.URL}\">\n            <cell-icon name=\"${view.icon}\"></cell-icon>\n            ${view.title}\n        </a>\n    </main>\n</template>\n";
+      exports.default = _default;
+    }
+  },
+  './index': {
+    base: '.',
+    dependency: [],
+    factory: function factory(require, exports, module) {
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+
+      var _webCell = require('web-cell');
+
+      var _index = _interopRequireDefault(require('./index.html'));
+
+      var _index2 = _interopRequireDefault(require('./index.less'));
+
+      function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : {
+          default: obj
+        };
+      }
+
+      var CellNavigation =
+      /*#__PURE__*/
+      function (_HTMLElement) {
+        _inherits(CellNavigation, _HTMLElement);
+
+        function CellNavigation() {
+          var _this;
+
+          _classCallCheck(this, CellNavigation);
+
+          (_this = _possibleConstructorReturn(this, _getPrototypeOf(CellNavigation).call(this))).buildDOM(_index.default, _index2.default);
+
+          return _this;
         }
-    },
-    './index.html': {
-        base: '.',
-        dependency: [],
-        factory: function factory(require, exports, module) {
-            Object.defineProperty(exports, "__esModule", {
-                value: true
-            });
-            exports.default = "<template>\n    <main data-array=\"menu\">\n        <a href=\"${view.URL}\">\n            <cell-icon name=\"${view.icon}\"></cell-icon>\n            ${view.title}\n        </a>\n    </main>\n</template>\n";
-        }
-    },
-    './index': {
-        base: '.',
-        dependency: [],
-        factory: function factory(require, exports, module) {
-            Object.defineProperty(exports, "__esModule", {
-                value: true
-            });
 
-            var _webCell = require('web-cell');
+        _createClass(CellNavigation, [{
+          key: "connectedCallback",
+          value: function () {
+            var _connectedCallback = _asyncToGenerator(
+            /*#__PURE__*/
+            regeneratorRuntime.mark(function _callee() {
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      _context.t0 = this.view.menu.clear();
+                      _context.next = 3;
+                      return (0, _webCell.request)(this.src);
 
-            var _index = require('./index.html');
+                    case 3:
+                      _context.t1 = _context.sent;
 
-            var _index2 = _interopRequireDefault(_index);
+                      _context.t0.render.call(_context.t0, _context.t1);
 
-            var _index3 = require('./index.less');
-
-            var _index4 = _interopRequireDefault(_index3);
-
-            function _interopRequireDefault(obj) {
-                return obj && obj.__esModule ? obj : { default: obj };
-            }
-
-            var CellNavigation = function (_HTMLElement) {
-                _inherits(CellNavigation, _HTMLElement);
-
-                function CellNavigation() {
-                    var _this;
-
-                    _classCallCheck(this, CellNavigation);
-
-                    (_this = _possibleConstructorReturn(this, (CellNavigation.__proto__ || Object.getPrototypeOf(CellNavigation)).call(this)), _this).buildDOM(_index2.default, _index4.default);
-                    return _this;
+                    case 5:
+                    case "end":
+                      return _context.stop();
+                  }
                 }
+              }, _callee, this);
+            }));
 
-                _createClass(CellNavigation, [{
-                    key: 'connectedCallback',
-                    value: function () {
-                        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-                            return regeneratorRuntime.wrap(function _callee$(_context) {
-                                while (1) {
-                                    switch (_context.prev = _context.next) {
-                                        case 0:
-                                            _context.t0 = this.view.menu.clear();
-                                            _context.next = 3;
-                                            return (0, _webCell.request)(this.src);
+            return function connectedCallback() {
+              return _connectedCallback.apply(this, arguments);
+            };
+          }()
+        }, {
+          key: "src",
+          get: function get() {
+            return this.getAttribute('src');
+          },
+          set: function set(value) {
+            this.setAttribute('src', value);
+          }
+        }]);
 
-                                        case 3:
-                                            _context.t1 = _context.sent;
+        return CellNavigation;
+      }(_wrapNativeSuper(HTMLElement));
 
-                                            _context.t0.render.call(_context.t0, _context.t1);
-
-                                        case 5:
-                                        case 'end':
-                                            return _context.stop();
-                                    }
-                                }
-                            }, _callee, this);
-                        }));
-
-                        function connectedCallback() {
-                            return _ref.apply(this, arguments);
-                        }
-
-                        return connectedCallback;
-                    }()
-                }, {
-                    key: 'src',
-                    get: function get() {
-                        return this.getAttribute('src');
-                    },
-                    set: function set(value) {
-                        this.setAttribute('src', value);
-                    }
-                }]);
-
-                return CellNavigation;
-            }(HTMLElement);
-
-            exports.default = CellNavigation;
-            (0, _webCell.component)(CellNavigation);
-        }
-    },
-    'web-cell': { exports: web_cell }
+      exports.default = CellNavigation;
+      (0, _webCell.component)(CellNavigation);
+    }
+  },
+  'web-cell': {
+    exports: web_cell
+  }
 };
 
     return require('./index');

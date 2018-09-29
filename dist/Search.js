@@ -13,16 +13,13 @@
 })(function (web_cell) {
 
 function merge(base, path) {
-
-    return (base + '/' + path).replace(/\/\//g, '/').replace(/[^/.]+\/\.\.\//g, '').replace(/\.\//g, function (match, index, input) {
-
-        return input[index - 1] === '.' ? match : '';
-    });
+  return (base + '/' + path).replace(/\/\//g, '/').replace(/[^/.]+\/\.\.\//g, '').replace(/\.\//g, function (match, index, input) {
+    return input[index - 1] === '.' ? match : '';
+  });
 }
 
 function outPackage(name) {
-    return (/^[^./]/.test(name)
-    );
+  return /^[^./]/.test(name);
 }
 
     var require = _require_.bind(null, './');
@@ -57,72 +54,87 @@ function outPackage(name) {
         return module.exports;
     }
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var _module_ = {
-    './index.less': {
-        base: '.',
-        dependency: [],
-        factory: function factory(require, exports, module) {
-            Object.defineProperty(exports, "__esModule", {
-                value: true
-            });
-            exports.default = "main > label {\n  -webkit-tap-highlight-color: transparent;-webkit-tap-highlight-color: rgba(255, 255, 255, 0);\n}\nmain > label {\n  background: transparent;border: none;border-radius: 2px;color: #000000;position: relative;height: 36px;margin: 0;min-width: 64px;padding: 0 16px;display: inline-block;font-family: \"Roboto\", \"Helvetica\", \"Arial\", sans-serif;font-size: 14px;font-weight: 500;text-transform: uppercase;line-height: 1;letter-spacing: 0;overflow: hidden;will-change: box-shadow;transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);outline: none;cursor: pointer;text-decoration: none;text-align: center;line-height: 36px;vertical-align: middle;\n}\nmain > label:hover {\n  background-color: rgba(158, 158, 158, 0.2);\n}\nmain > label:focus:not(:active) {\n  background-color: rgba(0, 0, 0, 0.12);\n}\nmain > label:active {\n  background-color: rgba(158, 158, 158, 0.4);\n}\nmain > label {\n  border-radius: 50%;font-size: 24px;height: 32px;margin-left: 0;margin-right: 0;min-width: 32px;width: 32px;padding: 0;overflow: hidden;color: inherit;line-height: normal;\n}\nmain > label > cell-icon {\n  position: absolute;top: 50%;left: 50%;-webkit-transform: translate(-12px, -12px);transform: translate(-12px, -12px);line-height: 24px;width: 24px;\n}\nmain > label > cell-icon {\n  vertical-align: middle;\n}\nmain {\n  position: relative;font-size: 16px;display: inline-block;box-sizing: border-box;width: 300px;max-width: 100%;margin: 0;padding: 20px 0;\n}\nmain > label {\n  position: absolute;bottom: 20px;\n}\nmain {\n  min-width: 32px;width: auto;min-height: 32px;\n}\nmain > label {\n  top: 16px;\n}\nmain > div > input {\n  border: none;border-bottom: 1px solid rgba(0, 0, 0, 0.12);display: block;font-size: 16px;font-family: \"Helvetica\", \"Arial\", sans-serif;margin: 0;padding: 4px 0;width: 100%;background: none;text-align: left;color: inherit;\n}\n:host(:focus) main > div > input {\n  outline: none;\n}\nmain > div > label {\n  bottom: 0;color: rgba(0, 0, 0, 0.26);font-size: 16px;left: 0;right: 0;pointer-events: none;position: absolute;display: block;top: 24px;width: 100%;overflow: hidden;white-space: nowrap;text-align: left;\n}\nmain > div > label:after {\n  background-color: #3f51b5;bottom: 20px;content: '';height: 2px;left: 45%;position: absolute;transition-duration: 0.2s;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);visibility: hidden;width: 10px;\n}\n:host(:focus) main > div > label:after {\n  left: 0;visibility: visible;width: 100%;\n}\nmain > div {\n  position: relative;margin-left: 32px;transition-duration: 0.2s;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);display: inline-block;max-width: 0.1px;\n}\n:host(:focus) main > div {\n  max-width: 600px;\n}\nmain > div > label:after {\n  bottom: 0;\n}\n:host(:focus) {\n  outline: none;\n}\nmain > label {\n  cursor: var(--input-cursor);\n}\nmain > div > input {\n  cursor: var(--input-cursor);\n}\n";
+  './index.less': {
+    base: '.',
+    dependency: [],
+    factory: function factory(require, exports, module) {
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _default = "main > label {\n  -webkit-tap-highlight-color: transparent;-webkit-tap-highlight-color: rgba(255, 255, 255, 0);\n}\nmain > label {\n  background: transparent;border: none;border-radius: 2px;color: #000000;position: relative;height: 36px;margin: 0;min-width: 64px;padding: 0 16px;display: inline-block;font-family: \"Roboto\", \"Helvetica\", \"Arial\", sans-serif;font-size: 14px;font-weight: 500;text-transform: uppercase;line-height: 1;letter-spacing: 0;overflow: hidden;will-change: box-shadow;transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);outline: none;cursor: pointer;text-decoration: none;text-align: center;line-height: 36px;vertical-align: middle;\n}\nmain > label:hover {\n  background-color: rgba(158, 158, 158, 0.2);\n}\nmain > label:focus:not(:active) {\n  background-color: rgba(0, 0, 0, 0.12);\n}\nmain > label:active {\n  background-color: rgba(158, 158, 158, 0.4);\n}\nmain > label {\n  border-radius: 50%;font-size: 24px;height: 32px;margin-left: 0;margin-right: 0;min-width: 32px;width: 32px;padding: 0;overflow: hidden;color: inherit;line-height: normal;\n}\nmain > label > cell-icon {\n  position: absolute;top: 50%;left: 50%;-webkit-transform: translate(-12px, -12px);transform: translate(-12px, -12px);line-height: 24px;width: 24px;\n}\nmain > label > cell-icon {\n  vertical-align: middle;\n}\nmain {\n  position: relative;font-size: 16px;display: inline-block;box-sizing: border-box;width: 300px;max-width: 100%;margin: 0;padding: 20px 0;\n}\nmain > label {\n  position: absolute;bottom: 20px;\n}\nmain {\n  min-width: 32px;width: auto;min-height: 32px;\n}\nmain > label {\n  top: 16px;\n}\nmain > div > input {\n  border: none;border-bottom: 1px solid rgba(0, 0, 0, 0.12);display: block;font-size: 16px;font-family: \"Helvetica\", \"Arial\", sans-serif;margin: 0;padding: 4px 0;width: 100%;background: none;text-align: left;color: inherit;\n}\n:host(:focus) main > div > input {\n  outline: none;\n}\nmain > div > label {\n  bottom: 0;color: rgba(0, 0, 0, 0.26);font-size: 16px;left: 0;right: 0;pointer-events: none;position: absolute;display: block;top: 24px;width: 100%;overflow: hidden;white-space: nowrap;text-align: left;\n}\nmain > div > label:after {\n  background-color: #3f51b5;bottom: 20px;content: '';height: 2px;left: 45%;position: absolute;transition-duration: 0.2s;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);visibility: hidden;width: 10px;\n}\n:host(:focus) main > div > label:after {\n  left: 0;visibility: visible;width: 100%;\n}\nmain > div {\n  position: relative;margin-left: 32px;transition-duration: 0.2s;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);display: inline-block;max-width: 0.1px;\n}\n:host(:focus) main > div {\n  max-width: 600px;\n}\nmain > div > label:after {\n  bottom: 0;\n}\n:host(:focus) {\n  outline: none;\n}\nmain > label {\n  cursor: var(--input-cursor);\n}\nmain > div > input {\n  cursor: var(--input-cursor);\n}\n";
+      exports.default = _default;
+    }
+  },
+  './index.html': {
+    base: '.',
+    dependency: [],
+    factory: function factory(require, exports, module) {
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _default = "<template>\n    <slot></slot>\n    <main>\n        <label for=\"search\">\n            <cell-icon name=\"search\"></cell-icon>\n        </label>\n        <div>\n            <input type=\"${view.type}\" id=\"search\" value=\"${view.value}\" readonly=\"${view.readOnly}\" disabled=\"${view.disabled}\" placeholder=\"${view.placeholder}\">\n            <label for=\"search\">${view.placeholder}</label>\n        </div>\n    </main>\n</template>\n";
+      exports.default = _default;
+    }
+  },
+  './index': {
+    base: '.',
+    dependency: [],
+    factory: function factory(require, exports, module) {
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+
+      var _webCell = require('web-cell');
+
+      var _index = _interopRequireDefault(require('./index.html'));
+
+      var _index2 = _interopRequireDefault(require('./index.less'));
+
+      function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : {
+          default: obj
+        };
+      }
+
+      var CellSearch =
+      /*#__PURE__*/
+      function (_webCell$InputCompone) {
+        _inherits(CellSearch, _webCell$InputCompone);
+
+        function CellSearch() {
+          _classCallCheck(this, CellSearch);
+
+          return _possibleConstructorReturn(this, _getPrototypeOf(CellSearch).call(this, _index.default, _index2.default));
         }
-    },
-    './index.html': {
-        base: '.',
-        dependency: [],
-        factory: function factory(require, exports, module) {
-            Object.defineProperty(exports, "__esModule", {
-                value: true
-            });
-            exports.default = "<template>\n    <main>\n        <label for=\"search\">\n            <cell-icon name=\"search\"></cell-icon>\n        </label>\n        <div>\n            <input type=\"search\" id=\"search\" value=\"${view.value}\" readonly=\"${view.readOnly}\" disabled=\"${view.disabled}\" placeholder=\"${view.placeholder}\">\n            <label for=\"search\">${view.placeholder}</label>\n        </div>\n    </main>\n</template>\n";
-        }
-    },
-    './index': {
-        base: '.',
-        dependency: [],
-        factory: function factory(require, exports, module) {
-            Object.defineProperty(exports, "__esModule", {
-                value: true
-            });
 
-            var _webCell = require('web-cell');
+        return CellSearch;
+      }(_webCell.InputComponent);
 
-            var _index = require('./index.html');
-
-            var _index2 = _interopRequireDefault(_index);
-
-            var _index3 = require('./index.less');
-
-            var _index4 = _interopRequireDefault(_index3);
-
-            function _interopRequireDefault(obj) {
-                return obj && obj.__esModule ? obj : { default: obj };
-            }
-
-            var CellSearch = function (_webCell$InputCompone) {
-                _inherits(CellSearch, _webCell$InputCompone);
-
-                function CellSearch() {
-                    _classCallCheck(this, CellSearch);
-
-                    return _possibleConstructorReturn(this, (CellSearch.__proto__ || Object.getPrototypeOf(CellSearch)).call(this, _index2.default, _index4.default));
-                }
-
-                return CellSearch;
-            }(_webCell.InputComponent);
-
-            exports.default = CellSearch;
-            (0, _webCell.component)(CellSearch);
-        }
-    },
-    'web-cell': { exports: web_cell }
+      exports.default = CellSearch;
+      (0, _webCell.component)(CellSearch);
+    }
+  },
+  'web-cell': {
+    exports: web_cell
+  }
 };
 
     return require('./index');

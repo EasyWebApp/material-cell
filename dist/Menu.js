@@ -13,16 +13,13 @@
 })(function (web_cell) {
 
 function merge(base, path) {
-
-    return (base + '/' + path).replace(/\/\//g, '/').replace(/[^/.]+\/\.\.\//g, '').replace(/\.\//g, function (match, index, input) {
-
-        return input[index - 1] === '.' ? match : '';
-    });
+  return (base + '/' + path).replace(/\/\//g, '/').replace(/[^/.]+\/\.\.\//g, '').replace(/\.\//g, function (match, index, input) {
+    return input[index - 1] === '.' ? match : '';
+  });
 }
 
 function outPackage(name) {
-    return (/^[^./]/.test(name)
-    );
+  return /^[^./]/.test(name);
 }
 
     var require = _require_.bind(null, './');
@@ -57,156 +54,169 @@ function outPackage(name) {
         return module.exports;
     }
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 var _module_ = {
-    './index.less': {
-        base: '.',
-        dependency: [],
-        factory: function factory(require, exports, module) {
-            Object.defineProperty(exports, "__esModule", {
-                value: true
-            });
-            exports.default = "main > button {\n  -webkit-tap-highlight-color: transparent;-webkit-tap-highlight-color: rgba(255, 255, 255, 0);\n}\nmain > button {\n  background: transparent;border: none;border-radius: 2px;color: #000000;position: relative;height: 36px;margin: 0;min-width: 64px;padding: 0 16px;display: inline-block;font-family: \"Roboto\", \"Helvetica\", \"Arial\", sans-serif;font-size: 14px;font-weight: 500;text-transform: uppercase;line-height: 1;letter-spacing: 0;overflow: hidden;will-change: box-shadow;transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);outline: none;cursor: pointer;text-decoration: none;text-align: center;line-height: 36px;vertical-align: middle;\n}\nmain > button:hover {\n  background-color: rgba(158, 158, 158, 0.2);\n}\nmain > button:focus:not(:active) {\n  background-color: rgba(0, 0, 0, 0.12);\n}\nmain > button:active {\n  background-color: rgba(158, 158, 158, 0.4);\n}\nmain > button {\n  border-radius: 50%;font-size: 24px;height: 32px;margin-left: 0;margin-right: 0;min-width: 32px;width: 32px;padding: 0;overflow: hidden;color: inherit;line-height: normal;\n}\nmain > button > cell-icon {\n  position: absolute;top: 50%;left: 50%;-webkit-transform: translate(-12px, -12px);transform: translate(-12px, -12px);line-height: 24px;width: 24px;\n}\nmain > button > cell-icon {\n  vertical-align: middle;\n}\nmain > div {\n  display: block;margin: 0;padding: 0;border: none;position: absolute;overflow: visible;height: 0;width: 0;visibility: hidden;z-index: -1;\n}\n:host(:focus) main > div {\n  z-index: 999;visibility: visible;\n}\nmain > div > div {\n  display: block;background: #ffffff;margin: 0;padding: 0;border: none;border-radius: 2px;position: absolute;top: 0;left: 0;overflow: hidden;opacity: 0;-webkit-transform: scale(0);transform: scale(0);-webkit-transform-origin: 0 0;transform-origin: 0 0;box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);will-change: transform;transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);z-index: -1;\n}\n:host(:focus) main > div > div {\n  opacity: 1;-webkit-transform: scale(1);transform: scale(1);z-index: 999;\n}\nmain > div > ul {\n  position: absolute;list-style: none;top: 0;left: 0;height: auto;width: auto;min-width: 124px;padding: 8px 0;margin: 0;opacity: 0;clip: rect(0 0 0 0);z-index: -1;\n}\n:host(:focus) main > div > ul {\n  opacity: 1;z-index: 999;\n}\nmain > div > ul > li {\n  display: block;border: none;color: rgba(0, 0, 0, 0.87);background-color: transparent;text-align: left;margin: 0;padding: 0 16px;outline-color: #bdbdbd;position: relative;overflow: hidden;font-size: 14px;font-weight: 400;line-height: 24px;letter-spacing: 0;text-decoration: none;cursor: pointer;height: 48px;line-height: 48px;white-space: nowrap;opacity: 0;transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;\n}\n:host(:focus) main > div > ul > li {\n  opacity: 1;\n}\nmain > div > ul > li:hover {\n  background-color: #eeeeee;\n}\nmain > div > ul > li:focus {\n  outline: none;background-color: #eeeeee;\n}\nmain > div > ul > li:active {\n  background-color: #e0e0e0;\n}\n:host(:focus) {\n  outline: none;\n}\n:host(.right) {\n  --menu-left: auto;\n  --menu-right: 0;\n  --menu-transform-origin: 100% 0;\n}\nmain {\n  position: relative;\n}\nmain > div {\n  right: 0;\n}\nmain > div > div {\n  -webkit-transform-origin: var(--menu-transform-origin, 0 0);\n  transform-origin: var(--menu-transform-origin, 0 0);\n}\nmain > div > ul {\n  left: var(--menu-left, 0);\n  right: var(--menu-right, auto);\n}\nmain > div > ul > li {\n  transition-delay: 0.1s;\n}\n::slotted(*) {\n  display: none;\n}\n";
+  './index.less': {
+    base: '.',
+    dependency: [],
+    factory: function factory(require, exports, module) {
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _default = "main > button {\n  -webkit-tap-highlight-color: transparent;-webkit-tap-highlight-color: rgba(255, 255, 255, 0);\n}\nmain > button {\n  background: transparent;border: none;border-radius: 2px;color: #000000;position: relative;height: 36px;margin: 0;min-width: 64px;padding: 0 16px;display: inline-block;font-family: \"Roboto\", \"Helvetica\", \"Arial\", sans-serif;font-size: 14px;font-weight: 500;text-transform: uppercase;line-height: 1;letter-spacing: 0;overflow: hidden;will-change: box-shadow;transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);outline: none;cursor: pointer;text-decoration: none;text-align: center;line-height: 36px;vertical-align: middle;\n}\nmain > button:hover {\n  background-color: rgba(158, 158, 158, 0.2);\n}\nmain > button:focus:not(:active) {\n  background-color: rgba(0, 0, 0, 0.12);\n}\nmain > button:active {\n  background-color: rgba(158, 158, 158, 0.4);\n}\nmain > button {\n  border-radius: 50%;font-size: 24px;height: 32px;margin-left: 0;margin-right: 0;min-width: 32px;width: 32px;padding: 0;overflow: hidden;color: inherit;line-height: normal;\n}\nmain > button > cell-icon {\n  position: absolute;top: 50%;left: 50%;-webkit-transform: translate(-12px, -12px);transform: translate(-12px, -12px);line-height: 24px;width: 24px;\n}\nmain > button > cell-icon {\n  vertical-align: middle;\n}\nmain > div {\n  display: block;margin: 0;padding: 0;border: none;position: absolute;overflow: visible;height: 0;width: 0;visibility: hidden;z-index: -1;\n}\n:host(:focus) main > div {\n  z-index: 999;visibility: visible;\n}\nmain > div > div {\n  display: block;background: #ffffff;margin: 0;padding: 0;border: none;border-radius: 2px;position: absolute;top: 0;left: 0;overflow: hidden;opacity: 0;-webkit-transform: scale(0);transform: scale(0);-webkit-transform-origin: 0 0;transform-origin: 0 0;box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);will-change: transform;transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);z-index: -1;\n}\n:host(:focus) main > div > div {\n  opacity: 1;-webkit-transform: scale(1);transform: scale(1);z-index: 999;\n}\nmain > div > ul {\n  position: absolute;list-style: none;top: 0;left: 0;height: auto;width: auto;min-width: 124px;padding: 8px 0;margin: 0;opacity: 0;clip: rect(0 0 0 0);z-index: -1;\n}\n:host(:focus) main > div > ul {\n  opacity: 1;z-index: 999;\n}\nmain > div > ul > li {\n  display: block;border: none;color: rgba(0, 0, 0, 0.87);background-color: transparent;text-align: left;margin: 0;padding: 0 16px;outline-color: #bdbdbd;position: relative;overflow: hidden;font-size: 14px;font-weight: 400;line-height: 24px;letter-spacing: 0;text-decoration: none;cursor: pointer;height: 48px;line-height: 48px;white-space: nowrap;opacity: 0;transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;\n}\n:host(:focus) main > div > ul > li {\n  opacity: 1;\n}\nmain > div > ul > li:hover {\n  background-color: #eeeeee;\n}\nmain > div > ul > li:focus {\n  outline: none;background-color: #eeeeee;\n}\nmain > div > ul > li:active {\n  background-color: #e0e0e0;\n}\n:host(:focus) {\n  outline: none;\n}\n:host(.right) {\n  --menu-left: auto;\n  --menu-right: 0;\n  --menu-transform-origin: 100% 0;\n}\nmain {\n  position: relative;\n}\nmain > div {\n  right: 0;\n}\nmain > div > div {\n  -webkit-transform-origin: var(--menu-transform-origin, 0 0);\n  transform-origin: var(--menu-transform-origin, 0 0);\n}\nmain > div > ul {\n  left: var(--menu-left, 0);\n  right: var(--menu-right, auto);\n}\nmain > div > ul > li {\n  transition-delay: 0.1s;\n}\n::slotted(*) {\n  display: none;\n}\n";
+      exports.default = _default;
+    }
+  },
+  './index.html': {
+    base: '.',
+    dependency: [],
+    factory: function factory(require, exports, module) {
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _default = "<template>\n    <main>\n        <button>\n            <cell-icon name=\"${view.icon || 'more_vert'}\"></cell-icon>\n        </button>\n        <div>\n            <div></div>\n            <ul></ul>\n        </div>\n    </main>\n    <slot></slot>\n</template>\n";
+      exports.default = _default;
+    }
+  },
+  './index': {
+    base: '.',
+    dependency: [],
+    factory: function factory(require, exports, module) {
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+
+      var _webCell = require('web-cell');
+
+      var _index = _interopRequireDefault(require('./index.html'));
+
+      var _index2 = _interopRequireDefault(require('./index.less'));
+
+      function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : {
+          default: obj
+        };
+      }
+
+      var menu_body = new WeakMap();
+
+      var CellMenu =
+      /*#__PURE__*/
+      function (_HTMLElement) {
+        _inherits(CellMenu, _HTMLElement);
+
+        function CellMenu() {
+          var _this;
+
+          _classCallCheck(this, CellMenu);
+
+          (_this = _possibleConstructorReturn(this, _getPrototypeOf(CellMenu).call(this))).buildDOM(_index.default, _index2.default);
+
+          menu_body.set(_assertThisInitialized(_assertThisInitialized(_this)), _this.$('main > div > ul')[0]);
+          return _this;
         }
-    },
-    './index.html': {
-        base: '.',
-        dependency: [],
-        factory: function factory(require, exports, module) {
-            Object.defineProperty(exports, "__esModule", {
-                value: true
-            });
-            exports.default = "<template>\n    <main>\n        <button>\n            <cell-icon name=\"${view.icon || 'more_vert'}\"></cell-icon>\n        </button>\n        <div>\n            <div></div>\n            <ul></ul>\n        </div>\n    </main>\n    <slot></slot>\n</template>\n";
-        }
-    },
-    './index': {
-        base: '.',
-        dependency: [],
-        factory: function factory(require, exports, module) {
-            Object.defineProperty(exports, "__esModule", {
-                value: true
-            });
 
-            var _webCell = require('web-cell');
+        _createClass(CellMenu, [{
+          key: "connectedCallback",
+          value: function connectedCallback() {
+            this.view.icon = this.icon;
+            this.update();
+            this.$('slot')[0].addEventListener('slotchange', this.update.bind(this));
+            new ResizeObserver(this.resize.bind(this)).observe(menu_body.get(this));
+            window.addEventListener('resize', this.resize.bind(this));
+            this.on('focus', this.open.bind(this));
+            this.on('blur', this.open.bind(this, false));
+          }
+        }, {
+          key: "update",
+          value: function update() {
+            var _ref;
 
-            var _index = require('./index.html');
+            this.$('ul')[0].innerHTML = (_ref = []).concat.apply(_ref, _toConsumableArray(Array.from(this.$('slot')[0].assignedNodes(), function (node) {
+              return node.innerHTML;
+            }).filter(Boolean))).map(function (HTML) {
+              return "<li>".concat(HTML, "</li>");
+            }).join('\n');
+            this.resize();
+          }
+        }, {
+          key: "resize",
+          value: function resize() {
+            var size = this.open(false),
+                button = this.$('main > button')[0];
+            var container = button.nextElementSibling;
+            var outline = container.firstElementChild.style;
+            container = container.style;
+            container.top = button.offsetHeight + 'px', container.width = outline.width = size.width + 'px', container.height = outline.height = size.height + 'px';
+          }
+        }, {
+          key: "open",
+          value: function open() {
+            var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+            var menu = menu_body.get(this);
+            var size = {
+              width: menu.offsetWidth,
+              height: menu.offsetHeight
+            };
+            menu.style.clip = state ? "rect(0, ".concat(size.width, "px, ").concat(size.height, "px, 0)") : "rect(0, ".concat(size.width, "px, 0, ").concat(size.height, "px)");
+            return size;
+          }
+        }, {
+          key: "icon",
+          get: function get() {
+            return this.getAttribute('icon');
+          },
+          set: function set(value) {
+            this.setAttribute('icon', value);
+          }
+        }]);
 
-            var _index2 = _interopRequireDefault(_index);
+        return CellMenu;
+      }(_wrapNativeSuper(HTMLElement));
 
-            var _index3 = require('./index.less');
-
-            var _index4 = _interopRequireDefault(_index3);
-
-            function _interopRequireDefault(obj) {
-                return obj && obj.__esModule ? obj : { default: obj };
-            }
-
-            var menu_body = new WeakMap();
-
-            var CellMenu = function (_HTMLElement) {
-                _inherits(CellMenu, _HTMLElement);
-
-                function CellMenu() {
-                    var _this;
-
-                    _classCallCheck(this, CellMenu);
-
-                    (_this = _possibleConstructorReturn(this, (CellMenu.__proto__ || Object.getPrototypeOf(CellMenu)).call(this)), _this).buildDOM(_index2.default, _index4.default);
-
-                    menu_body.set(_this, _this.$('main > div > ul')[0]);
-                    return _this;
-                }
-
-                _createClass(CellMenu, [{
-                    key: 'connectedCallback',
-                    value: function connectedCallback() {
-
-                        this.view.icon = this.icon;
-
-                        this.update();
-
-                        this.$('slot')[0].addEventListener('slotchange', this.update.bind(this));
-
-                        new ResizeObserver(this.resize.bind(this)).observe(menu_body.get(this));
-
-                        window.addEventListener('resize', this.resize.bind(this));
-
-                        this.on('focus', this.open.bind(this));
-
-                        this.on('blur', this.open.bind(this, false));
-                    }
-                }, {
-                    key: 'update',
-                    value: function update() {
-                        var _ref;
-
-                        this.$('ul')[0].innerHTML = (_ref = []).concat.apply(_ref, _toConsumableArray(Array.from(this.$('slot')[0].assignedNodes(), function (node) {
-                            return node.innerHTML;
-                        }).filter(Boolean))).map(function (HTML) {
-                            return '<li>' + HTML + '</li>';
-                        }).join('\n');
-
-                        this.resize();
-                    }
-                }, {
-                    key: 'resize',
-                    value: function resize() {
-
-                        var size = this.open(false),
-                            button = this.$('main > button')[0];
-
-                        var container = button.nextElementSibling;
-
-                        var outline = container.firstElementChild.style;
-
-                        container = container.style;
-
-                        container.top = button.offsetHeight + 'px', container.width = outline.width = size.width + 'px', container.height = outline.height = size.height + 'px';
-                    }
-                }, {
-                    key: 'open',
-                    value: function open() {
-                        var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-
-
-                        var menu = menu_body.get(this);
-
-                        var size = {
-                            width: menu.offsetWidth,
-                            height: menu.offsetHeight
-                        };
-
-                        menu.style.clip = state ? 'rect(0, ' + size.width + 'px, ' + size.height + 'px, 0)' : 'rect(0, ' + size.width + 'px, 0, ' + size.height + 'px)';
-
-                        return size;
-                    }
-                }, {
-                    key: 'icon',
-                    get: function get() {
-                        return this.getAttribute('icon');
-                    },
-                    set: function set(value) {
-                        this.setAttribute('icon', value);
-                    }
-                }]);
-
-                return CellMenu;
-            }(HTMLElement);
-
-            exports.default = CellMenu;
-            (0, _webCell.component)(CellMenu);
-        }
-    },
-    'web-cell': { exports: web_cell }
+      exports.default = CellMenu;
+      (0, _webCell.component)(CellMenu);
+    }
+  },
+  'web-cell': {
+    exports: web_cell
+  }
 };
 
     return require('./index');

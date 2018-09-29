@@ -2,7 +2,13 @@
     <style type="text/less">
         @import (less, reference) 'node_modules/material-design-lite/dist/material.css';
 
-        :host(:focus) {  outline: none;  }
+        :host {
+            outline:   none;
+            position:  relative;
+        }
+        :host(.big):extend(
+            .mdl-layout--fixed-drawer.is-upgraded:not(.is-small-screen) > .mdl-layout__header
+        ) { }
 
         main:extend(
             .mdl-layout__header,
@@ -16,6 +22,8 @@
         main > div > .title:extend(.mdl-layout-title) { }
 
         main > div > .spacer:extend(.mdl-layout-spacer) { }
+
+        ::slotted(*) {  display: inline-block;  }
     </style>
 
     <main>

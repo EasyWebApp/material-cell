@@ -13,16 +13,13 @@
 })(function (web_cell) {
 
 function merge(base, path) {
-
-    return (base + '/' + path).replace(/\/\//g, '/').replace(/[^/.]+\/\.\.\//g, '').replace(/\.\//g, function (match, index, input) {
-
-        return input[index - 1] === '.' ? match : '';
-    });
+  return (base + '/' + path).replace(/\/\//g, '/').replace(/[^/.]+\/\.\.\//g, '').replace(/\.\//g, function (match, index, input) {
+    return input[index - 1] === '.' ? match : '';
+  });
 }
 
 function outPackage(name) {
-    return (/^[^./]/.test(name)
-    );
+  return /^[^./]/.test(name);
 }
 
     var require = _require_.bind(null, './');
@@ -57,81 +54,105 @@ function outPackage(name) {
         return module.exports;
     }
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 var _module_ = {
-    './index.html': {
-        base: '.',
-        dependency: [],
-        factory: function factory(require, exports, module) {
-            Object.defineProperty(exports, "__esModule", {
-                value: true
-            });
-            exports.default = "<template>\n    <style>main {\n  display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;-webkit-flex-wrap: nowrap;-ms-flex-wrap: nowrap;flex-wrap: nowrap;width: 240px;height: 100%;max-height: 100%;position: absolute;top: 0;left: 0;box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);box-sizing: border-box;border-right: 1px solid #e0e0e0;background: #fafafa;-webkit-transform: translateX(-250px);transform: translateX(-250px);-webkit-transform-style: preserve-3d;transform-style: preserve-3d;will-change: transform;transition-duration: 0.2s;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);transition-property: -webkit-transform;transition-property: transform;transition-property: transform, -webkit-transform;color: #424242;overflow: visible;overflow-y: auto;z-index: 5;\n}\nmain.focus {\n  -webkit-transform: translateX(0);transform: translateX(0);\n}\ndiv {\n  background-color: transparent;position: absolute;top: 0;left: 0;height: 100%;width: 100%;z-index: 4;visibility: hidden;transition-property: background-color;transition-duration: 0.2s;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n}\nmain.focus + div {\n  background-color: rgba(0, 0, 0, 0.5);visibility: visible;\n}\n@supports (pointer-events: auto) {\n  div {\n    background-color: rgba(0, 0, 0, 0.5);opacity: 0;transition-property: opacity;visibility: visible;pointer-events: none;\n  }\n  main.focus + div {\n    pointer-events: auto;opacity: 1;\n  }\n}\n:host(:focus) {\n  outline: none;\n}\n</style>\n\n    <main><slot></slot></main>\n    <div></div>\n</template>\n";
+  './index.html': {
+    base: '.',
+    dependency: [],
+    factory: function factory(require, exports, module) {
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _default = "<template>\n    <style>:host,\nmain {\n  display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;-webkit-flex-wrap: nowrap;-ms-flex-wrap: nowrap;flex-wrap: nowrap;width: 240px;height: 100%;max-height: 100%;position: absolute;top: 0;left: 0;box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);box-sizing: border-box;border-right: 1px solid #e0e0e0;background: #fafafa;-webkit-transform: translateX(-250px);transform: translateX(-250px);-webkit-transform-style: preserve-3d;transform-style: preserve-3d;will-change: transform;transition-duration: 0.2s;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);transition-property: -webkit-transform;transition-property: transform;transition-property: transform, -webkit-transform;color: #424242;overflow: visible;overflow-y: auto;z-index: 5;\n}\n:host(.focus),\n:host(.focus) main {\n  -webkit-transform: translateX(0);transform: translateX(0);\n}\n@media screen and (min-width: 1025px) {\n  :host,\n  main {\n    -webkit-transform: translateX(0);transform: translateX(0);\n  }\n}\ndiv {\n  background-color: transparent;position: absolute;top: 0;left: 0;height: 100%;width: 100%;z-index: 4;visibility: hidden;transition-property: background-color;transition-duration: 0.2s;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n}\n:host(.focus) div {\n  background-color: rgba(0, 0, 0, 0.5);visibility: visible;\n}\n@supports (pointer-events: auto) {\n  div {\n    background-color: rgba(0, 0, 0, 0.5);opacity: 0;transition-property: opacity;visibility: visible;pointer-events: none;\n  }\n  :host(.focus) div {\n    pointer-events: auto;opacity: 1;\n  }\n}\n:host {\n  outline: none;\n}\n</style>\n\n    <main><slot></slot></main>\n    <div></div>\n</template>\n";
+      exports.default = _default;
+    }
+  },
+  './index': {
+    base: '.',
+    dependency: [],
+    factory: function factory(require, exports, module) {
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+
+      var _webCell = require('web-cell');
+
+      var _index = _interopRequireDefault(require('./index.html'));
+
+      function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : {
+          default: obj
+        };
+      }
+
+      var CellDrawer =
+      /*#__PURE__*/
+      function (_HTMLElement) {
+        _inherits(CellDrawer, _HTMLElement);
+
+        function CellDrawer() {
+          var _this;
+
+          _classCallCheck(this, CellDrawer);
+
+          (_this = _possibleConstructorReturn(this, _getPrototypeOf(CellDrawer).call(this))).buildDOM(_index.default);
+
+          _this.$('main + div')[0].onclick = _this.close.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+
+          _this.on('click', 'a[href]', _this.close.bind(_assertThisInitialized(_assertThisInitialized(_this))));
+
+          return _this;
         }
-    },
-    './index': {
-        base: '.',
-        dependency: [],
-        factory: function factory(require, exports, module) {
-            Object.defineProperty(exports, "__esModule", {
-                value: true
-            });
 
-            var _webCell = require('web-cell');
+        _createClass(CellDrawer, [{
+          key: "open",
+          value: function open() {
+            this.classList.add('focus');
+          }
+        }, {
+          key: "close",
+          value: function close() {
+            this.classList.remove('focus');
+          }
+        }]);
 
-            var _index = require('./index.html');
+        return CellDrawer;
+      }(_wrapNativeSuper(HTMLElement));
 
-            var _index2 = _interopRequireDefault(_index);
-
-            function _interopRequireDefault(obj) {
-                return obj && obj.__esModule ? obj : { default: obj };
-            }
-
-            var drawerMap = new WeakMap();
-
-            var CellDrawer = function (_HTMLElement) {
-                _inherits(CellDrawer, _HTMLElement);
-
-                function CellDrawer() {
-                    var _this;
-
-                    _classCallCheck(this, CellDrawer);
-
-                    drawerMap.set((_this = _possibleConstructorReturn(this, (CellDrawer.__proto__ || Object.getPrototypeOf(CellDrawer)).call(this)), _this).buildDOM(_index2.default), _this.$('main')[0]);
-
-                    _this.$('main + div')[0].onclick = _this.close.bind(_this);
-
-                    _this.on('click', 'a[href]', _this.close.bind(_this));
-                    return _this;
-                }
-
-                _createClass(CellDrawer, [{
-                    key: 'open',
-                    value: function open() {
-                        drawerMap.get(this).classList.add('focus');
-                    }
-                }, {
-                    key: 'close',
-                    value: function close() {
-                        drawerMap.get(this).classList.remove('focus');
-                    }
-                }]);
-
-                return CellDrawer;
-            }(HTMLElement);
-
-            exports.default = CellDrawer;
-            (0, _webCell.component)(CellDrawer);
-        }
-    },
-    'web-cell': { exports: web_cell }
+      exports.default = CellDrawer;
+      (0, _webCell.component)(CellDrawer);
+    }
+  },
+  'web-cell': {
+    exports: web_cell
+  }
 };
 
     return require('./index');

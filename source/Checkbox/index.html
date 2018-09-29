@@ -37,11 +37,12 @@
         }
     </style>
 
+    <slot></slot>
     <label>
         <input type="checkbox" value="${view.value}" checked="${view.checked}"
             readonly="${view.readOnly}" disabled="${view.disabled}">
         <span class="label">
-            <slot></slot>
+            <slot name="label"></slot>
         </span>
         <span class="focus"></span>
         <span class="outline"></span>

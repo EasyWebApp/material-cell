@@ -15,8 +15,9 @@
  3. [Checkbox](https://getmdl.io/components/#toggles-section/checkbox)
  4. [Search](https://getmdl.io/components/#textfields-section)
  5. [Menu](https://getmdl.io/components/#menus-section)
- 6. [Drawer](https://getmdl.io/components/#layout-section)
- 7. Navigation
+ 6. [Header](https://getmdl.io/components/index.html#layout-section/layout)
+ 7. [Drawer](https://getmdl.io/components/index.html#layout-section/layout)
+ 8. Navigation
 
 
 
@@ -28,3 +29,11 @@ Install [WebCell](https://web-cell.tk/#installation) first, and then
 npm install material-cell material-design-lite material-design-icons \
     resize-observer-polyfill
 ```
+
+In the end, follow the [Example](https://github.com/EasyWebApp/material-cell/tree/master/test) to write your WebApp.
+
+
+
+## Acknowledge
+
+ - [Material Design lite](https://getmdl.io/)

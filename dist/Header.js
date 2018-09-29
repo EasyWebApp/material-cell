@@ -13,16 +13,13 @@
 })(function (web_cell) {
 
 function merge(base, path) {
-
-    return (base + '/' + path).replace(/\/\//g, '/').replace(/[^/.]+\/\.\.\//g, '').replace(/\.\//g, function (match, index, input) {
-
-        return input[index - 1] === '.' ? match : '';
-    });
+  return (base + '/' + path).replace(/\/\//g, '/').replace(/[^/.]+\/\.\.\//g, '').replace(/\.\//g, function (match, index, input) {
+    return input[index - 1] === '.' ? match : '';
+  });
 }
 
 function outPackage(name) {
-    return (/^[^./]/.test(name)
-    );
+  return /^[^./]/.test(name);
 }
 
     var require = _require_.bind(null, './');
@@ -57,61 +54,109 @@ function outPackage(name) {
         return module.exports;
     }
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 var _module_ = {
-    './index.html': {
-        base: '.',
-        dependency: [],
-        factory: function factory(require, exports, module) {
-            Object.defineProperty(exports, "__esModule", {
-                value: true
-            });
-            exports.default = "<template>\n    <style>main > div > .title {\n  display: block;position: relative;font-family: \"Roboto\", \"Helvetica\", \"Arial\", sans-serif;font-size: 20px;font-weight: 500;line-height: 1;letter-spacing: 0.02em;font-weight: 400;box-sizing: border-box;\n}\nmain > div > .spacer {\n  -webkit-flex-grow: 1;-ms-flex-positive: 1;flex-grow: 1;\n}\nmain {\n  display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;-webkit-flex-wrap: nowrap;-ms-flex-wrap: nowrap;flex-wrap: nowrap;-webkit-justify-content: flex-start;-ms-flex-pack: start;justify-content: flex-start;box-sizing: border-box;-webkit-flex-shrink: 0;-ms-flex-negative: 0;flex-shrink: 0;width: 100%;margin: 0;padding: 0;border: none;min-height: 64px;max-height: 1000px;z-index: 3;background-color: #3f51b5;color: #ffffff;box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);transition-duration: 0.2s;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);transition-property: max-height, box-shadow;\n}\n@media screen and (max-width: 1024px) {\n  main {\n    min-height: 56px;\n  }\n}\n@media screen and (max-width: 1024px) {\n  main {\n    display: none;\n  }\n  main {\n    display: -webkit-flex;display: -ms-flexbox;display: flex;\n  }\n}\nmain > div {\n  display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-flex-direction: row;-ms-flex-direction: row;flex-direction: row;-webkit-flex-wrap: nowrap;-ms-flex-wrap: nowrap;flex-wrap: nowrap;-webkit-flex-shrink: 0;-ms-flex-negative: 0;flex-shrink: 0;box-sizing: border-box;-webkit-align-self: stretch;-ms-flex-item-align: stretch;align-self: stretch;-webkit-align-items: center;-ms-flex-align: center;align-items: center;height: 64px;margin: 0;padding: 0 40px 0 80px;\n}\n@media screen and (max-width: 1024px) {\n  main > div {\n    height: 56px;padding: 0 16px 0 72px;\n  }\n}\nmain > div > * {\n  -webkit-flex-shrink: 0;-ms-flex-negative: 0;flex-shrink: 0;\n}\n:host(:focus) {\n  outline: none;\n}\n</style>\n\n    <main>\n        <slot name=\"left\"></slot>\n        <div>\n            <span class=\"title\"><slot></slot></span>\n            <div class=\"spacer\"></div>\n            <div><slot name=\"right\"></slot></div>\n        </div>\n    </main>\n</template>\n";
+  './index.html': {
+    base: '.',
+    dependency: [],
+    factory: function factory(require, exports, module) {
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _default = "<template>\n    <style>main > div > .title {\n  display: block;position: relative;font-family: \"Roboto\", \"Helvetica\", \"Arial\", sans-serif;font-size: 20px;font-weight: 500;line-height: 1;letter-spacing: 0.02em;font-weight: 400;box-sizing: border-box;\n}\nmain > div > .spacer {\n  -webkit-flex-grow: 1;-ms-flex-positive: 1;flex-grow: 1;\n}\nmain {\n  display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;-webkit-flex-wrap: nowrap;-ms-flex-wrap: nowrap;flex-wrap: nowrap;-webkit-justify-content: flex-start;-ms-flex-pack: start;justify-content: flex-start;box-sizing: border-box;-webkit-flex-shrink: 0;-ms-flex-negative: 0;flex-shrink: 0;width: 100%;margin: 0;padding: 0;border: none;min-height: 64px;max-height: 1000px;z-index: 3;background-color: #3f51b5;color: #ffffff;box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);transition-duration: 0.2s;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);transition-property: max-height, box-shadow;\n}\n@media screen and (max-width: 1024px) {\n  main {\n    min-height: 56px;\n  }\n}\n:host(.big) {\n  margin-left: 240px;width: calc(100% - 240px);\n}\n@media screen and (max-width: 1024px) {\n  main {\n    display: none;\n  }\n  main {\n    display: -webkit-flex;display: -ms-flexbox;display: flex;\n  }\n}\nmain > div {\n  display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-flex-direction: row;-ms-flex-direction: row;flex-direction: row;-webkit-flex-wrap: nowrap;-ms-flex-wrap: nowrap;flex-wrap: nowrap;-webkit-flex-shrink: 0;-ms-flex-negative: 0;flex-shrink: 0;box-sizing: border-box;-webkit-align-self: stretch;-ms-flex-item-align: stretch;align-self: stretch;-webkit-align-items: center;-ms-flex-align: center;align-items: center;height: 64px;margin: 0;padding: 0 40px 0 80px;\n}\n@media screen and (max-width: 1024px) {\n  main > div {\n    height: 56px;padding: 0 16px 0 72px;\n  }\n}\nmain > div > * {\n  -webkit-flex-shrink: 0;-ms-flex-negative: 0;flex-shrink: 0;\n}\n:host {\n  outline: none;\n  position: relative;\n}\n::slotted(*) {\n  display: inline-block;\n}\n</style>\n\n    <main>\n        <slot name=\"left\"></slot>\n        <div>\n            <span class=\"title\"><slot></slot></span>\n            <div class=\"spacer\"></div>\n            <div><slot name=\"right\"></slot></div>\n        </div>\n    </main>\n</template>\n";
+      exports.default = _default;
+    }
+  },
+  './index': {
+    base: '.',
+    dependency: [],
+    factory: function factory(require, exports, module) {
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+
+      var _webCell = require('web-cell');
+
+      var _index = _interopRequireDefault(require('./index.html'));
+
+      function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : {
+          default: obj
+        };
+      }
+
+      var onResize = new WeakMap();
+
+      var CellHeader =
+      /*#__PURE__*/
+      function (_HTMLElement) {
+        _inherits(CellHeader, _HTMLElement);
+
+        function CellHeader() {
+          var _this;
+
+          _classCallCheck(this, CellHeader);
+
+          (_this = _possibleConstructorReturn(this, _getPrototypeOf(CellHeader).call(this))).buildDOM(_index.default);
+
+          return _this;
         }
-    },
-    './index': {
-        base: '.',
-        dependency: [],
-        factory: function factory(require, exports, module) {
-            Object.defineProperty(exports, "__esModule", {
-                value: true
+
+        _createClass(CellHeader, [{
+          key: "connectedCallback",
+          value: function connectedCallback() {
+            var _this2 = this;
+
+            var observer = new ResizeObserver(function () {
+              return _this2.classList.toggle('big', window.innerWidth > 1024);
             });
+            observer.observe(document.body);
+            onResize.set(this, observer);
+          }
+        }, {
+          key: "disconnectedCallback",
+          value: function disconnectedCallback() {
+            onResize.get(this).disconnect();
+          }
+        }]);
 
-            var _webCell = require('web-cell');
+        return CellHeader;
+      }(_wrapNativeSuper(HTMLElement));
 
-            var _index = require('./index.html');
-
-            var _index2 = _interopRequireDefault(_index);
-
-            function _interopRequireDefault(obj) {
-                return obj && obj.__esModule ? obj : { default: obj };
-            }
-
-            var CellHeader = function (_HTMLElement) {
-                _inherits(CellHeader, _HTMLElement);
-
-                function CellHeader() {
-                    var _this;
-
-                    _classCallCheck(this, CellHeader);
-
-                    (_this = _possibleConstructorReturn(this, (CellHeader.__proto__ || Object.getPrototypeOf(CellHeader)).call(this)), _this).buildDOM(_index2.default);
-                    return _this;
-                }
-
-                return CellHeader;
-            }(HTMLElement);
-
-            exports.default = CellHeader;
-            (0, _webCell.component)(CellHeader);
-        }
-    },
-    'web-cell': { exports: web_cell }
+      exports.default = CellHeader;
+      (0, _webCell.component)(CellHeader);
+    }
+  },
+  'web-cell': {
+    exports: web_cell
+  }
 };
 
     return require('./index');

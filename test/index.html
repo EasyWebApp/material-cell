@@ -39,11 +39,11 @@
             z-index: 900;
         }
     </style>
-    <script src="../node_modules/babel-polyfill/dist/polyfill.min.js"></script>
+    <script src="../node_modules/@babel/polyfill/dist/polyfill.min.js"></script>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
     <script src="../node_modules/resize-observer-polyfill/dist/ResizeObserver.global.js"></script>
-    <script src="../node_modules/whatwg-fetch/fetch.js"></script>
+    <script src="../node_modules/whatwg-fetch/dist/fetch.umd.js"></script>
 
     <script src="../node_modules/web-cell/dist/web-cell.js"></script>
     <script src="../dist/Icon.js"></script>
@@ -59,15 +59,18 @@
 </head><body>
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
         <cell-header class="demo-header mdl-color--grey-100 mdl-color-text--grey-600">
-            Home
-            <div slot="right">
-                <cell-search placeholder="Enter your query..."></cell-search>
-                <cell-menu class="right">
-                    <li>About</li>
-                    <li>Contact</li>
-                    <li>Legal information</li>
-                </cell-menu>
+            <div tabindex="0" class="mdl-layout__drawer-button" slot="left">
+                <cell-icon name="menu"></cell-icon>
             </div>
+            Home
+            <cell-search slot="right">
+                <input type="search" placeholder="Enter your query...">
+            </cell-search>
+            <cell-menu class="right" slot="right">
+                <li>About</li>
+                <li>Contact</li>
+                <li>Legal information</li>
+            </cell-menu>
         </cell-header>
         <cell-drawer class="demo-drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
             <header class="demo-drawer-header">
@@ -127,22 +130,26 @@
                             <ul>
                                 <li>
                                     <cell-checkbox>
-                                        Click per object
+                                        <input type="checkbox">
+                                        <span slot="label">Click per object</span>
                                     </cell-checkbox>
                                 </li>
                                 <li>
                                     <cell-checkbox>
-                                        Views per object
+                                        <input type="checkbox">
+                                        <span slot="label">Views per object</span>
                                     </cell-checkbox>
                                 </li>
                                 <li>
                                     <cell-checkbox>
-                                        Objects selected
+                                        <input type="checkbox">
+                                        <span slot="label">Objects selected</span>
                                     </cell-checkbox>
                                 </li>
                                 <li>
                                     <cell-checkbox>
-                                        Objects viewed
+                                        <input type="checkbox">
+                                        <span slot="label">Objects viewed</span>
                                     </cell-checkbox>
                                 </li>
                             </ul>

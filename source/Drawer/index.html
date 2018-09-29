@@ -2,15 +2,23 @@
     <style type="text/less">
         @import (less, reference) 'node_modules/material-design-lite/dist/material.css';
 
-        :host(:focus) {  outline: none;  }
+        :host:extend(
+            .mdl-layout__drawer,
+            .mdl-layout--fixed-drawer > .mdl-layout__drawer
+        ) {
+            outline:  none;
+        }
+        :host(.focus):extend(.mdl-layout__drawer.is-visible) { }
 
-        main:extend(.mdl-layout__drawer) {  }
-
-        main.focus:extend(.mdl-layout__drawer.is-visible) { }
+        main:extend(
+            .mdl-layout__drawer,
+            .mdl-layout--fixed-drawer > .mdl-layout__drawer
+        ) {  }
+        :host(.focus) main:extend(.mdl-layout__drawer.is-visible) { }
 
         div:extend(.mdl-layout__obfuscator) { }
 
-        main.focus + div:extend(.mdl-layout__obfuscator.is-visible) { }
+        :host(.focus) div:extend(.mdl-layout__obfuscator.is-visible) { }
     </style>
 
     <main><slot></slot></main>

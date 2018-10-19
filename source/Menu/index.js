@@ -7,11 +7,14 @@ import style from './index.less';
 const menu_body = new WeakMap();
 
 
+@component({ template, style })
 export default  class CellMenu extends HTMLElement {
 
     constructor() {
 
-        super().buildDOM(template, style);
+        super();
+
+        this.buildDOM();
 
         menu_body.set(this,  this.$('main > div > ul')[0]);
     }
@@ -86,5 +89,3 @@ export default  class CellMenu extends HTMLElement {
         return size;
     }
 }
-
-component( CellMenu );

@@ -1,7 +1,7 @@
-const { $, ArrayView } = self['web-cell'];
+const { documentReady, $, ArrayView } = self['web-cell'];
 
 
-document.addEventListener('DOMContentLoaded', () => {
+documentReady.then(() => {
 
     const drawer = $('cell-drawer')[0];
 

@@ -3,11 +3,14 @@ import { component } from 'web-cell';
 import template from './index.html';
 
 
+@component({ template })
 export default  class CellDrawer extends HTMLElement {
 
     constructor() {
 
-        super().buildDOM( template );
+        super();
+
+        this.buildDOM();
 
         this.$('main + div')[0].onclick = this.close.bind( this );
 
@@ -18,6 +21,3 @@ export default  class CellDrawer extends HTMLElement {
 
     close() {  this.classList.remove('focus');  }
 }
-
-
-component( CellDrawer );

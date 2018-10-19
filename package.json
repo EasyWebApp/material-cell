@@ -1,6 +1,6 @@
 {
   "name": "material-cell",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "description": "Material-design Web component library based on WebCell",
   "keywords": [
     "material",
@@ -31,22 +31,38 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "husky": {
-    "hook": {
+    "hooks": {
       "pre-commit": "npm run build  &&  git add ."
     }
   },
   "dependencies": {
     "material-design-icons": "^3.0.1",
     "material-design-lite": "^1.3.0",
-    "web-cell": "^0.9.9"
+    "web-cell": "^0.10.7"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.1.2",
     "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
     "@webcomponents/webcomponentsjs": "^2.1.3",
-    "eslint": "^5.6.1",
-    "husky": "^1.0.1",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.7.0",
+    "husky": "^1.1.2",
     "resize-observer-polyfill": "^1.5.0",
-    "web-cell-cli": "^0.5.0",
+    "web-cell-cli": "^0.6.0",
     "whatwg-fetch": "^3.0.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "decoratorsBeforeExport": true
+        }
+      ]
+    ]
   }
 }

@@ -5,9 +5,15 @@ import template from './index.html';
 import style from './index.less';
 
 
+@component({ template, style })
 export default  class CellNavigation extends HTMLElement {
 
-    constructor() {  super().buildDOM(template, style);  }
+    constructor() {
+
+        super();
+
+        this.buildDOM();
+    }
 
     get src() {  return this.getAttribute('src');  }
 
@@ -18,5 +24,3 @@ export default  class CellNavigation extends HTMLElement {
         this.view.menu.clear().render(await request( this.src ));
     }
 }
-
-component( CellNavigation );

@@ -5,9 +5,15 @@ import template from './index.html';
 const onResize = new WeakMap();
 
 
+@component({ template })
 export default  class CellHeader extends HTMLElement {
 
-    constructor() {  super().buildDOM( template );  }
+    constructor() {
+
+        super();
+
+        this.buildDOM();
+    }
 
     connectedCallback() {
 
@@ -22,6 +28,3 @@ export default  class CellHeader extends HTMLElement {
 
     disconnectedCallback() {  onResize.get( this ).disconnect();  }
 }
-
-
-component( CellHeader );

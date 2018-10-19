@@ -3,9 +3,15 @@ import { component } from 'web-cell';
 import template from './index.html';
 
 
+@component({ template })
 export default  class CellIcon extends HTMLElement {
 
-    constructor() {  super().buildDOM( template );  }
+    constructor() {
+
+        super();
+
+        this.buildDOM();
+    }
 
     get name() {  return this.getAttribute('name');  }
 
@@ -13,6 +19,3 @@ export default  class CellIcon extends HTMLElement {
 
     connectedCallback() {  this.view.name = this.name;  }
 }
-
-
-component( CellIcon );

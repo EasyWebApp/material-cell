@@ -22,13 +22,18 @@ function outPackage(name) {
   return /^[^./]/.test(name);
 }
 
-    var require = (typeof this.require === 'function') ?
-        this.require  :  function (name) {
+    var require = (typeof module === 'object') ?
+        function () {
 
-            if (self[name] != null)  return self[name];
+            return  module.require.apply(module, arguments);
+        } : (
+            this.require  ||  function (name) {
 
-            throw ReferenceError('Can\'t find "' + name + '" module');
-        };
+                if (self[name] != null)  return self[name];
+
+                throw ReferenceError('Can\'t find "' + name + '" module');
+            }
+        );
 
     var _include_ = include.bind(null, './');
 
@@ -147,6 +152,7 @@ function _decorate(decorators, factory, superClass) {
 }
 
 function _createElementDescriptor(def) {
+    var key = _toPropertyKey(def.key);
     var descriptor;
     if (def.kind === 'method') {
         descriptor = {
@@ -155,6 +161,10 @@ function _createElementDescriptor(def) {
             configurable: true,
             enumerable: false
         };
+        Object.defineProperty(def.value, 'name', {
+            value: _typeof(key) === 'symbol' ? '' : key,
+            configurable: true
+        });
     } else if (def.kind === 'get') {
         descriptor = { get: def.value, configurable: true, enumerable: false };
     } else if (def.kind === 'set') {
@@ -164,12 +174,12 @@ function _createElementDescriptor(def) {
     }
     var element = {
         kind: def.kind === 'field' ? 'field' : 'method',
-        key: def.key,
+        key: key,
         placement: def.static
             ? 'static'
             : def.kind === 'field'
-                ? 'own'
-                : 'prototype',
+            ? 'own'
+            : 'prototype',
         descriptor: descriptor
     };
     if (def.decorators) element.decorators = def.decorators;
@@ -409,8 +419,7 @@ function _toElementDescriptor(elementObject) {
                 '"'
         );
     }
-    var key = elementObject.key;
-    if (typeof key !== 'string' && _typeof(key) !== 'symbol') key = String(key);
+    var key = _toPropertyKey(elementObject.key);
     var placement = String(elementObject.placement);
     if (
         placement !== 'static' &&
@@ -519,6 +528,22 @@ function _runClassFinishers(constructor, finishers) {
     return constructor;
 }
 
+function _toPropertyKey(arg) {
+    var key = _toPrimitive(arg, 'string');
+    return _typeof(key) === 'symbol' ? key : String(key);
+}
+
+function _toPrimitive(input, hint) {
+    if (_typeof(input) !== 'object' || input === null) return input;
+    var prim = input[Symbol.toPrimitive];
+    if (prim !== undefined) {
+        var res = prim.call(input, hint || 'default');
+        if (_typeof(res) !== 'object') return res;
+        throw new TypeError('@@toPrimitive must return a primitive value.');
+    }
+    return (hint === 'string' ? String : Number)(input);
+}
+
 function _toArray(arr) {
     return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest();
 }
@@ -587,23 +612,20 @@ var _module_ = {
                             _inherits(CellCard, _HTMLElement2);
 
                             function CellCard() {
-                                var _this;
+                                var _temp, _this;
 
                                 _classCallCheck(this, CellCard);
 
-                                _this = _possibleConstructorReturn(
+                                ((_temp = _this = _possibleConstructorReturn(
                                     this,
                                     _getPrototypeOf(CellCard).call(this)
-                                );
-
+                                )),
                                 _initialize(
                                     _assertThisInitialized(
                                         _assertThisInitialized(_this)
                                     )
-                                );
-
-                                _this.buildDOM();
-
+                                ),
+                                _temp).buildDOM();
                                 return _this;
                             }
 

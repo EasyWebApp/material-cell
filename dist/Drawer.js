@@ -22,13 +22,18 @@ function outPackage(name) {
   return /^[^./]/.test(name);
 }
 
-    var require = (typeof this.require === 'function') ?
-        this.require  :  function (name) {
+    var require = (typeof module === 'object') ?
+        function () {
 
-            if (self[name] != null)  return self[name];
+            return  module.require.apply(module, arguments);
+        } : (
+            this.require  ||  function (name) {
 
-            throw ReferenceError('Can\'t find "' + name + '" module');
-        };
+                if (self[name] != null)  return self[name];
+
+                throw ReferenceError('Can\'t find "' + name + '" module');
+            }
+        );
 
     var _include_ = include.bind(null, './');
 
@@ -147,6 +152,7 @@ function _decorate(decorators, factory, superClass) {
 }
 
 function _createElementDescriptor(def) {
+    var key = _toPropertyKey(def.key);
     var descriptor;
     if (def.kind === 'method') {
         descriptor = {
@@ -155,6 +161,10 @@ function _createElementDescriptor(def) {
             configurable: true,
             enumerable: false
         };
+        Object.defineProperty(def.value, 'name', {
+            value: _typeof(key) === 'symbol' ? '' : key,
+            configurable: true
+        });
     } else if (def.kind === 'get') {
         descriptor = { get: def.value, configurable: true, enumerable: false };
     } else if (def.kind === 'set') {
@@ -164,12 +174,12 @@ function _createElementDescriptor(def) {
     }
     var element = {
         kind: def.kind === 'field' ? 'field' : 'method',
-        key: def.key,
+        key: key,
         placement: def.static
             ? 'static'
             : def.kind === 'field'
-                ? 'own'
-                : 'prototype',
+            ? 'own'
+            : 'prototype',
         descriptor: descriptor
     };
     if (def.decorators) element.decorators = def.decorators;
@@ -409,8 +419,7 @@ function _toElementDescriptor(elementObject) {
                 '"'
         );
     }
-    var key = elementObject.key;
-    if (typeof key !== 'string' && _typeof(key) !== 'symbol') key = String(key);
+    var key = _toPropertyKey(elementObject.key);
     var placement = String(elementObject.placement);
     if (
         placement !== 'static' &&
@@ -519,6 +528,22 @@ function _runClassFinishers(constructor, finishers) {
     return constructor;
 }
 
+function _toPropertyKey(arg) {
+    var key = _toPrimitive(arg, 'string');
+    return _typeof(key) === 'symbol' ? key : String(key);
+}
+
+function _toPrimitive(input, hint) {
+    if (_typeof(input) !== 'object' || input === null) return input;
+    var prim = input[Symbol.toPrimitive];
+    if (prim !== undefined) {
+        var res = prim.call(input, hint || 'default');
+        if (_typeof(res) !== 'object') return res;
+        throw new TypeError('@@toPrimitive must return a primitive value.');
+    }
+    return (hint === 'string' ? String : Number)(input);
+}
+
 function _toArray(arr) {
     return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest();
 }
@@ -549,7 +574,7 @@ var _module_ = {
             });
             exports.default = void 0;
             var _default =
-                '<template>\n    <style>:host,\nmain {\n  display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;-webkit-flex-wrap: nowrap;-ms-flex-wrap: nowrap;flex-wrap: nowrap;width: 240px;height: 100%;max-height: 100%;position: absolute;top: 0;left: 0;box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);box-sizing: border-box;border-right: 1px solid #e0e0e0;background: #fafafa;-webkit-transform: translateX(-250px);transform: translateX(-250px);-webkit-transform-style: preserve-3d;transform-style: preserve-3d;will-change: transform;transition-duration: 0.2s;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);transition-property: -webkit-transform;transition-property: transform;transition-property: transform, -webkit-transform;color: #424242;overflow: visible;overflow-y: auto;z-index: 5;\n}\n:host(.focus),\n:host(.focus) main {\n  -webkit-transform: translateX(0);transform: translateX(0);\n}\n@media screen and (min-width: 1025px) {\n  :host,\n  main {\n    -webkit-transform: translateX(0);transform: translateX(0);\n  }\n}\ndiv {\n  background-color: transparent;position: absolute;top: 0;left: 0;height: 100%;width: 100%;z-index: 4;visibility: hidden;transition-property: background-color;transition-duration: 0.2s;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n}\n:host(.focus) div {\n  background-color: rgba(0, 0, 0, 0.5);visibility: visible;\n}\n@supports (pointer-events: auto) {\n  div {\n    background-color: rgba(0, 0, 0, 0.5);opacity: 0;transition-property: opacity;visibility: visible;pointer-events: none;\n  }\n  :host(.focus) div {\n    pointer-events: auto;opacity: 1;\n  }\n}\n:host {\n  outline: none;\n}\n</style>\n\n    <main><slot></slot></main>\n    <div></div>\n</template>\n';
+                '<template>\n    <style>:host,\nmain {\n  display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;-webkit-flex-wrap: nowrap;-ms-flex-wrap: nowrap;flex-wrap: nowrap;width: 240px;height: 100%;max-height: 100%;position: absolute;top: 0;left: 0;box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);box-sizing: border-box;border-right: 1px solid #e0e0e0;background: #fafafa;-webkit-transform: translateX(-250px);transform: translateX(-250px);-webkit-transform-style: preserve-3d;transform-style: preserve-3d;will-change: transform;transition-duration: 0.2s;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);transition-property: -webkit-transform;transition-property: transform;transition-property: transform, -webkit-transform;color: #424242;overflow: visible;overflow-y: auto;z-index: 5;\n}\n:host(.focus),\n:host(.focus) main {\n  -webkit-transform: translateX(0);transform: translateX(0);\n}\n@media screen and (min-width: 1025px) {\n  :host,\n  main {\n    -webkit-transform: translateX(0);transform: translateX(0);\n  }\n}\ndiv {\n  background-color: transparent;position: absolute;top: 0;left: 0;height: 100%;width: 100%;z-index: 4;visibility: hidden;transition-property: background-color;transition-duration: 0.2s;transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n}\n:host(.focus) div {\n  background-color: rgba(0, 0, 0, 0.5);visibility: visible;\n}\n@supports (pointer-events: auto) {\n  div {\n    background-color: rgba(0, 0, 0, 0.5);opacity: 0;transition-property: opacity;visibility: visible;pointer-events: none;\n  }\n  :host(.focus) div {\n    pointer-events: auto;opacity: 1;\n  }\n}\n:host {\n  outline: none;\n  overflow: visible;\n}\ndiv {\n  width: calc(100vw + 240px);\n}\n</style>\n\n    <main><slot></slot></main>\n    <div></div>\n</template>\n';
             exports.default = _default;
         }
     },
@@ -587,41 +612,39 @@ var _module_ = {
                             _inherits(CellDrawer, _HTMLElement2);
 
                             function CellDrawer() {
-                                var _this;
+                                var _temp, _this;
 
                                 _classCallCheck(this, CellDrawer);
 
-                                _this = _possibleConstructorReturn(
+                                ((_temp = _this = _possibleConstructorReturn(
                                     this,
                                     _getPrototypeOf(CellDrawer).call(this)
-                                );
-
+                                )),
                                 _initialize(
                                     _assertThisInitialized(
                                         _assertThisInitialized(_this)
                                     )
-                                );
-
-                                _this.buildDOM();
-
-                                _this.$(
-                                    'main + div'
-                                )[0].onclick = _this.close.bind(
-                                    _assertThisInitialized(
-                                        _assertThisInitialized(_this)
-                                    )
-                                );
-
-                                _this.on(
-                                    'click',
-                                    'a[href]',
-                                    _this.close.bind(
-                                        _assertThisInitialized(
-                                            _assertThisInitialized(_this)
+                                ),
+                                _temp)
+                                    .buildDOM()
+                                    .on(
+                                        'click',
+                                        ':host main + div',
+                                        _this.close.bind(
+                                            _assertThisInitialized(
+                                                _assertThisInitialized(_this)
+                                            )
                                         )
                                     )
-                                );
-
+                                    .on(
+                                        'click',
+                                        'a[href]',
+                                        _this.close.bind(
+                                            _assertThisInitialized(
+                                                _assertThisInitialized(_this)
+                                            )
+                                        )
+                                    );
                                 return _this;
                             }
 

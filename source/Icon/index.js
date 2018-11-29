@@ -6,12 +6,7 @@ import template from './index.html';
 @component({ template })
 export default  class CellIcon extends HTMLElement {
 
-    constructor() {
-
-        super();
-
-        this.buildDOM();
-    }
+    constructor() {  super().buildDOM();  }
 
     get name() {  return this.getAttribute('name');  }
 

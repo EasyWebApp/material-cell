@@ -1,4 +1,4 @@
-import { component } from 'web-cell';
+import { component, multipleMap } from 'web-cell';
 
 import template from './index.html';
 
@@ -12,9 +12,7 @@ export default  class CellMenu extends HTMLElement {
 
     constructor() {
 
-        super();
-
-        this.buildDOM();
+        super().buildDOM();
 
         menu_body.set(this,  this.$('main > div > ul')[0]);
     }
@@ -27,12 +25,6 @@ export default  class CellMenu extends HTMLElement {
 
         this.view.icon = this.icon;
 
-        this.update();
-
-        this.$('slot')[0].addEventListener(
-            'slotchange',  this.update.bind( this )
-        );
-
         (new ResizeObserver( this.resize.bind( this ) )).observe(
             menu_body.get( this )
         );
@@ -44,15 +36,13 @@ export default  class CellMenu extends HTMLElement {
         this.on('blur',  this.open.bind(this, false));
     }
 
-    update() {
+    slotChangedCallback(assigned) {
 
-        this.$('ul')[0].innerHTML = [ ].concat(
-            ... Array.from(
-                this.$('slot')[0].assignedNodes(),  node => node.innerHTML
-            ).filter( Boolean )
-        ).map(
-            HTML => `<li>${HTML}</li>`
-        ).join('\n');
+        this.$('ul')[0].innerHTML = multipleMap(assigned,  node => {
+
+            if (node instanceof HTMLElement)
+                return `<li>${node.innerHTML}</li>`;
+        }).join('\n');
 
         this.resize();
     }

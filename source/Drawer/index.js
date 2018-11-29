@@ -8,13 +8,9 @@ export default  class CellDrawer extends HTMLElement {
 
     constructor() {
 
-        super();
-
-        this.buildDOM();
-
-        this.$('main + div')[0].onclick = this.close.bind( this );
-
-        this.on('click',  'a[href]',  this.close.bind( this ));
+        super().buildDOM()
+            .on('click',  ':host main + div',  this.close.bind( this ))
+            .on('click',  'a[href]',  this.close.bind( this ));
     }
 
     open() {  this.classList.add('focus');  }

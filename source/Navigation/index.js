@@ -8,12 +8,7 @@ import style from './index.less';
 @component({ template, style })
 export default  class CellNavigation extends HTMLElement {
 
-    constructor() {
-
-        super();
-
-        this.buildDOM();
-    }
+    constructor() {  super().buildDOM();  }
 
     get src() {  return this.getAttribute('src');  }
 

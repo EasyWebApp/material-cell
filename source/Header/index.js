@@ -8,12 +8,7 @@ const onResize = new WeakMap();
 @component({ template })
 export default  class CellHeader extends HTMLElement {
 
-    constructor() {
-
-        super();
-
-        this.buildDOM();
-    }
+    constructor() {  super().buildDOM();  }
 
     connectedCallback() {
 

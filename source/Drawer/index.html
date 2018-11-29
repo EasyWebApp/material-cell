@@ -6,7 +6,8 @@
             .mdl-layout__drawer,
             .mdl-layout--fixed-drawer > .mdl-layout__drawer
         ) {
-            outline:  none;
+            outline:   none;
+            overflow:  visible;
         }
         :host(.focus):extend(.mdl-layout__drawer.is-visible) { }
 
@@ -16,8 +17,9 @@
         ) {  }
         :host(.focus) main:extend(.mdl-layout__drawer.is-visible) { }
 
-        div:extend(.mdl-layout__obfuscator) { }
-
+        div:extend(.mdl-layout__obfuscator) {
+            width:  calc(100vw + 240px);
+        }
         :host(.focus) div:extend(.mdl-layout__obfuscator.is-visible) { }
     </style>
 

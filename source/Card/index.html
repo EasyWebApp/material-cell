@@ -1,21 +1,24 @@
 <template>
     <style type="text/less">
-        @import (less, reference) 'node_modules/material-design-lite/dist/material.css';
+        @import (less, reference)
+            "node_modules/material-design-lite/dist/material.css";
 
-        :host:extend(.mdl-card, .mdl-shadow--2dp) { }
+        :host:extend(.mdl-card, .mdl-shadow--2dp) {
+        }
 
-        slot[name="title"]::slotted(*):extend(
-            .mdl-card__title, .mdl-card--expand
-        ) { }
+        slot[name="title"]::slotted(*):extend(.mdl-card__title, .mdl-card--expand) {
+        }
 
-        slot[name="media"]::slotted(*):extend(.mdl-card__media) { }
+        slot[name="media"]::slotted(*):extend(.mdl-card__media) {
+        }
 
-        #main::slotted(*):extend(.mdl-card__supporting-text) { }
+        #main::slotted(*):extend(.mdl-card__supporting-text) {
+        }
 
-        slot[name="action"]::slotted(*):extend(
-            .mdl-card__actions, .mdl-card__actions.mdl-card--border
-        ) { }
+        slot[name="action"]::slotted(*):extend(.mdl-card__actions, .mdl-card__actions.mdl-card--border) {
+        }
     </style>
+
     <slot name="title"></slot>
     <slot name="media"></slot>
     <slot id="main"></slot>

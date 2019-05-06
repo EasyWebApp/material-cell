@@ -24,11 +24,11 @@ body {
     border-radius: 24px;
 }
 .demo-layout cell-header .mdl-layout__drawer-button {
-    color:  inherit;
+    color: inherit;
 }
 @media screen and (min-width: 1025px) {
     .demo-layout cell-header .mdl-layout__drawer-button {
-        display:  none;
+        display: none;
     }
 }
 cell-drawer .avatar {
@@ -42,8 +42,8 @@ cell-drawer .avatar {
     z-index: -1;
 }
 .demo-drawer .demo-navigation {
-    z-index:  -2;
-    color:    rgba(255, 255, 255, 0.56);
+    z-index: -2;
+    color: rgba(255, 255, 255, 0.56);
 }
 /* END iOS Safari specific workaround */
 .demo-drawer .mdl-menu .mdl-menu__item {

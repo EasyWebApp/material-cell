@@ -4,18 +4,21 @@ import template from './index.html';
 
 import style from './index.less';
 
-
 @component({ template, style })
-export default  class CellNavigation extends HTMLElement {
+export default class CellNavigation extends HTMLElement {
+    constructor() {
+        super().construct();
+    }
 
-    constructor() {  super().buildDOM();  }
+    get src() {
+        return this.getAttribute('src');
+    }
 
-    get src() {  return this.getAttribute('src');  }
-
-    set src(value) {  this.setAttribute('src', value);  }
+    set src(value) {
+        this.setAttribute('src', value);
+    }
 
     async connectedCallback() {
-
-        this.view.menu.clear().render(await request( this.src ));
+        this.view.menu = (await request(this.src)).body;
     }
 }

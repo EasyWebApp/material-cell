@@ -1,4 +1,4 @@
-docs/
-test/
 .editorconfig
 .eslintrc.json
+test/
+CNAME

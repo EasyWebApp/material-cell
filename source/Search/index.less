@@ -1,52 +1,63 @@
-@import (less, reference) 'node_modules/material-design-lite/dist/material.css';
+@import (less, reference) "node_modules/material-design-lite/dist/material.css";
 
-:host(:focus) {  outline: none;  }
-
-main:extend(.mdl-textfield, .mdl-textfield--expandable) { }
-
-main > label:extend(
-    .mdl-button,
-    .mdl-button--icon,
-    .mdl-textfield .mdl-button,
-    .mdl-textfield--expandable .mdl-button--icon
-) {
-    cursor:  var(--input-cursor);
+:host(:focus) {
+    outline: none;
 }
 
-main > label:hover:extend(.mdl-button:hover) { }
+main:extend(.mdl-textfield, .mdl-textfield--expandable) {
+}
 
-main > label:active:extend(.mdl-button:active) { }
+main
+    > label:extend(.mdl-button, .mdl-button--icon, .mdl-textfield
+        .mdl-button, .mdl-textfield--expandable .mdl-button--icon) {
+    cursor: var(--input-cursor);
+}
 
-main > label:focus:not(:active):extend(
-    .mdl-button:focus:not(:active)
-) { }
+main > label:hover:extend(.mdl-button:hover) {
+}
 
-main > label > cell-icon:extend(
-    .mdl-button--icon .material-icons,
-    .mdl-button .material-icons
-) { }
+main > label:active:extend(.mdl-button:active) {
+}
 
-main > div:extend(.mdl-textfield__expandable-holder) { }
+main > label:focus:not(:active):extend(.mdl-button:focus:not(:active)) {
+}
 
-:host(:focus) main > div:extend(
-    .mdl-textfield.is-focused .mdl-textfield__expandable-holder
-) { }
+main
+    > label
+    > cell-icon:extend(.mdl-button--icon .material-icons, .mdl-button
+        .material-icons) {
+}
+
+main > div:extend(.mdl-textfield__expandable-holder) {
+}
+
+:host(:focus)
+    main
+    > div:extend(.mdl-textfield.is-focused .mdl-textfield__expandable-holder) {
+}
 
 main > div > input:extend(.mdl-textfield__input) {
-    cursor:  var(--input-cursor);
+    cursor: var(--input-cursor);
 }
 
-:host(:focus) main > div > input:extend(
-    .mdl-textfield.is-focused .mdl-textfield__input
-) { }
+:host(:focus)
+    main
+    > div
+    > input:extend(.mdl-textfield.is-focused .mdl-textfield__input) {
+}
 
-main > div > label:extend(.mdl-textfield__label) { }
+main > div > label:extend(.mdl-textfield__label) {
+}
 
-main > div > label:after:extend(
-    .mdl-textfield__label:after,
-    .mdl-textfield__expandable-holder .mdl-textfield__label:after
-) { }
+main
+    > div
+    > label:after:extend(.mdl-textfield__label:after, .mdl-textfield__expandable-holder
+        .mdl-textfield__label:after) {
+}
 
-:host(:focus) main > div > label:after:extend(
-    .mdl-textfield.is-focused .mdl-textfield__label:after
-) { }
+:host(:focus)
+    main
+    > div
+    > label:after:extend(.mdl-textfield.is-focused
+        .mdl-textfield__label:after) {
+}

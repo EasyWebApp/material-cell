@@ -1,7 +1,7 @@
 {
     "name": "material-cell",
-    "version": "1.0.0-alpha",
-    "description": "Material-design Web component library based on WebCell",
+    "version": "2.0.0-alpha",
+    "description": "Material Design Web Components library based on WebCell",
     "keywords": [
         "material",
         "design",
@@ -11,7 +11,7 @@
     ],
     "author": "shiy2008@gmail.com",
     "license": "LGPL-3.0",
-    "homepage": "https://web-cell-ht.ml/",
+    "homepage": "https://web-cell.dev/material-cell/",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/EasyWebApp/material-cell.git"
@@ -19,62 +19,45 @@
     "bugs": {
         "url": "https://github.com/EasyWebApp/material-cell/issues"
     },
-    "module": "dist/index.js",
-    "directories": {
-        "lib": "source/",
-        "test": "test/"
+    "module": "source/index.ts",
+    "peerDependencies": {
+        "classnames": "^2.2.6",
+        "daemonite-material": "^4.1.1",
+        "material-design-icons": "^3.0.1",
+        "web-cell": "^2.0.0-rc.15"
+    },
+    "devDependencies": {
+        "@types/classnames": "^2.2.9",
+        "@typescript-eslint/parser": "^2.19.0",
+        "@webcomponents/webcomponentsjs": "^2.4.1",
+        "classnames": "^2.2.6",
+        "eslint": "^6.8.0",
+        "husky": "^4.2.1",
+        "lint-staged": "^10.0.7",
+        "prettier": "^1.19.1",
+        "typescript": "^3.7.5",
+        "web-cell": "^2.0.0-rc.15"
+    },
+    "prettier": {
+        "singleQuote": true,
+        "tabWidth": 4
+    },
+    "lint-staged": {
+        "*.{md,json}": [
+            "prettier --write"
+        ],
+        "*.{ts,tsx}": [
+            "prettier --write",
+            "eslint --fix"
+        ]
     },
     "scripts": {
-        "format": "prettier --write \"{,!(node_modules|.git|dist|docs)/**/}*.{html,md,css,less,js,json,yml,yaml}\"",
-        "lint": "eslint source/ test/ --fix",
-        "build": "npm run format  &&  npm run lint  &&  web-cell pack",
-        "dev": "web-cell preview",
-        "test": "npm run build"
+        "lint": "lint-staged",
+        "test": "npm run lint"
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm test  &&  git add ."
+            "pre-commit": "npm test"
         }
-    },
-    "dependencies": {
-        "material-design-icons": "^3.0.1",
-        "material-design-lite": "^1.3.0",
-        "dom-renderer": "^0.9.0",
-        "web-cell": "^1.1.0"
-    },
-    "peerDependencies": {
-        "resize-observer-polyfill": "^1.5.1"
-    },
-    "devDependencies": {
-        "@babel/plugin-proposal-decorators": "^7.4.4",
-        "@babel/polyfill": "^7.4.4",
-        "@babel/preset-env": "^7.4.4",
-        "@webcomponents/webcomponentsjs": "^2.2.10",
-        "babel-eslint": "^10.0.1",
-        "eslint": "^5.16.0",
-        "husky": "^2.2.0",
-        "prettier": "^1.17.0",
-        "resize-observer-polyfill": "^1.5.1",
-        "web-cell-cli": "^1.0.0-beta"
-    },
-    "babel": {
-        "presets": [
-            [
-                "@babel/preset-env",
-                {
-                    "targets": {
-                        "ie": 11
-                    }
-                }
-            ]
-        ],
-        "plugins": [
-            [
-                "@babel/plugin-proposal-decorators",
-                {
-                    "decoratorsBeforeExport": true
-                }
-            ]
-        ]
     }
 }

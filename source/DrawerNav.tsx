@@ -9,11 +9,11 @@ import {
     createCell,
     Fragment
 } from 'web-cell';
+import { HTMLHyperLinkProps } from 'boot-cell/source/utility/type';
+import { Size } from 'boot-cell/source/utility/constant';
 import classNames from 'classnames';
 
-export interface DrawerMenuItem {
-    title: string;
-    href?: string;
+export interface DrawerMenuItem extends HTMLHyperLinkProps {
     icon?: string;
     active?: boolean;
     disabled?: boolean;
@@ -25,6 +25,11 @@ export interface DrawerNavProps {
     menu?: DrawerMenuItem[];
     direction?: 'left' | 'right';
     open?: boolean;
+    permanent?: keyof typeof Size;
+    clipped?: boolean;
+    float?: boolean;
+    persistent?: keyof typeof Size;
+    temporary?: keyof typeof Size;
 }
 
 @component({
@@ -44,19 +49,62 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
 
     @attribute
     @watch
+    permanent: DrawerNavProps['permanent'];
+
+    @attribute
+    @watch
+    clipped: boolean;
+
+    @attribute
+    @watch
+    float: boolean;
+
+    @attribute
+    @watch
+    persistent: DrawerNavProps['persistent'];
+
+    @attribute
+    @watch
+    temporary: DrawerNavProps['temporary'];
+
+    @attribute
+    @watch
     set open(open: boolean) {
-        this.setProps({ open }).then(() =>
-            open ? transitIn(this, 'show') : transitOut(this, 'show')
-        );
+        this.setProps({ open }).then(() => {
+            open ? transitIn(this, 'show') : transitOut(this, 'show');
+        });
     }
 
     connectedCallback() {
         this.tabIndex = -1;
 
-        this.classList.add(
+        const {
+            direction,
+            permanent,
+            clipped,
+            float,
+            persistent,
+            temporary
+        } = this.props;
+
+        const Class = classNames(
             'navdrawer',
-            this.props.direction === 'left' ? '' : 'navdrawer-right'
+            direction !== 'left' && 'navdrawer-right',
+            typeof permanent === 'string' &&
+                'navdrawer-permanent' +
+                    (permanent === 'xs' ? '' : '-' + permanent),
+            clipped && 'navdrawer-permanent-clipped',
+            float && 'navdrawer-permanent-float',
+            typeof persistent === 'string' &&
+                'navdrawer-persistent' +
+                    (persistent === 'xs' ? '' : '-' + persistent),
+            typeof temporary === 'string' &&
+                'navdrawer-temporary' +
+                    (temporary === 'xs' ? '' : '-' + temporary)
         );
+
+        if (this.className.trim()) this.className += ' ' + Class;
+        else this.className = Class;
 
         this.setAttribute('aria-hidden', 'true');
     }
@@ -66,10 +114,12 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
         disabled,
         href,
         icon,
-        title
+        title,
+        ...rest
     }: DrawerMenuItem) => (
         <li className="nav-item">
             <a
+                {...rest}
                 className={classNames(
                     'nav-link',
                     active && 'active',
@@ -103,19 +153,22 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
 
                 {tops[0] && (
                     <nav className="navdrawer-nav">
-                        {tops.map(({ active, disabled, href, title }) => (
-                            <a
-                                className={classNames(
-                                    'nav-item',
-                                    'nav-link',
-                                    active && 'active',
-                                    disabled && 'disabled'
-                                )}
-                                href={href}
-                            >
-                                {title}
-                            </a>
-                        ))}
+                        {tops.map(
+                            ({ active, disabled, href, title, ...rest }) => (
+                                <a
+                                    {...rest}
+                                    className={classNames(
+                                        'nav-item',
+                                        'nav-link',
+                                        active && 'active',
+                                        disabled && 'disabled'
+                                    )}
+                                    href={href}
+                                >
+                                    {title}
+                                </a>
+                            )
+                        )}
                     </nav>
                 )}
                 {subs.map(({ children = [], title }) => (

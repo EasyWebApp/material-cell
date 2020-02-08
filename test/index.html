@@ -1,20 +1,4 @@
 <!DOCTYPE html>
-<!--
-    Material Design Lite
-    Copyright 2015 Google Inc. All rights reserved.
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-    https://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License
--->
 <html>
     <head>
         <meta charset="utf-8" />
@@ -23,219 +7,20 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
         />
-
         <link rel="shortcut icon" href="image/icon/favicon.png" />
-        <title>Material Design Lite</title>
-
+        <title>Material Cell</title>
         <link
             rel="stylesheet"
-            href="../node_modules/material-design-lite/material.min.css"
+            href="https://cdn.jsdelivr.net/npm/daemonite-material@4.1.1/css/material.min.css"
         />
-        <link rel="stylesheet" href="style/index.css" />
         <link
             rel="stylesheet"
-            href="../node_modules/material-design-icons/iconfont/material-icons.css"
+            href="https://lib.baomitu.com/material-design-icons/3.0.1/iconfont/material-icons.min.css"
         />
-        <link rel="stylesheet" href="style/font.css" />
-        <style>
-            #view-source {
-                position: fixed;
-                display: block;
-                right: 0;
-                bottom: 0;
-                margin-right: 40px;
-                margin-bottom: 40px;
-                z-index: 900;
-            }
-        </style>
-        <script src="../node_modules/@babel/polyfill/dist/polyfill.min.js"></script>
-        <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-        <script src="../node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
-        <script src="../node_modules/resize-observer-polyfill/dist/ResizeObserver.global.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.4.1/custom-elements-es5-adapter.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.4.1/webcomponents-bundle.js"></script>
 
-        <script src="../node_modules/dom-renderer/dist/dom-renderer.js"></script>
-        <script src="../node_modules/web-cell/dist/web-cell.js"></script>
-        <script src="../dist/Icon.js"></script>
-        <script src="../dist/Card.js"></script>
-        <script src="../dist/Search.js"></script>
-        <script src="../dist/Checkbox.js"></script>
-        <script src="../dist/Menu.js"></script>
-        <script src="../dist/Header.js"></script>
-        <script src="../dist/Drawer.js"></script>
-        <script src="../dist/Navigation.js"></script>
-
-        <script src="index.js" async></script>
+        <script src="index.tsx" async></script>
     </head>
-    <body>
-        <div
-            class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header"
-        >
-            <cell-header
-                class="demo-header mdl-color--grey-100 mdl-color-text--grey-600"
-            >
-                <div tabindex="0" class="mdl-layout__drawer-button" slot="left">
-                    <cell-icon name="menu"></cell-icon>
-                </div>
-                Home
-                <cell-search slot="right">
-                    <input type="search" placeholder="Enter your query..." />
-                </cell-search>
-                <cell-menu class="right" slot="right">
-                    <li>About</li>
-                    <li>Contact</li>
-                    <li>Legal information</li>
-                </cell-menu>
-            </cell-header>
-            <cell-drawer
-                class="demo-drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50"
-            >
-                <header class="demo-drawer-header">
-                    <img src="image/user.jpg" class="demo-avatar" />
-                    <div class="demo-avatar-dropdown">
-                        <span>hello@example.com</span>
-                        <div class="mdl-layout-spacer"></div>
-                        <cell-menu class="right" icon="arrow_drop_down">
-                            <li>hello@example.com</li>
-                            <li>info@example.com</li>
-                            <li>
-                                <cell-icon name="add"></cell-icon>
-                                Add another account...
-                            </li>
-                        </cell-menu>
-                    </div>
-                </header>
-                <cell-navigation
-                    class="demo-navigation mdl-color--blue-grey-800"
-                    src="index.json"
-                ></cell-navigation>
-            </cell-drawer>
-            <main class="mdl-layout__content mdl-color--grey-100">
-                <div class="mdl-grid demo-content">
-                    <div
-                        class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid"
-                        id="PieChart"
-                    >
-                        <template>
-                            <svg
-                                fill="currentColor"
-                                width="200px"
-                                height="200px"
-                                viewBox="0 0 1 1"
-                                class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop"
-                            >
-                                <use
-                                    xlink:href="image/chart/PieChart.svg#chart"
-                                    mask="url(image/chart/PieChart.svg#mask)"
-                                />
-                                <text
-                                    x="0.5"
-                                    y="0.5"
-                                    font-family="Roboto"
-                                    font-size="0.3"
-                                    fill="#888"
-                                    text-anchor="middle"
-                                    dy="0.1"
-                                >
-                                    ${view.percent}
-                                    <tspan dy="-0.07" font-size="0.2">%</tspan>
-                                </text>
-                            </svg>
-                        </template>
-                    </div>
-                    <div
-                        class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col"
-                    >
-                        <svg
-                            fill="currentColor"
-                            viewBox="0 0 500 250"
-                            class="demo-graph"
-                        >
-                            <use xlink:href="image/chart/Chart.svg#chart" />
-                        </svg>
-                        <svg
-                            fill="currentColor"
-                            viewBox="0 0 500 250"
-                            class="demo-graph"
-                        >
-                            <use xlink:href="image/chart/Chart.svg#chart" />
-                        </svg>
-                    </div>
-                    <div
-                        class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing"
-                    >
-                        <cell-card
-                            class="demo-updates mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop"
-                        >
-                            <header slot="title" class="mdl-color--teal-300">
-                                <h2 class="mdl-card__title-text">Updates</h2>
-                            </header>
-                            <div class="mdl-color-text--grey-600">
-                                Non dolore elit adipisicing ea reprehenderit
-                                consectetur culpa.
-                            </div>
-                            <footer slot="action">
-                                <a
-                                    href="#"
-                                    class="mdl-button mdl-js-button mdl-js-ripple-effect"
-                                    >Read More</a
-                                >
-                            </footer>
-                        </cell-card>
-                        <div class="demo-separator mdl-cell--1-col"></div>
-                        <cell-card
-                            class="demo-options mdl-color--deep-purple-500 mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--12-col-desktop"
-                        >
-                            <div class="mdl-color-text--blue-grey-50">
-                                <h3>View options</h3>
-                                <ul>
-                                    <li>
-                                        <cell-checkbox>
-                                            <input type="checkbox" />
-                                            <span slot="label"
-                                                >Click per object</span
-                                            >
-                                        </cell-checkbox>
-                                    </li>
-                                    <li>
-                                        <cell-checkbox>
-                                            <input type="checkbox" />
-                                            <span slot="label"
-                                                >Views per object</span
-                                            >
-                                        </cell-checkbox>
-                                    </li>
-                                    <li>
-                                        <cell-checkbox>
-                                            <input type="checkbox" />
-                                            <span slot="label"
-                                                >Objects selected</span
-                                            >
-                                        </cell-checkbox>
-                                    </li>
-                                    <li>
-                                        <cell-checkbox>
-                                            <input type="checkbox" />
-                                            <span slot="label"
-                                                >Objects viewed</span
-                                            >
-                                        </cell-checkbox>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div slot="action">
-                                <a
-                                    href="#"
-                                    class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-50"
-                                    >Change location</a
-                                >
-                                <div class="mdl-layout-spacer"></div>
-                                <cell-icon name="location_on"></cell-icon>
-                            </div>
-                        </cell-card>
-                    </div>
-                </div>
-            </main>
-        </div>
-        <script src="../node_modules/material-design-lite/material.min.js"></script>
-    </body>
+    <body></body>
 </html>

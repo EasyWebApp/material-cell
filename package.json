@@ -1,6 +1,6 @@
 {
     "name": "material-cell",
-    "version": "2.0.0-alpha",
+    "version": "2.0.0-alpha.1",
     "description": "Material Design Web Components library based on WebCell",
     "keywords": [
         "material",
@@ -21,29 +21,34 @@
     },
     "module": "source/index.ts",
     "peerDependencies": {
+        "boot-cell": "^0.25.0",
         "classnames": "^2.2.6",
         "daemonite-material": "^4.1.1",
         "material-design-icons": "^3.0.1",
-        "web-cell": "^2.0.0-rc.15"
+        "web-cell": "^2.0.0-rc.16"
     },
     "devDependencies": {
         "@types/classnames": "^2.2.9",
         "@typescript-eslint/parser": "^2.19.0",
-        "@webcomponents/webcomponentsjs": "^2.4.1",
+        "boot-cell": "^0.25.0",
         "classnames": "^2.2.6",
         "eslint": "^6.8.0",
         "husky": "^4.2.1",
         "lint-staged": "^10.0.7",
+        "open-cli": "^5.0.0",
+        "parcel-bundler": "^1.12.4",
         "prettier": "^1.19.1",
+        "snabbdom": "^0.7.4",
+        "typedoc": "^0.16.9",
         "typescript": "^3.7.5",
-        "web-cell": "^2.0.0-rc.15"
+        "web-cell": "^2.0.0-rc.16"
     },
     "prettier": {
         "singleQuote": true,
         "tabWidth": 4
     },
     "lint-staged": {
-        "*.{md,json}": [
+        "*.{html,md,json}": [
             "prettier --write"
         ],
         "*.{ts,tsx}": [
@@ -53,11 +58,18 @@
     },
     "scripts": {
         "lint": "lint-staged",
-        "test": "npm run lint"
+        "test": "npm run lint",
+        "pack-docs": "rm -rf docs/  &&  typedoc source/",
+        "pack-demo": "parcel build test/index.html -d docs/demo/ --public-url .",
+        "build": "npm run pack-docs  &&  npm run pack-demo",
+        "help": "npm run build  &&  open-cli docs/index.html",
+        "start": "parcel test/main.html --open",
+        "prepublishOnly": "npm test  &&  npm run build"
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm test"
+            "pre-commit": "npm test",
+            "pre-push": "npm run build"
         }
     }
 }

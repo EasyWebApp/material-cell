@@ -4,9 +4,19 @@
         "target": "ES5",
         "module": "ES6",
         "moduleResolution": "Node",
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
         "experimentalDecorators": true,
         "jsx": "react",
         "jsxFactory": "createCell",
         "lib": ["ES2019", "DOM"]
+    },
+    "typedocOptions": {
+        "name": "Material Cell",
+        "mode": "file",
+        "excludeExternals": true,
+        "excludeNotExported": true,
+        "readme": "./README.md",
+        "out": "docs/"
     }
 }

@@ -62,4 +62,5 @@ typings/
 
 # Package built
 package-lock.json
-dist/
+.cache/
+docs/

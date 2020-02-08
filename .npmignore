@@ -1,4 +1,6 @@
 .editorconfig
 .eslintrc.json
+.cache/
 test/
-CNAME
+docs/
+.travis.yml

@@ -5,18 +5,24 @@
 https://web-cell.dev/material-cell/demo/
 
 [![NPM Dependency](https://david-dm.org/EasyWebApp/material-cell.svg)][4]
+[![Build Status](https://travis-ci.com/EasyWebApp/material-cell.svg?branch=master)][5]
 
-[![NPM](https://nodei.co/npm/material-cell.png?downloads=true&downloadRank=true&stars=true)][5]
+[![NPM](https://nodei.co/npm/material-cell.png?downloads=true&downloadRank=true&stars=true)][6]
 
 ## Component
 
-1. [DrawerNav](https://web-cell.dev/material-cell/interfaces/drawernavprops.html)
+1. [Icon](https://web-cell.dev/material-cell/interfaces/iconprops.html)
+2. [DrawerNav](https://web-cell.dev/material-cell/interfaces/drawernavprops.html)
 
 ## Usage
 
 ```Shell
 npm install material-cell web-cell classnames
 ```
+
+### Example
+
+https://github.com/EasyWebApp/material-cell/tree/master/test
 
 ## Acknowledge
 
@@ -26,4 +32,5 @@ npm install material-cell web-cell classnames
 [2]: https://www.webcomponents.org/
 [3]: https://web-cell.dev/
 [4]: https://david-dm.org/EasyWebApp/material-cell
-[5]: https://nodei.co/npm/material-cell/
+[5]: https://travis-ci.com/EasyWebApp/material-cell
+[6]: https://nodei.co/npm/material-cell/

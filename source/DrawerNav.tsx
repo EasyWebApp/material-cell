@@ -13,6 +13,8 @@ import { HTMLHyperLinkProps } from 'boot-cell/source/utility/type';
 import { Size } from 'boot-cell/source/utility/constant';
 import classNames from 'classnames';
 
+import { Icon } from './Icon';
+
 export interface DrawerMenuItem extends HTMLHyperLinkProps {
     icon?: string;
     active?: boolean;
@@ -70,8 +72,22 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
     @attribute
     @watch
     set open(open: boolean) {
-        this.setProps({ open }).then(() => {
-            open ? transitIn(this, 'show') : transitOut(this, 'show');
+        if (open === !!this.props.open) return;
+
+        this.setProps({ open }).then(async () => {
+            if (open) {
+                this.removeAttribute('aria-hidden');
+
+                await transitIn(this, 'show');
+
+                this.emit('open');
+            } else {
+                this.setAttribute('aria-hidden', 'true');
+
+                await transitOut(this, 'show');
+
+                this.emit('close');
+            }
         });
     }
 
@@ -87,8 +103,11 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
             temporary
         } = this.props;
 
+        const backdrop = !permanent && !persistent && !temporary;
+
         const Class = classNames(
             'navdrawer',
+            backdrop && 'navdrawer-backdrop',
             direction !== 'left' && 'navdrawer-right',
             typeof permanent === 'string' &&
                 'navdrawer-permanent' +
@@ -106,7 +125,10 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
         if (this.className.trim()) this.className += ' ' + Class;
         else this.className = Class;
 
-        this.setAttribute('aria-hidden', 'true');
+        if (backdrop)
+            this.addEventListener('click', ({ target }) => {
+                if (this === target) this.open = false;
+            });
     }
 
     renderSubItem = ({
@@ -127,7 +149,7 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
                 )}
                 href={href}
             >
-                <i className="material-icons mr-3">{icon}</i> {title}
+                <Icon className="mr-3" name={icon} /> {title}
             </a>
         </li>
     );
@@ -146,7 +168,7 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
         return (
             <div className="navdrawer-content">
                 <div className="navdrawer-header">
-                    <a className="navbar-brand px-0" href=".">
+                    <a className="navbar-brand px-0" target="_top" href=".">
                         {header}
                     </a>
                 </div>

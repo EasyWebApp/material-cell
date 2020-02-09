@@ -1,0 +1,36 @@
+---
+title: Chip
+icon: label
+description: Chips represent complex entities in small blocks, such as a contact.
+---
+
+import { Chip } from '../../source/Chip';
+import { Example } from '../../test/component/Example';
+
+## Usage
+
+Chips can be used for various types of entities, including brief information, free form text, or short title. Chips may also contain icons or photos.
+
+<Example>
+    <Chip>Chip Label</Chip>
+    <Chip icon="C">Chip Label</Chip>
+    <Chip image="https://daemonite.github.io/material/apple-touch-icon.png">
+        Chip Label
+    </Chip>
+</Example>
+
+```javascript
+<Chip>Chip Label</Chip>
+<Chip icon="C">Chip Label</Chip>
+<Chip image="https://daemonite.github.io/material/apple-touch-icon.png">Chip Label</Chip>
+```
+
+Chips can be deletable. A delete icon can be displayed if a chip is deletable.
+
+<Example>
+    <Chip closable>Chip Label</Chip>
+</Example>
+
+```javascript
+<Chip closable>Chip Label</Chip>
+```

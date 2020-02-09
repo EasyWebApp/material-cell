@@ -4,7 +4,7 @@ pre {
 }
 @media (min-width: 768px) {
     main.container {
-        margin-left: 17.5rem;
-        width: calc(100vw - 17.5rem);
+        margin-left: 18rem;
+        width: calc(100vw - 20rem);
     }
 }

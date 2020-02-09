@@ -9,10 +9,13 @@ https://web-cell.dev/material-cell/demo/
 
 [![NPM](https://nodei.co/npm/material-cell.png?downloads=true&downloadRank=true&stars=true)][6]
 
-## Component
+## Components
 
-1. [Icon](https://web-cell.dev/material-cell/interfaces/iconprops.html)
-2. [DrawerNav](https://web-cell.dev/material-cell/interfaces/drawernavprops.html)
+|   Name    |                                  API                                   |                        Demo                        |
+| :-------: | :--------------------------------------------------------------------: | :------------------------------------------------: |
+|   Icon    |   [√](https://web-cell.dev/material-cell/interfaces/iconprops.html)    | [√](https://web-cell.dev/material-cell/demo/#icon) |
+|   Chip    |   [√](https://web-cell.dev/material-cell/interfaces/chipprops.html)    | [√](https://web-cell.dev/material-cell/demo/#chip) |
+| DrawerNav | [√](https://web-cell.dev/material-cell/interfaces/drawernavprops.html) |                                                    |
 
 ## Usage
 

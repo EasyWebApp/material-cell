@@ -6,7 +6,10 @@ import { NavBar } from 'boot-cell/source/Navigator/NavBar';
 import { Button } from 'boot-cell/source/Form/Button';
 import { DrawerNav, Icon } from '../../source';
 
-import children from '../index.json';
+import logo from '../image/icon/logo.png';
+import routes from '../../document/dist';
+
+import { HomePage } from './Home';
 
 @observer
 @component({
@@ -15,7 +18,7 @@ import children from '../index.json';
 })
 export class PageRouter extends HTMLRouter {
     protected history = new History();
-    protected routes = [];
+    protected routes = [{ paths: [''], component: HomePage }, ...routes];
 
     @watch
     drawerOpen = false;
@@ -23,7 +26,11 @@ export class PageRouter extends HTMLRouter {
     render() {
         return (
             <Fragment>
-                <NavBar>
+                <NavBar
+                    background="primary"
+                    expand="xs"
+                    brand={<img style={{ width: '2.5rem' }} src={logo} />}
+                >
                     <Button
                         kind="light"
                         outline
@@ -34,15 +41,26 @@ export class PageRouter extends HTMLRouter {
                 </NavBar>
 
                 <DrawerNav
-                    direction="right"
+                    permanent="md"
+                    clipped
                     header="Material Cell"
                     menu={[
                         { title: 'WebCell', href: 'https://web-cell.dev/' },
-                        { title: 'Subs', children }
+                        {
+                            title: 'Components',
+                            children: routes.map(
+                                ({ paths: [href], meta: { title, icon } }) => ({
+                                    href,
+                                    title,
+                                    icon
+                                })
+                            )
+                        }
                     ]}
                     open={this.drawerOpen}
                     onClose={() => (this.drawerOpen = false)}
                 />
+                <main className="container mt-5 py-5">{super.render()}</main>
             </Fragment>
         );
     }

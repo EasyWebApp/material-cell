@@ -21,7 +21,7 @@
     },
     "module": "source/index.ts",
     "peerDependencies": {
-        "boot-cell": "^0.25.0",
+        "boot-cell": "^0.26.0",
         "classnames": "^2.2.6",
         "daemonite-material": "^4.1.1",
         "material-design-icons": "^3.0.1",
@@ -36,6 +36,7 @@
         "eslint": "^6.8.0",
         "husky": "^4.2.1",
         "lint-staged": "^10.0.7",
+        "mark-cell": "^0.2.3",
         "mobx": "^5.15.4",
         "mobx-web-cell": "^0.2.5",
         "open-cli": "^5.0.0",
@@ -51,7 +52,7 @@
         "tabWidth": 4
     },
     "lint-staged": {
-        "*.{html,md,json}": [
+        "*.{html,css,md,mdx,json}": [
             "prettier --write"
         ],
         "*.{ts,tsx}": [
@@ -63,10 +64,11 @@
         "lint": "lint-staged",
         "test": "npm run lint",
         "pack-docs": "rm -rf docs/  &&  typedoc source/",
+        "pack-mdx": "rm -rf document/dist/  &&  mark-cell document/source -p web-cell -f createCell",
         "pack-demo": "parcel build test/index.html -d docs/demo/ --public-url .",
-        "build": "npm run pack-docs  &&  npm run pack-demo",
+        "build": "npm run pack-docs  &&  npm run pack-mdx  &&  npm run pack-demo",
         "help": "npm run build  &&  open-cli docs/index.html",
-        "start": "parcel test/index.html -d docs/demo/ --open",
+        "start": "npm run pack-mdx  &&  parcel test/index.html -d docs/demo/ --open",
         "prepublishOnly": "npm test  &&  npm run build"
     },
     "husky": {

@@ -6,6 +6,7 @@ import {
     attribute,
     transitIn,
     transitOut,
+    on,
     createCell,
     Fragment
 } from 'web-cell';
@@ -125,10 +126,26 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
         if (this.className.trim()) this.className += ' ' + Class;
         else this.className = Class;
 
-        if (backdrop)
-            this.addEventListener('click', ({ target }) => {
-                if (this === target) this.open = false;
-            });
+        self.addEventListener('keydown', this.closeByEscape);
+        this.addEventListener('click', this.closeByCover);
+    }
+
+    disconnectedCallback() {
+        self.removeEventListener('keydown', this.closeByEscape);
+        this.removeEventListener('click', this.closeByCover);
+    }
+
+    closeByEscape = ({ code }: KeyboardEvent) => {
+        if (code === 'Escape') this.open = false;
+    };
+
+    closeByCover = ({ target }: MouseEvent) => {
+        if (this === target) this.open = false;
+    };
+
+    @on('click', 'a[href]')
+    closeByLink() {
+        this.open = false;
     }
 
     renderSubItem = ({

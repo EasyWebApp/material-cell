@@ -2,5 +2,6 @@
 .eslintrc.json
 .cache/
 test/
+document/
 docs/
 .travis.yml

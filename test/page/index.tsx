@@ -5,8 +5,9 @@ import { HTMLRouter, History } from 'cell-router/source';
 import { NavBar } from 'boot-cell/source/Navigator/NavBar';
 import { Button } from 'boot-cell/source/Form/Button';
 import { DrawerNav, Icon } from '../../source';
+import { PageFrame } from '../component';
 
-import logo from '../image/icon/logo.png';
+import logo from '../image/logo.png';
 import routes from '../../document/dist';
 
 import { HomePage } from './Home';
@@ -18,7 +19,21 @@ import { HomePage } from './Home';
 })
 export class PageRouter extends HTMLRouter {
     protected history = new History();
-    protected routes = [{ paths: [''], component: HomePage }, ...routes];
+    protected routes = [
+        { paths: [''], component: HomePage },
+        ...routes.map(({ paths, component, meta: { title, description } }) => ({
+            paths,
+            component: async () => {
+                const Content = await component();
+
+                return () => (
+                    <PageFrame title={title} description={description}>
+                        <Content />
+                    </PageFrame>
+                );
+            }
+        }))
+    ];
 
     @watch
     drawerOpen = false;
@@ -60,7 +75,7 @@ export class PageRouter extends HTMLRouter {
                     open={this.drawerOpen}
                     onClose={() => (this.drawerOpen = false)}
                 />
-                <main className="container mt-5 py-5">{super.render()}</main>
+                <main className="mt-5 py-3">{super.render()}</main>
             </Fragment>
         );
     }

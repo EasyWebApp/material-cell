@@ -11,11 +11,12 @@ https://web-cell.dev/material-cell/demo/
 
 ## Components
 
-|   Name    |                                  API                                   |                        Demo                        |
-| :-------: | :--------------------------------------------------------------------: | :------------------------------------------------: |
-|   Icon    |   [√](https://web-cell.dev/material-cell/interfaces/iconprops.html)    | [√](https://web-cell.dev/material-cell/demo/#icon) |
-|   Chip    |   [√](https://web-cell.dev/material-cell/interfaces/chipprops.html)    | [√](https://web-cell.dev/material-cell/demo/#chip) |
-| DrawerNav | [√](https://web-cell.dev/material-cell/interfaces/drawernavprops.html) |                                                    |
+|   Name    |                                  API                                   |                         Demo                          |
+| :-------: | :--------------------------------------------------------------------: | :---------------------------------------------------: |
+|   Icon    |   [√](https://web-cell.dev/material-cell/interfaces/iconprops.html)    |  [√](https://web-cell.dev/material-cell/demo/#icon)   |
+|   Chip    |   [√](https://web-cell.dev/material-cell/interfaces/chipprops.html)    |  [√](https://web-cell.dev/material-cell/demo/#chip)   |
+|  Stepper  |  [√](https://web-cell.dev/material-cell/interfaces/stepperprops.html)  | [√](https://web-cell.dev/material-cell/demo/#stepper) |
+| DrawerNav | [√](https://web-cell.dev/material-cell/interfaces/drawernavprops.html) |                                                       |
 
 ## Usage
 

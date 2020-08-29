@@ -3,8 +3,14 @@ import { observer } from 'mobx-web-cell';
 import { HTMLRouter, History } from 'cell-router/source';
 
 import { NavBar } from 'boot-cell/source/Navigator/NavBar';
+import { NavLink } from 'boot-cell/source/Navigator/Nav';
 import { Button } from 'boot-cell/source/Form/Button';
-import { DrawerNav, Icon } from '../../source';
+import {
+    DrawerNav,
+    DrawerSubMenu,
+    DrawerSubMenuItem
+} from '../../source/DrawerNav';
+import { Icon } from '../../source/Icon';
 import { PageFrame } from '../component';
 
 import logo from '../image/logo.png';
@@ -40,14 +46,14 @@ export class PageRouter extends HTMLRouter {
 
     render() {
         return (
-            <Fragment>
+            <>
                 <NavBar
                     background="primary"
                     expand="xs"
                     brand={<img style={{ width: '2.5rem' }} src={logo} />}
                 >
                     <Button
-                        kind="light"
+                        color="light"
                         outline
                         onClick={() => (this.drawerOpen = true)}
                     >
@@ -59,24 +65,24 @@ export class PageRouter extends HTMLRouter {
                     permanent="md"
                     clipped
                     header="Material Cell"
-                    menu={[
-                        { title: 'WebCell', href: 'https://web-cell.dev/' },
-                        {
-                            title: 'Components',
-                            children: routes.map(
-                                ({ paths: [href], meta: { title, icon } }) => ({
-                                    href,
-                                    title,
-                                    icon
-                                })
-                            )
-                        }
-                    ]}
                     open={this.drawerOpen}
                     onClose={() => (this.drawerOpen = false)}
-                />
-                <main className="mt-5 py-3">{super.render()}</main>
-            </Fragment>
+                >
+                    <NavLink href="https://web-cell.dev/">WebCell</NavLink>
+
+                    <DrawerSubMenu title="Components">
+                        {routes.map(
+                            ({ paths: [href], meta: { title, icon } }) => (
+                                <DrawerSubMenuItem href={href} icon={icon}>
+                                    {title}
+                                </DrawerSubMenuItem>
+                            )
+                        )}
+                    </DrawerSubMenu>
+                </DrawerNav>
+
+                <main>{super.render()}</main>
+            </>
         );
     }
 }

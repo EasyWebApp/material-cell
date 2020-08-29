@@ -65,3 +65,6 @@ package-lock.json
 dist/
 .cache/
 docs/
+
+# IDE configuration
+.vscode/

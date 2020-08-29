@@ -1,5 +1,5 @@
 import { createCell } from 'web-cell';
-import { HTMLProps } from 'boot-cell/source/utility/type';
+import { HTMLProps } from 'web-utility/source/DOM-type';
 import classNames from 'classnames';
 
 export interface IconProps extends HTMLProps {

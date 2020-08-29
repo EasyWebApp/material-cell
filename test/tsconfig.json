@@ -1,0 +1,9 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "jsx": "react",
+        "jsxFactory": "createCell",
+        "jsxFragmentFactory": "Fragment"
+    },
+    "include": ["./*.ts", "./*.tsx", "./**/*"]
+}

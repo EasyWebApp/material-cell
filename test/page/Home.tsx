@@ -10,7 +10,7 @@ export function HomePage() {
             title="Material Cell"
             description="Material Design implement based on BootStrap v4 &amp; WebCell v2"
             header={
-                <Button kind="secondary" href={routes[0].paths[0]}>
+                <Button color="secondary" href={routes[0].paths[0]}>
                     Get started
                 </Button>
             }

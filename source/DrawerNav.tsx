@@ -1,31 +1,73 @@
 import {
+    WebCellProps,
     VNodeChildElement,
+    VNode,
     component,
     mixin,
     watch,
     attribute,
-    transitIn,
-    transitOut,
     on,
     createCell,
     Fragment
 } from 'web-cell';
-import { HTMLHyperLinkProps } from 'boot-cell/source/utility/type';
-import { Size } from 'boot-cell/source/utility/constant';
+import { HTMLHyperLinkProps } from 'web-utility/source/DOM-type';
+import { transitIn, transitOut } from 'web-utility/source/animation';
 import classNames from 'classnames';
+import { Size } from 'boot-cell/source/utility/constant';
+import { isNavLink } from 'boot-cell/source/Navigator/Nav';
 
 import { Icon } from './Icon';
+import './DrawerNav.css';
 
-export interface DrawerMenuItem extends HTMLHyperLinkProps {
+export interface DrawerSubMenuItemProps
+    extends WebCellProps,
+        HTMLHyperLinkProps {
     icon?: string;
     active?: boolean;
     disabled?: boolean;
-    children?: DrawerMenuItem[];
+    children?: DrawerSubMenuItemProps[];
 }
 
-export interface DrawerNavProps {
+export function DrawerSubMenuItem({
+    active,
+    disabled,
+    href,
+    icon,
+    defaultSlot,
+    ...rest
+}: DrawerSubMenuItemProps) {
+    return (
+        <li className="nav-item">
+            <a
+                {...rest}
+                className={classNames(
+                    'nav-link',
+                    active && 'active',
+                    disabled && 'disabled'
+                )}
+                href={href}
+            >
+                {icon && <Icon className="mr-3" name={icon} />} {defaultSlot}
+            </a>
+        </li>
+    );
+}
+
+export interface DrawerSubMenuProps extends WebCellProps {}
+
+export function DrawerSubMenu({ title, defaultSlot }: DrawerSubMenuProps) {
+    return (
+        <>
+            <div className="navdrawer-divider" />
+            <p className="navdrawer-subheader">{title}</p>
+
+            {defaultSlot[0] && <ul className="navdrawer-nav">{defaultSlot}</ul>}
+        </>
+    );
+}
+
+export interface DrawerNavProps extends WebCellProps {
     header?: VNodeChildElement;
-    menu?: DrawerMenuItem[];
     direction?: 'left' | 'right';
     open?: boolean;
     permanent?: keyof typeof Size;
@@ -33,6 +75,7 @@ export interface DrawerNavProps {
     float?: boolean;
     persistent?: keyof typeof Size;
     temporary?: keyof typeof Size;
+    onClose?: (event: CustomEvent) => any;
 }
 
 @component({
@@ -42,9 +85,6 @@ export interface DrawerNavProps {
 export class DrawerNav extends mixin<DrawerNavProps>() {
     @watch
     header = '';
-
-    @watch
-    menu = [];
 
     @attribute
     @watch
@@ -94,37 +134,7 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
 
     connectedCallback() {
         this.tabIndex = -1;
-
-        const {
-            direction,
-            permanent,
-            clipped,
-            float,
-            persistent,
-            temporary
-        } = this.props;
-
-        const backdrop = !permanent && !persistent && !temporary;
-
-        const Class = classNames(
-            'navdrawer',
-            backdrop && 'navdrawer-backdrop',
-            direction !== 'left' && 'navdrawer-right',
-            typeof permanent === 'string' &&
-                'navdrawer-permanent' +
-                    (permanent === 'xs' ? '' : '-' + permanent),
-            clipped && 'navdrawer-permanent-clipped',
-            float && 'navdrawer-permanent-float',
-            typeof persistent === 'string' &&
-                'navdrawer-persistent' +
-                    (persistent === 'xs' ? '' : '-' + persistent),
-            typeof temporary === 'string' &&
-                'navdrawer-temporary' +
-                    (temporary === 'xs' ? '' : '-' + temporary)
-        );
-
-        if (this.className.trim()) this.className += ' ' + Class;
-        else this.className = Class;
+        this.classList.add('navdrawer');
 
         self.addEventListener('keydown', this.closeByEscape);
         this.addEventListener('click', this.closeByCover);
@@ -148,38 +158,48 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
         this.open = false;
     }
 
-    renderSubItem = ({
-        active,
-        disabled,
-        href,
-        icon,
-        title,
-        ...rest
-    }: DrawerMenuItem) => (
-        <li className="nav-item">
-            <a
-                {...rest}
-                className={classNames(
-                    'nav-link',
-                    active && 'active',
-                    disabled && 'disabled'
-                )}
-                href={href}
-            >
-                <Icon className="mr-3" name={icon} /> {title}
-            </a>
-        </li>
-    );
+    updatedCallback() {
+        const { classList } = this,
+            {
+                direction,
+                permanent,
+                clipped,
+                float,
+                persistent,
+                temporary
+            } = this.props;
 
-    render({ menu, header }: DrawerNavProps) {
-        const [tops, subs]: DrawerMenuItem[][] = menu.reduce(
+        classList.toggle(
+            'navdrawer-backdrop',
+            !permanent && !persistent && !temporary
+        );
+        classList.toggle('navdrawer-right', direction !== 'left');
+        classList.toggle(
+            'navdrawer-permanent' + (permanent === 'xs' ? '' : '-' + permanent),
+            typeof permanent === 'string'
+        );
+        classList.toggle('navdrawer-permanent-clipped', clipped);
+        classList.toggle('navdrawer-permanent-float', float);
+        classList.toggle(
+            'navdrawer-persistent' +
+                (persistent === 'xs' ? '' : '-' + persistent),
+            typeof persistent === 'string'
+        );
+        classList.toggle(
+            'navdrawer-temporary' + (temporary === 'xs' ? '' : '-' + temporary),
+            typeof temporary === 'string'
+        );
+    }
+
+    render({ defaultSlot, header }: DrawerNavProps) {
+        const [tops, subs] = (defaultSlot as VNode[]).reduce(
             ([tops, subs], item) => {
-                if (item.href) tops.push(item);
+                if (isNavLink(item)) tops.push(item);
                 else subs.push(item);
 
                 return [tops, subs];
             },
-            [[], []]
+            [[], []] as VNode[][]
         );
 
         return (
@@ -189,39 +209,9 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
                         {header}
                     </a>
                 </div>
+                {tops[0] && <nav className="navdrawer-nav">{tops}</nav>}
 
-                {tops[0] && (
-                    <nav className="navdrawer-nav">
-                        {tops.map(
-                            ({ active, disabled, href, title, ...rest }) => (
-                                <a
-                                    {...rest}
-                                    className={classNames(
-                                        'nav-item',
-                                        'nav-link',
-                                        active && 'active',
-                                        disabled && 'disabled'
-                                    )}
-                                    href={href}
-                                >
-                                    {title}
-                                </a>
-                            )
-                        )}
-                    </nav>
-                )}
-                {subs.map(({ children = [], title }) => (
-                    <Fragment>
-                        <div className="navdrawer-divider" />
-                        <p className="navdrawer-subheader">{title}</p>
-
-                        {children[0] && (
-                            <ul className="navdrawer-nav">
-                                {children.map(this.renderSubItem)}
-                            </ul>
-                        )}
-                    </Fragment>
-                ))}
+                {subs}
             </div>
         );
     }

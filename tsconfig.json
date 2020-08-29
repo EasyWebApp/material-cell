@@ -1,14 +1,15 @@
 {
     "compilerOptions": {
-        "rootDir": "source/",
         "target": "ES5",
         "module": "ESNext",
         "moduleResolution": "Node",
         "allowSyntheticDefaultImports": true,
         "resolveJsonModule": true,
+        "downlevelIteration": true,
         "experimentalDecorators": true,
         "jsx": "react",
         "jsxFactory": "createCell",
+        "jsxFragmentFactory": "Fragment",
         "lib": ["ES2019", "DOM"]
     },
     "typedocOptions": {
@@ -18,5 +19,6 @@
         "excludeNotExported": true,
         "readme": "./README.md",
         "out": "docs/"
-    }
+    },
+    "include": ["source/*"]
 }

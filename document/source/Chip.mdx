@@ -5,6 +5,7 @@ description: Chips represent complex entities in small blocks, such as a contact
 ---
 
 import { Chip } from '../../source/Chip';
+
 import { Example } from '../../test/component/Example';
 
 ## Usage
@@ -19,10 +20,19 @@ Chips can be used for various types of entities, including brief information, fr
     </Chip>
 </Example>
 
-```javascript
-<Chip>Chip Label</Chip>
-<Chip icon="C">Chip Label</Chip>
-<Chip image="https://daemonite.github.io/material/apple-touch-icon.png">Chip Label</Chip>
+```TSX
+import { render, createCell, Fragment } from 'web-cell';
+import { Chip } from 'material-cell/source/Chip';
+
+render(
+    <>
+        <Chip>Chip Label</Chip>
+        <Chip icon="C">Chip Label</Chip>
+        <Chip image="https://daemonite.github.io/material/apple-touch-icon.png">
+            Chip Label
+        </Chip>
+    </>
+);
 ```
 
 Chips can be deletable. A delete icon can be displayed if a chip is deletable.
@@ -31,6 +41,11 @@ Chips can be deletable. A delete icon can be displayed if a chip is deletable.
     <Chip closable>Chip Label</Chip>
 </Example>
 
-```javascript
-<Chip closable>Chip Label</Chip>
+```TSX
+import { render, createCell } from 'web-cell';
+import { Chip } from 'material-cell/source/Chip';
+
+render(
+    <Chip closable>Chip Label</Chip>
+);
 ```

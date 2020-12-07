@@ -5,3 +5,4 @@ test/
 document/
 docs/
 .travis.yml
+.vscode/

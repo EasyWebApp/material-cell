@@ -13,6 +13,7 @@ https://web-cell.dev/material-cell/demo/
 
 |   Name    |                                  API                                   |                         Demo                          |
 | :-------: | :--------------------------------------------------------------------: | :---------------------------------------------------: |
+|  Button   |  [√](https://web-cell.dev/material-cell/interfaces/buttonprops.html)   | [√](https://web-cell.dev/material-cell/demo/#button)  |
 |   Icon    |   [√](https://web-cell.dev/material-cell/interfaces/iconprops.html)    |  [√](https://web-cell.dev/material-cell/demo/#icon)   |
 |   Chip    |   [√](https://web-cell.dev/material-cell/interfaces/chipprops.html)    |  [√](https://web-cell.dev/material-cell/demo/#chip)   |
 |  Stepper  |  [√](https://web-cell.dev/material-cell/interfaces/stepperprops.html)  | [√](https://web-cell.dev/material-cell/demo/#stepper) |
@@ -21,7 +22,7 @@ https://web-cell.dev/material-cell/demo/
 ## Usage
 
 ```Shell
-npm install material-cell web-cell classnames
+npm install material-cell boot-cell web-cell classnames
 ```
 
 ### Example

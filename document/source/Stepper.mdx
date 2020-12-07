@@ -5,6 +5,7 @@ description: Steppers convey progress through numbered steps.
 ---
 
 import { Stepper } from '../../source/Stepper';
+
 import { Example } from '../../test/component/Example';
 
 Steppers display progress through a sequence of logical and numbered steps. They may also be used for navigation.
@@ -24,15 +25,20 @@ Horizontal steppers are ideal when the contents of one step depend on an earlier
     />
 </Example>
 
-```javascript
-<Stepper
-    path={[
-        { title: 'Name of step 1' },
-        { title: 'Name of step 2' },
-        { title: 'Name of step 3' }
-    ]}
-    currentIndex={1}
-/>
+```TSX
+import { render, createCell } from 'web-cell';
+import { Stepper } from 'material-cell/source/Stepper';
+
+render(
+    <Stepper
+        path={[
+            { title: 'Name of step 1' },
+            { title: 'Name of step 2' },
+            { title: 'Name of step 3' }
+        ]}
+        currentIndex={1}
+    />
+);
 ```
 
 ## Vertical steppers
@@ -51,14 +57,19 @@ Vertical steppers are designed for narrow screen sizes. They are ideal for mobil
     />
 </Example>
 
-```javascript
-<Stepper
-    direction="vert"
-    path={[
-        { title: 'Name of step 1' },
-        { title: 'Name of step 2' },
-        { title: 'Name of step 3', icon: 'shopping_cart' }
-    ]}
-    currentIndex={1}
-/>
+```TSX
+import { render, createCell } from 'web-cell';
+import { Stepper } from 'material-cell/source/Stepper';
+
+render(
+    <Stepper
+        direction="vert"
+        path={[
+            { title: 'Name of step 1' },
+            { title: 'Name of step 2' },
+            { title: 'Name of step 3', icon: 'shopping_cart' }
+        ]}
+        currentIndex={1}
+    />
+);
 ```

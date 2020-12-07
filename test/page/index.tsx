@@ -1,6 +1,5 @@
-import { component, watch, createCell, Fragment } from 'web-cell';
-import { observer } from 'mobx-web-cell';
-import { HTMLRouter, History } from 'cell-router/source';
+import { component, watch, mixin, createCell, Fragment } from 'web-cell';
+import { History, CellRouter } from 'cell-router/source';
 
 import { NavBar } from 'boot-cell/source/Navigator/NavBar';
 import { NavLink } from 'boot-cell/source/Navigator/Nav';
@@ -18,12 +17,11 @@ import routes from '../../document/dist';
 
 import { HomePage } from './Home';
 
-@observer
 @component({
     tagName: 'page-router',
     renderTarget: 'children'
 })
-export class PageRouter extends HTMLRouter {
+export class PageRouter extends mixin() {
     protected history = new History();
     protected routes = [
         { paths: [''], component: HomePage },
@@ -81,7 +79,7 @@ export class PageRouter extends HTMLRouter {
                     </DrawerSubMenu>
                 </DrawerNav>
 
-                <main>{super.render()}</main>
+                <CellRouter history={this.history} routes={this.routes} />
             </>
         );
     }

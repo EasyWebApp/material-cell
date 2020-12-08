@@ -34,15 +34,10 @@
     "devDependencies": {
         "@types/classnames": "^2.2.11",
         "@typescript-eslint/parser": "^4.9.0",
-        "autoprefixer": "^9.8.6",
-        "bootstrap-icons": "^1.1.0",
-        "cell-router": "^2.0.1",
         "eslint": "^7.15.0",
         "husky": "^4.3.5",
         "lint-staged": "^10.5.3",
-        "mark-cell": "^0.4.5",
         "open-cli": "^6.0.1",
-        "parcel-bundler": "^1.12.4",
         "prettier": "^2.2.1",
         "snabbdom": "^1.0.1",
         "typedoc": "^0.19.2",
@@ -62,14 +57,10 @@
         ]
     },
     "scripts": {
-        "lint": "lint-staged",
-        "test": "npm run lint",
+        "test": "lint-staged",
         "pack-docs": "rm -rf docs/  &&  typedoc source/",
-        "pack-mdx": "rm -rf document/dist/  &&  mark-cell document/source -p web-cell -f createCell",
-        "pack-demo": "parcel build test/index.html -d docs/demo/ --public-url .",
-        "build": "npm run pack-docs  &&  npm run pack-mdx  &&  npm run pack-demo",
+        "build": "npm run pack-docs",
         "help": "npm run build  &&  open-cli docs/index.html",
-        "start": "npm run pack-mdx  &&  parcel test/index.html -d docs/demo/ --open",
         "prepublishOnly": "npm test  &&  npm run build"
     },
     "husky": {

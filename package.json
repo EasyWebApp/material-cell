@@ -1,6 +1,6 @@
 {
     "name": "material-cell",
-    "version": "2.0.0-alpha.6",
+    "version": "2.0.0-beta.0",
     "description": "Material Design Web Components library based on WebCell",
     "keywords": [
         "material",
@@ -19,7 +19,10 @@
     "bugs": {
         "url": "https://github.com/EasyWebApp/material-cell/issues"
     },
-    "module": "source/index.ts",
+    "source": "source/index.ts",
+    "types": "dist/index.d.ts",
+    "main": "dist/index.umd.js",
+    "module": "dist/index.js",
     "dependencies": {
         "boot-cell": "^1.5.1",
         "classnames": "^2.2.6",
@@ -32,14 +35,25 @@
         "material-design-icons": "^3.0.1"
     },
     "devDependencies": {
+        "@babel/plugin-proposal-optional-chaining": "^7.12.7",
+        "@babel/plugin-transform-typescript": "^7.12.1",
+        "@tech_query/snabbdom-looks-like": "^2.0.1",
         "@types/classnames": "^2.2.11",
         "@typescript-eslint/parser": "^4.9.0",
+        "bootstrap-icons": "^1.1.0",
+        "cross-env": "^7.0.3",
         "eslint": "^7.15.0",
         "husky": "^4.3.5",
+        "identity-obj-proxy": "^3.0.0",
+        "jest": "^26.6.3",
+        "jest-transform-stub": "^2.0.0",
+        "less": "^3.12.2",
         "lint-staged": "^10.5.3",
+        "microbundle": "^0.12.4",
         "open-cli": "^6.0.1",
         "prettier": "^2.2.1",
         "snabbdom": "^1.0.1",
+        "ts-jest": "^26.4.4",
         "typedoc": "^0.19.2",
         "typescript": "^4.1.2"
     },
@@ -57,10 +71,11 @@
         ]
     },
     "scripts": {
-        "test": "lint-staged",
+        "test": "lint-staged  &&  jest",
+        "pack-dist": "rm -rf dist/  &&  cross-env NODE_ENV=build  microbundle --external web-cell,web-utility,classnames,boot-cell --globals web-cell=WebCell,web-utility=WebUtility,classnames=classNames,boot-cell=BootCell --name MaterialCell",
         "pack-docs": "rm -rf docs/  &&  typedoc source/",
-        "build": "npm run pack-docs",
-        "help": "npm run build  &&  open-cli docs/index.html",
+        "build": "npm run pack-dist  &&  npm run pack-docs",
+        "start": "npm run build  &&  open-cli docs/index.html",
         "prepublishOnly": "npm test  &&  npm run build"
     },
     "husky": {

@@ -1,11 +1,14 @@
-import { createCell } from 'web-cell';
-import { HTMLProps } from 'web-utility/source/DOM-type';
+import { WebCellProps, createCell } from 'web-cell';
 import classNames from 'classnames';
 
-export interface IconProps extends HTMLProps {
+export interface IconProps extends WebCellProps {
     name: string;
 }
 
-export function Icon({ className, name }: IconProps) {
-    return <i className={classNames('material-icons', className)}>{name}</i>;
+export function Icon({ className, name, defaultSlot, ...rest }: IconProps) {
+    return (
+        <i {...rest} className={classNames('material-icons', className)}>
+            {name}
+        </i>
+    );
 }

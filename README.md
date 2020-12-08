@@ -5,7 +5,7 @@
 https://web-cell.dev/material-cell/demo/
 
 [![NPM Dependency](https://david-dm.org/EasyWebApp/material-cell.svg)][4]
-[![Build Status](https://travis-ci.com/EasyWebApp/material-cell.svg?branch=master)][5]
+[![CI & CD](https://github.com/EasyWebApp/material-cell/workflows/CI%20&%20CD/badge.svg)][5]
 
 [![NPM](https://nodei.co/npm/material-cell.png?downloads=true&downloadRank=true&stars=true)][6]
 
@@ -37,5 +37,5 @@ https://github.com/EasyWebApp/material-cell/tree/master/test
 [2]: https://www.webcomponents.org/
 [3]: https://web-cell.dev/
 [4]: https://david-dm.org/EasyWebApp/material-cell
-[5]: https://travis-ci.com/EasyWebApp/material-cell
+[5]: https://github.com/EasyWebApp/material-cell/actions
 [6]: https://nodei.co/npm/material-cell/

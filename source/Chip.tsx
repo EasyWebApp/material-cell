@@ -1,4 +1,4 @@
-import { createCell, Fragment } from 'web-cell';
+import { WebCellElement, createCell, Fragment } from 'web-cell';
 import { HTMLHyperLinkProps } from 'web-utility/source/DOM-type';
 import { transitOut } from 'web-utility/source/animation';
 import classNames from 'classnames';
@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { Icon } from './Icon';
 
 export interface ChipProps extends HTMLHyperLinkProps {
-    icon?: string;
+    icon?: WebCellElement;
     image?: string;
     closable?: boolean;
 }
@@ -16,6 +16,7 @@ function close({ currentTarget }: MouseEvent) {
 }
 
 export function Chip({
+    className,
     icon,
     image,
     defaultSlot,
@@ -27,10 +28,11 @@ export function Chip({
             'chip',
             'chip-action',
             closable && 'fade',
-            closable && 'show'
+            closable && 'show',
+            className
         ),
         content = (
-            <>
+            <Fragment>
                 {icon && <i className="chip-icon">{icon}</i>}
                 {image && <img className="chip-img" src={image} />}
 
@@ -41,7 +43,7 @@ export function Chip({
                         <Icon name="cancel" />
                     </button>
                 )}
-            </>
+            </Fragment>
         );
 
     return href ? (

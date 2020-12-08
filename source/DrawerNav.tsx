@@ -19,23 +19,20 @@ import { isNavLink } from 'boot-cell/source/Navigator/Nav';
 import { Icon } from './Icon';
 import './DrawerNav.css';
 
-export interface DrawerSubMenuItemProps
-    extends WebCellProps,
-        HTMLHyperLinkProps {
+export interface DrawerMenuItemProps extends WebCellProps, HTMLHyperLinkProps {
     icon?: string;
     active?: boolean;
     disabled?: boolean;
-    children?: DrawerSubMenuItemProps[];
 }
 
-export function DrawerSubMenuItem({
+export function DrawerMenuItem({
     active,
     disabled,
     href,
     icon,
     defaultSlot,
     ...rest
-}: DrawerSubMenuItemProps) {
+}: DrawerMenuItemProps) {
     return (
         <li className="nav-item">
             <a
@@ -47,22 +44,23 @@ export function DrawerSubMenuItem({
                 )}
                 href={href}
             >
-                {icon && <Icon className="mr-3" name={icon} />} {defaultSlot}
+                {icon && <Icon className="mr-3" name={icon} />}
+                {defaultSlot}
             </a>
         </li>
     );
 }
 
-export interface DrawerSubMenuProps extends WebCellProps {}
+export interface DrawerMenuProps extends WebCellProps {}
 
-export function DrawerSubMenu({ title, defaultSlot }: DrawerSubMenuProps) {
+export function DrawerMenu({ title, defaultSlot }: DrawerMenuProps) {
     return (
-        <>
+        <Fragment>
             <div className="navdrawer-divider" />
             <p className="navdrawer-subheader">{title}</p>
 
             {defaultSlot[0] && <ul className="navdrawer-nav">{defaultSlot}</ul>}
-        </>
+        </Fragment>
     );
 }
 
@@ -204,11 +202,13 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
 
         return (
             <div className="navdrawer-content">
-                <div className="navdrawer-header">
-                    <a className="navbar-brand px-0" target="_top" href=".">
-                        {header}
-                    </a>
-                </div>
+                {header && (
+                    <div className="navdrawer-header">
+                        <a className="navbar-brand px-0" target="_top" href=".">
+                            {header}
+                        </a>
+                    </div>
+                )}
                 {tops[0] && <nav className="navdrawer-nav">{tops}</nav>}
 
                 {subs}

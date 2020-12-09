@@ -2,8 +2,6 @@
 
 [Material Design][1] [Web Components][2] library based on [WebCell][3]
 
-https://web-cell.dev/material-cell/demo/
-
 [![NPM Dependency](https://david-dm.org/EasyWebApp/material-cell.svg)][4]
 [![CI & CD](https://github.com/EasyWebApp/material-cell/workflows/CI%20&%20CD/badge.svg)][5]
 
@@ -11,13 +9,16 @@ https://web-cell.dev/material-cell/demo/
 
 ## Components
 
-|   Name    |                                  API                                   |                         Demo                          |
-| :-------: | :--------------------------------------------------------------------: | :---------------------------------------------------: |
-|  Button   |  [√](https://web-cell.dev/material-cell/interfaces/buttonprops.html)   | [√](https://web-cell.dev/material-cell/demo/#button)  |
-|   Icon    |   [√](https://web-cell.dev/material-cell/interfaces/iconprops.html)    |  [√](https://web-cell.dev/material-cell/demo/#icon)   |
-|   Chip    |   [√](https://web-cell.dev/material-cell/interfaces/chipprops.html)    |  [√](https://web-cell.dev/material-cell/demo/#chip)   |
-|  Stepper  |  [√](https://web-cell.dev/material-cell/interfaces/stepperprops.html)  | [√](https://web-cell.dev/material-cell/demo/#stepper) |
-| DrawerNav | [√](https://web-cell.dev/material-cell/interfaces/drawernavprops.html) |                                                       |
+|    Name    |                                   API                                   |                          Demo                           |
+| :--------: | :---------------------------------------------------------------------: | :-----------------------------------------------------: |
+|   Button   |   [√](https://web-cell.dev/material-cell/interfaces/buttonprops.html)   |  [√](https://material.web-cell.dev/#components/button)  |
+| CardAction | [√](https://web-cell.dev/material-cell/interfaces/cardactionprops.html) |   [√](https://material.web-cell.dev/#components/card)   |
+|  Progress  |  [√](https://web-cell.dev/material-cell/interfaces/progressprops.html)  | [√](https://material.web-cell.dev/#components/progress) |
+|  Spinner   |  [√](https://web-cell.dev/material-cell/interfaces/spinnerprops.html)   | [√](https://material.web-cell.dev/#components/spinner)  |
+|    Icon    |    [√](https://web-cell.dev/material-cell/interfaces/iconprops.html)    |   [√](https://material.web-cell.dev/#components/icon)   |
+|    Chip    |    [√](https://web-cell.dev/material-cell/interfaces/chipprops.html)    |   [√](https://material.web-cell.dev/#components/chip)   |
+|  Stepper   |  [√](https://web-cell.dev/material-cell/interfaces/stepperprops.html)   | [√](https://material.web-cell.dev/#components/stepper)  |
+| DrawerNav  | [√](https://web-cell.dev/material-cell/interfaces/drawernavprops.html)  |                                                         |
 
 ## Usage
 
@@ -27,7 +28,7 @@ npm install material-cell boot-cell web-cell classnames
 
 ### Example
 
-https://github.com/EasyWebApp/material-cell/tree/master/test
+https://material.web-cell.dev/
 
 ## Acknowledge
 

@@ -1,6 +1,6 @@
 {
     "name": "material-cell",
-    "version": "2.0.0-beta.0",
+    "version": "2.0.0-beta.2",
     "description": "Material Design Web Components library based on WebCell",
     "keywords": [
         "material",
@@ -64,7 +64,7 @@
         "tabWidth": 4
     },
     "lint-staged": {
-        "*.{html,css,md,mdx,json}": "prettier --write",
+        "*.{css,md,json,yml}": "prettier --write",
         "*.{ts,tsx}": [
             "prettier --write",
             "eslint --fix"

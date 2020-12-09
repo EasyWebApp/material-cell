@@ -25,7 +25,7 @@ describe('Progress', () => {
         assertLooksLike(
             <Progress indeterminate />,
             <BCProgress>
-                <ProgressBar className="progress-bar-indeterminate" />
+                <ProgressBar className="progress-bar-indeterminate w-100" />
             </BCProgress>
         );
     });

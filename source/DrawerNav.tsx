@@ -17,7 +17,7 @@ import { Size } from 'boot-cell/source/utility/constant';
 import { isNavLink } from 'boot-cell/source/Navigator/Nav';
 
 import { Icon } from './Icon';
-import './DrawerNav.css';
+import './DrawerNav.less';
 
 export interface DrawerMenuItemProps extends WebCellProps, HTMLHyperLinkProps {
     icon?: string;

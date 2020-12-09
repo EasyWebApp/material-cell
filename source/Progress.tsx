@@ -26,7 +26,9 @@ export function Progress({
             ) : (
                 <ProgressBar
                     className={
-                        indeterminate ? 'progress-bar-indeterminate' : undefined
+                        indeterminate
+                            ? 'progress-bar-indeterminate w-100'
+                            : undefined
                     }
                     {...{
                         striped,

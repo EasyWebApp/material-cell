@@ -7,7 +7,9 @@ describe('Icon', () => {
     it('should render a simple Icon defaultly', () => {
         assertLooksLike(
             <Icon className="more-style" name="test" />,
-            <i className="material-icons more-style">test</i>
+            <i className="material-icons more-style" aria-hidden="true">
+                test
+            </i>
         );
     });
 });

@@ -11,15 +11,21 @@ export { ToggleFieldProps } from 'boot-cell/source/Form/ToggleField';
 export function ToggleField({
     type,
     id = uniqueID(),
+    switch: _switch,
     defaultSlot,
     validMode,
     validMessage,
     invalidMessage,
     ...rest
 }: ToggleFieldProps) {
-    return type === 'checkbox' && rest.switch ? (
+    return type === 'checkbox' && _switch ? (
         <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id={id} />
+            <input
+                {...rest}
+                type="checkbox"
+                class="custom-control-input"
+                id={id}
+            />
             <span class="custom-control-track" />
             <label class="custom-control-label" for={id}>
                 {defaultSlot}

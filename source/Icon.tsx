@@ -7,7 +7,11 @@ export interface IconProps extends WebCellProps {
 
 export function Icon({ className, name, defaultSlot, ...rest }: IconProps) {
     return (
-        <i {...rest} className={classNames('material-icons', className)}>
+        <i
+            {...rest}
+            className={classNames('material-icons', className)}
+            aria-hidden="true"
+        >
             {name}
         </i>
     );

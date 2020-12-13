@@ -1,0 +1,28 @@
+:global {
+    .form-label-group {
+        & > .form-control:placeholder-shown,
+        & > [type='date']:invalid,
+        & > [type='datetime-local']:invalid,
+        & > [type='month']:invalid,
+        & > [type='week']:invalid,
+        & > select:invalid {
+            & ~ label {
+                font-size: 1rem;
+            }
+        }
+        & > .form-control-lg,
+        & > .custom-select-lg {
+            height: auto;
+            &:placeholder-shown ~ label {
+                font-size: 2rem;
+            }
+        }
+        & > .form-control-sm,
+        & > .custom-select-sm {
+            height: auto;
+            &:placeholder-shown ~ label {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

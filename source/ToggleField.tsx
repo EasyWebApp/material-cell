@@ -19,15 +19,15 @@ export function ToggleField({
     ...rest
 }: ToggleFieldProps) {
     return type === 'checkbox' && _switch ? (
-        <div class="custom-control custom-switch">
+        <div className="custom-control custom-switch">
             <input
                 {...rest}
                 type="checkbox"
-                class="custom-control-input"
+                className="custom-control-input"
                 id={id}
             />
-            <span class="custom-control-track" />
-            <label class="custom-control-label" for={id}>
+            <span className="custom-control-track" />
+            <label className="custom-control-label" for={id}>
                 {defaultSlot}
             </label>
             <ValidMessage {...{ validMode, validMessage, invalidMessage }} />

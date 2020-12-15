@@ -5,7 +5,7 @@ import { FormField as BCFormField } from 'boot-cell/source/Form/FormField';
 import { FormField } from '../source/FormField';
 
 describe('Form Field', () => {
-    it('should render a Form Field as what BootCell does defaultly', () => {
+    it("should render a Form Field as what BootCell's does defaultly", () => {
         assertLooksLike(<FormField id="test" />, <BCFormField id="test" />);
     });
 

@@ -1,28 +1,43 @@
+.label-float(@font-size) {
+    &.form-control:placeholder-shown,
+    &[type='date']:invalid,
+    &[type='datetime-local']:invalid,
+    &[type='month']:invalid,
+    &[type='week']:invalid,
+    &.custom-select:invalid {
+        & ~ label {
+            font-size: @font-size;
+        }
+    }
+}
 :global {
     .form-label-group {
-        & > .form-control:placeholder-shown,
-        & > [type='date']:invalid,
-        & > [type='datetime-local']:invalid,
-        & > [type='month']:invalid,
-        & > [type='week']:invalid,
-        & > select:invalid {
+        & > .form-control,
+        & > .custom-select {
+            &,
             & ~ label {
-                font-size: 1rem;
+                height: auto;
+                padding: 0.4rem 0;
+            }
+            .label-float(1rem);
+        }
+        &.textfield-box {
+            & > .form-control,
+            & > .custom-select {
+                &,
+                & ~ label {
+                    padding: 0.4rem;
+                }
             }
         }
         & > .form-control-lg,
         & > .custom-select-lg {
-            height: auto;
-            &:placeholder-shown ~ label {
-                font-size: 2rem;
-            }
+            padding: 0.6rem 0;
+            .label-float(2rem);
         }
         & > .form-control-sm,
         & > .custom-select-sm {
-            height: auto;
-            &:placeholder-shown ~ label {
-                font-size: 0.8rem;
-            }
+            .label-float(0.8rem);
         }
     }
 }

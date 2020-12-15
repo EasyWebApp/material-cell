@@ -1,4 +1,4 @@
-import { WebCellProps, createCell } from 'web-cell';
+import { WebCellProps, createCell, VNodeChildElement, VNode } from 'web-cell';
 import classNames from 'classnames';
 
 export interface IconProps extends WebCellProps {
@@ -15,4 +15,10 @@ export function Icon({ className, name, defaultSlot, ...rest }: IconProps) {
             {name}
         </i>
     );
+}
+
+export function isIcon(node: VNodeChildElement): node is VNode {
+    const { ['material-icons']: icon } = (node as VNode).data?.class || {};
+
+    return icon;
 }

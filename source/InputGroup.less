@@ -1,0 +1,51 @@
+@import (reference) './FormField.less';
+
+:global {
+    .input-group {
+        select:focus ~ .input-group-icon {
+            color: var(--secondary);
+        }
+        .form-label-group {
+            flex: 1;
+            margin-bottom: 0;
+            .form-control,
+            .custom-select,
+            .form-control-file,
+            label {
+                height: auto;
+            }
+        }
+        &.input-group-lg {
+            .form-label-group {
+                .form-control,
+                .custom-select,
+                .form-control-file {
+                    font-size: 2.1rem;
+                    .label-float(2.1rem);
+                }
+            }
+            .input-group-icon {
+                line-height: 1.2;
+                .material-icons {
+                    font-size: 3.2rem;
+                }
+            }
+        }
+        &.input-group-sm {
+            .form-label-group {
+                .form-control,
+                .custom-select,
+                .form-control-file {
+                    font-size: 0.8rem;
+                    .label-float(0.8rem);
+                }
+            }
+            .input-group-icon {
+                line-height: 1.5;
+                .material-icons {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}

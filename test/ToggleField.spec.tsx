@@ -30,10 +30,14 @@ describe('Toggle Field', () => {
             <ToggleField type="checkbox" switch id="test">
                 test
             </ToggleField>,
-            <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="test" />
-                <span class="custom-control-track" />
-                <label class="custom-control-label" for="test">
+            <div className="custom-control custom-switch">
+                <input
+                    type="checkbox"
+                    className="custom-control-input"
+                    id="test"
+                />
+                <span className="custom-control-track" />
+                <label className="custom-control-label" for="test">
                     test
                 </label>
             </div>
@@ -51,10 +55,14 @@ describe('Toggle Field', () => {
             >
                 test
             </ToggleField>,
-            <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="test" />
-                <span class="custom-control-track" />
-                <label class="custom-control-label" for="test">
+            <div className="custom-control custom-switch">
+                <input
+                    type="checkbox"
+                    className="custom-control-input"
+                    id="test"
+                />
+                <span className="custom-control-track" />
+                <label className="custom-control-label" for="test">
                     test
                 </label>
                 <ValidMessage validMode="feedback" validMessage="√" />

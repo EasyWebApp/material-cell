@@ -1,4 +1,4 @@
-import { WebCellProps, createCell } from 'web-cell';
+import { WebCellProps, createCell, VNodeChildElement, VNode } from 'web-cell';
 import {
     FormFieldProps as BCFormFieldProps,
     FormField as BCFormField
@@ -25,4 +25,11 @@ export function FormField({
             {defaultSlot}
         </BCFormField>
     );
+}
+
+export function isFormField(node: VNodeChildElement): node is VNode {
+    const { ['form-group']: group, ['form-label-group']: label } =
+        (node as VNode).data?.class || {};
+
+    return group || label;
 }

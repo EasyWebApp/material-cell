@@ -2,7 +2,7 @@ import { createCell } from 'web-cell';
 import { assertLooksLike } from '@tech_query/snabbdom-looks-like';
 import { Button as BCButton } from 'boot-cell/source/Form/Button';
 
-import { Button } from '../source/Button';
+import { Button } from '../../source/Form/Button';
 
 describe('Button', () => {
     it('should render a BootCell Button defaultly', () => {

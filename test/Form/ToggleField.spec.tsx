@@ -1,9 +1,10 @@
+import '../polyfill';
 import { createCell } from 'web-cell';
 import { assertLooksLike } from '@tech_query/snabbdom-looks-like';
 import { ToggleField as BCToggleField } from 'boot-cell/source/Form/ToggleField';
-
-import { ToggleField } from '../source/ToggleField';
 import { ValidMessage } from 'boot-cell/source/Form/Form';
+
+import { ToggleField } from '../../source/Form/ToggleField';
 
 describe('Toggle Field', () => {
     it("should render a Toggle Field as what BootCell's does", () => {

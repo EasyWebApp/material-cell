@@ -1,6 +1,6 @@
 {
     "name": "material-cell",
-    "version": "2.0.0-beta.6",
+    "version": "2.0.0-rc.0",
     "description": "Material Design Web Components library based on WebCell",
     "keywords": [
         "material",
@@ -24,35 +24,36 @@
     "main": "dist/index.umd.js",
     "module": "dist/index.js",
     "dependencies": {
-        "boot-cell": "^1.6.1",
+        "boot-cell": "^1.9.1",
         "classnames": "^2.2.6",
         "iterable-observer": "^1.0.0-beta.5",
-        "web-cell": "^2.2.0",
-        "web-utility": "^2.1.0"
+        "web-cell": "^2.3.0-beta.4",
+        "web-utility": "^2.2.2"
     },
     "peerDependencies": {
         "daemonite-material": "^4.1.1",
         "material-design-icons": "^3.0.1"
     },
     "devDependencies": {
-        "@babel/plugin-proposal-optional-chaining": "^7.12.7",
-        "@babel/plugin-transform-typescript": "^7.12.1",
+        "@peculiar/webcrypto": "^1.1.4",
         "@tech_query/snabbdom-looks-like": "^2.0.1",
         "@types/classnames": "^2.2.11",
-        "@typescript-eslint/parser": "^4.10.0",
+        "@types/resize-observer-browser": "^0.1.4",
+        "@typescript-eslint/parser": "^4.11.1",
         "cross-env": "^7.0.3",
-        "eslint": "^7.15.0",
+        "element-internals-polyfill": "^0.1.1",
+        "eslint": "^7.16.0",
         "husky": "^4.3.6",
         "identity-obj-proxy": "^3.0.0",
         "jest": "^26.6.3",
-        "less": "^3.13.0",
+        "less": "^4.0.0",
         "lint-staged": "^10.5.3",
-        "microbundle": "^0.12.4",
+        "microbundle": "^0.13.0",
         "open-cli": "^6.0.1",
         "prettier": "^2.2.1",
-        "snabbdom": "^1.0.1",
+        "snabbdom": "^2.1.0",
         "ts-jest": "^26.4.4",
-        "typedoc": "^0.19.2",
+        "typedoc": "^0.20.2",
         "typescript": "^4.1.3"
     },
     "prettier": {
@@ -70,7 +71,7 @@
     },
     "scripts": {
         "test": "lint-staged  &&  jest",
-        "pack-dist": "rm -rf dist/  &&  cross-env NODE_ENV=build  microbundle --external web-cell,web-utility,classnames,boot-cell --globals web-cell=WebCell,web-utility=WebUtility,classnames=classNames,boot-cell=BootCell --name MaterialCell --css-modules true",
+        "pack-dist": "rm -rf dist/  &&  cross-env NODE_ENV=build  microbundle --external web-cell,web-utility,classnames,iterable-observer,boot-cell --globals web-cell=WebCell,web-utility=WebUtility,classnames=classNames,iterable-observer=IterableObserver,boot-cell=BootCell --name MaterialCell --css-modules true",
         "pack-docs": "rm -rf docs/  &&  typedoc source/",
         "build": "npm run pack-dist  &&  npm run pack-docs",
         "start": "npm run build  &&  open-cli docs/index.html",

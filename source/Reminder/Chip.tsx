@@ -32,7 +32,7 @@ export function Chip({
             className
         ),
         content = (
-            <Fragment>
+            <>
                 {icon && <i className="chip-icon">{icon}</i>}
                 {image && <img className="chip-img" src={image} />}
 
@@ -43,7 +43,7 @@ export function Chip({
                         <Icon name="cancel" />
                     </button>
                 )}
-            </Fragment>
+            </>
         );
 
     return href ? (

@@ -9,7 +9,7 @@ import { ValidMessage } from 'boot-cell/source/Form/Form';
 import classNames from 'classnames';
 
 import { isFormField } from './FormField';
-import { isIcon } from './Icon';
+import { isIcon } from '../Reminder/Icon';
 import './InputGroup.less';
 
 export interface InputGroupProps extends BCInputGroupProps {}

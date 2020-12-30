@@ -1,8 +1,8 @@
 import { createCell } from 'web-cell';
 import { assertLooksLike } from '@tech_query/snabbdom-looks-like';
 
-import { Stepper } from '../source/Stepper';
-import { Icon } from '../source/Icon';
+import { Stepper } from '../../source/Navigator/Stepper';
+import { Icon } from '../../source/Reminder/Icon';
 
 describe('Stepper', () => {
     it('should render a Step list with Serial numbers defaultly', () => {

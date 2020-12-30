@@ -1,7 +1,7 @@
 import { createCell } from 'web-cell';
 import classNames from 'classnames';
 
-import { Icon } from './Icon';
+import { Icon } from '../Reminder/Icon';
 
 export interface Step {
     title: string;

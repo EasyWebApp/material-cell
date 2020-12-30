@@ -1,3 +1,4 @@
+import '../polyfill';
 import { createCell } from 'web-cell';
 import { assertLooksLike } from '@tech_query/snabbdom-looks-like';
 import { NavLink } from 'boot-cell/source/Navigator/Nav';
@@ -6,8 +7,8 @@ import {
     DrawerNavProps,
     DrawerMenu,
     DrawerMenuItem
-} from '../source/DrawerNav';
-import { Icon } from '../source/Icon';
+} from '../../source/Navigator/DrawerNav';
+import { Icon } from '../../source/Reminder/Icon';
 
 const { render } = DrawerNav.prototype;
 

@@ -1,0 +1,44 @@
+// forked from https://github.com/Daemonite/material/blob/master/assets/scss/mixins/_transition.scss#L43-L59
+
+:global {
+    drawer-navbar {
+        &[permanent]:not([clipped]):not([float]) nav-bar {
+            margin-left: 17.5rem;
+        }
+        &[persistent] nav-bar,
+        &[temporary] nav-bar {
+            transition-duration: 0.195s;
+            transition-property: margin-left;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+
+            @media (min-width: 576px) {
+                transition-duration: 0.2535s;
+            }
+            @media (min-width: 992px) {
+                transition-duration: 0.13s;
+            }
+            @media screen and (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
+        }
+        &[open] {
+            &[persistent] nav-bar,
+            &[temporary] nav-bar {
+                transition-duration: 0.225s;
+                transition-property: margin-left;
+                transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+                margin-left: 17.5rem;
+
+                @media (min-width: 576px) {
+                    transition-duration: 0.2925s;
+                }
+                @media (min-width: 992px) {
+                    transition-duration: 0.15s;
+                }
+                @media screen and (prefers-reduced-motion: reduce) {
+                    transition: none;
+                }
+            }
+        }
+    }
+}

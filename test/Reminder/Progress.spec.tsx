@@ -5,7 +5,7 @@ import {
     ProgressBar
 } from 'boot-cell/source/Reminder/Progress';
 
-import { Progress } from '../source/Progress';
+import { Progress } from '../../source/Reminder/Progress';
 
 describe('Progress', () => {
     it("should render a Progess Bar as what BootCell's does", () => {

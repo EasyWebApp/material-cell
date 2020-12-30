@@ -1,7 +1,7 @@
 import { createCell } from 'web-cell';
 import { assertLooksLike } from '@tech_query/snabbdom-looks-like';
 
-import { Spinner } from '../source/Spinner';
+import { Spinner } from '../../source/Reminder/Spinner';
 
 describe('Spinner', () => {
     it('should render a Spinner with colors', () => {

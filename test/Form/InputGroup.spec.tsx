@@ -1,10 +1,11 @@
+import '../polyfill';
 import { createCell } from 'web-cell';
 import { assertLooksLike } from '@tech_query/snabbdom-looks-like';
 import { Field } from 'boot-cell/source/Form/Field';
 import { GroupLabel } from 'boot-cell/source/Form/InputGroup';
 
-import { InputGroup } from '../source/InputGroup';
-import { Icon } from '../source/Icon';
+import { InputGroup } from '../../source/Form/InputGroup';
+import { Icon } from '../../source/Reminder/Icon';
 
 describe('Input Group', () => {
     it("should render an Input Group like what BootCell's does", () => {

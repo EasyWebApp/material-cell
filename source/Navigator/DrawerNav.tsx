@@ -16,7 +16,7 @@ import classNames from 'classnames';
 import { Size } from 'boot-cell/source/utility/constant';
 import { isNavLink } from 'boot-cell/source/Navigator/Nav';
 
-import { Icon } from './Icon';
+import { Icon } from '../Reminder/Icon';
 import './DrawerNav.less';
 
 export interface DrawerMenuItemProps extends WebCellProps, HTMLHyperLinkProps {
@@ -55,12 +55,12 @@ export interface DrawerMenuProps extends WebCellProps {}
 
 export function DrawerMenu({ title, defaultSlot }: DrawerMenuProps) {
     return (
-        <Fragment>
+        <>
             <div className="navdrawer-divider" />
             <p className="navdrawer-subheader">{title}</p>
 
             {defaultSlot[0] && <ul className="navdrawer-nav">{defaultSlot}</ul>}
-        </Fragment>
+        </>
     );
 }
 
@@ -70,9 +70,10 @@ export interface DrawerNavProps extends WebCellProps {
     open?: boolean;
     permanent?: keyof typeof Size;
     clipped?: boolean;
-    float?: boolean;
+    float?: 'transparent' | 'card';
     persistent?: keyof typeof Size;
     temporary?: keyof typeof Size;
+    onOpen?: (event: CustomEvent) => any;
     onClose?: (event: CustomEvent) => any;
 }
 
@@ -116,15 +117,11 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
         this.setProps({ open }).then(async () => {
             if (open) {
                 this.removeAttribute('aria-hidden');
-
                 await transitIn(this, 'show');
-
                 this.emit('open');
             } else {
                 this.setAttribute('aria-hidden', 'true');
-
                 await transitOut(this, 'show');
-
                 this.emit('close');
             }
         });
@@ -176,8 +173,8 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
             'navdrawer-permanent' + (permanent === 'xs' ? '' : '-' + permanent),
             typeof permanent === 'string'
         );
-        classList.toggle('navdrawer-permanent-clipped', clipped);
-        classList.toggle('navdrawer-permanent-float', float);
+        classList.toggle('navdrawer-permanent-clipped', !!clipped);
+        classList.toggle('navdrawer-permanent-float', !!float);
         classList.toggle(
             'navdrawer-persistent' +
                 (persistent === 'xs' ? '' : '-' + persistent),
@@ -189,7 +186,7 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
         );
     }
 
-    render({ defaultSlot, header }: DrawerNavProps) {
+    render({ defaultSlot, header, float }: DrawerNavProps) {
         const [tops, subs] = (defaultSlot as VNode[]).reduce(
             ([tops, subs], item) => {
                 if (isNavLink(item)) tops.push(item);
@@ -200,8 +197,8 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
             [[], []] as VNode[][]
         );
 
-        return (
-            <div className="navdrawer-content">
+        const content = (
+            <>
                 {header && (
                     <div className="navdrawer-header">
                         <a className="navbar-brand px-0" target="_top" href=".">
@@ -210,8 +207,17 @@ export class DrawerNav extends mixin<DrawerNavProps>() {
                     </div>
                 )}
                 {tops[0] && <nav className="navdrawer-nav">{tops}</nav>}
-
                 {subs}
+            </>
+        );
+
+        return (
+            <div className="navdrawer-content">
+                {float === 'card' ? (
+                    <div className="card m-3">{content}</div>
+                ) : (
+                    content
+                )}
             </div>
         );
     }

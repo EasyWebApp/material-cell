@@ -1,8 +1,9 @@
+import '../polyfill';
 import { createCell } from 'web-cell';
 import { assertLooksLike } from '@tech_query/snabbdom-looks-like';
 
-import { Chip } from '../source/Chip';
-import { Icon } from '../source/Icon';
+import { Chip } from '../../source/Reminder/Chip';
+import { Icon } from '../../source/Reminder/Icon';
 
 describe('Chip', () => {
     it('should render a simple Chip button or anchor', () => {

@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "ES5",
-        "module": "ESNext",
+        "module": "ES2020",
         "moduleResolution": "Node",
         "allowSyntheticDefaultImports": true,
         "resolveJsonModule": true,
@@ -9,15 +9,15 @@
         "experimentalDecorators": true,
         "jsx": "react",
         "jsxFactory": "createCell",
-        "lib": ["ES2019", "DOM"]
+        "jsxFragmentFactory": "Fragment",
+        "lib": ["ES2020", "DOM"]
     },
+    "include": ["source/*", "source/**/*"],
     "typedocOptions": {
         "name": "Material Cell",
-        "mode": "file",
         "excludeExternals": true,
-        "excludeNotExported": true,
+        "excludePrivate": true,
         "readme": "./README.md",
         "out": "docs/"
-    },
-    "include": ["source/*"]
+    }
 }

@@ -5,5 +5,5 @@
         "jsxFactory": "createCell",
         "jsxFragmentFactory": "Fragment"
     },
-    "include": ["./*"]
+    "include": ["./*", "./**/*"]
 }

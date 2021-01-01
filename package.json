@@ -1,0 +1,72 @@
+{
+    "name": "material-cell",
+    "version": "2.0.0-rc.1",
+    "license": "LGPL-3.0",
+    "author": "shiy2008@gmail.com",
+    "description": "Material Web Components's JSX Type definition for WebCell engine",
+    "keywords": [
+        "web",
+        "component",
+        "typescript",
+        "jsx",
+        "webcell",
+        "material"
+    ],
+    "homepage": "https://github.com/EasyWebApp/material-cell/tree/v2#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/EasyWebApp/material-cell.git"
+    },
+    "bugs": {
+        "url": "https://github.com/EasyWebApp/material-cell/issues"
+    },
+    "types": "source/index.d.ts",
+    "dependencies": {
+        "web-cell": "^2.3.0-beta.4"
+    },
+    "peerDependencies": {
+        "@material/mwc-button": "^0.20.0",
+        "@material/mwc-checkbox": "^0.20.0",
+        "@material/mwc-circular-progress": "^0.20.0",
+        "@material/mwc-circular-progress-four-color": "^0.20.0",
+        "@material/mwc-icon": "^0.20.0",
+        "@material/mwc-icon-button": "^0.20.0",
+        "@material/mwc-icon-button-toggle": "^0.20.0",
+        "@material/mwc-radio": "^0.20.0"
+    },
+    "devDependencies": {
+        "@material/mwc-button": "^0.20.0",
+        "@material/mwc-checkbox": "^0.20.0",
+        "@material/mwc-circular-progress": "^0.20.0",
+        "@material/mwc-circular-progress-four-color": "^0.20.0",
+        "@material/mwc-icon": "^0.20.0",
+        "@material/mwc-icon-button": "^0.20.0",
+        "@material/mwc-icon-button-toggle": "^0.20.0",
+        "@material/mwc-radio": "^0.20.0",
+        "husky": "^4.3.6",
+        "lint-staged": "^10.5.3",
+        "parcel-bundler": "^1.12.4",
+        "prettier": "^2.2.1",
+        "typescript": "^4.1.3"
+    },
+    "prettier": {
+        "singleQuote": true,
+        "trailingComma": "none",
+        "arrowParens": "avoid",
+        "tabWidth": 4
+    },
+    "lint-staged": {
+        "*.{html,md,json,ts,tsx}": "prettier --write"
+    },
+    "scripts": {
+        "test": "lint-staged",
+        "start": "parcel test/index.html --open",
+        "build": "parcel build test/index.html"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm test",
+            "pre-push": "npm run build"
+        }
+    }
+}

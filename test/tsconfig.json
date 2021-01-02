@@ -1,8 +1,11 @@
 {
     "compilerOptions": {
+        "module": "ES2020",
+        "moduleResolution": "Node",
         "jsx": "react",
         "jsxFactory": "createCell",
-        "jsxFragmentFactory": "Fragment"
+        "jsxFragmentFactory": "Fragment",
+        "lib": ["ES2020", "DOM"]
     },
     "include": ["./*"]
 }

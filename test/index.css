@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+}
+main {
+    padding: 0 1rem 1rem;
+}
+#source-code mwc-icon {
+    color: white;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+mwc-list-item a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+mwc-circular-progress {
+    --mdc-circular-progress-bar-color-1: #2196f3;
+    --mdc-circular-progress-bar-color-2: #e91e63;
+    --mdc-circular-progress-bar-color-3: #ffc107;
+    --mdc-circular-progress-bar-color-4: #03dac5;
+}

@@ -25,6 +25,7 @@ npm install @material/mwc-icon
 
 ```TSX
 import { render, createCell } from 'web-cell';
+import type {} from 'material-cell';
 import '@material/mwc-icon';
 
 render(<mwc-icon>code</mwc-icon>);

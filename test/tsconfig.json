@@ -1,11 +1,4 @@
 {
-    "compilerOptions": {
-        "module": "ES2020",
-        "moduleResolution": "Node",
-        "jsx": "react",
-        "jsxFactory": "createCell",
-        "jsxFragmentFactory": "Fragment",
-        "lib": ["ES2020", "DOM"]
-    },
+    "extends": "../tsconfig.json",
     "include": ["./*"]
 }

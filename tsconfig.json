@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "module": "ES6",
+        "moduleResolution": "Node",
+        "jsx": "react-jsx",
+        "jsxImportSource": "dom-renderer",
+        "lib": ["ES2023", "DOM"]
+    },
+    "include": ["source/*"]
+}
